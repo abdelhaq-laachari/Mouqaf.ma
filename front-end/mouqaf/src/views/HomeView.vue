@@ -3,7 +3,13 @@
     <HomeHeader/>
     <div class="first">
       <div class="left">
-        <p>Hire the best handyman <br> for any job, <br> online.</p>
+        <p>
+          Hire the best 
+          <span class="typed-text"></span> 
+          <span class="cursor">&nbsp;</span>
+          <br> for any job, 
+          <br> online.
+        </p>
         <div class="bott">
           <button class="btn btn-info">Explore</button>
           <button class="btn btn-light">Join</button>
@@ -128,6 +134,7 @@ export default {
   align-items: center;
   /* justify-content: center; */
 }
+
 .left{
   width: 50%;
   display: flex;
@@ -138,6 +145,15 @@ export default {
   color: #fff;
   font-weight: 500;
   font-family: 'poppins';
+}
+span.typed-text{
+  color: #000;
+}
+span.cursor{
+  display: inline-block;
+  margin-left: 3px;
+  width: 4px;
+  background-color: #fff;
 }
 .bott{
   width: 100%;

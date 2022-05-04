@@ -68,7 +68,7 @@ export default {
   justify-content: center;
   padding: 2rem;
 }
-.top{
+.top {
   margin-top: 1.4rem;
 }
 .second .top h3 {
@@ -112,14 +112,42 @@ export default {
   font-family: "poppins";
   text-align: center;
 }
+@media (min-width: 2000px) {
+  .second .top h3 {
+    font-size: 3rem;
+  }
+  .title h4 {
+    font-size: 2.2rem;
+  }
+  .img-card {
+    width: 300px;
+  }
+  .par p {
+    font-size: 1.5rem;
+  }
+}
+@media (min-width: 1400px) and (max-width: 2000px) {
+  .second .top h3 {
+    font-size: 2.6rem;
+  }
+  .title h4 {
+    font-size: 2.2rem;
+  }
+  .img-card {
+    width: 250px;
+  }
+  .par p {
+    font-size: 1.3rem;
+  }
+}
 @media (max-width: 900px) {
   .img-card {
     width: 150px;
   }
-  .par p{
+  .par p {
     font-size: 0.9rem;
   }
-  .title h4{
+  .title h4 {
     font-size: 1.3rem;
   }
 }
@@ -127,52 +155,52 @@ export default {
   .img-card {
     width: 120px;
   }
-  .par p{
+  .par p {
     font-size: 0.7rem;
   }
-  .title h4{
+  .title h4 {
     font-size: 1rem;
   }
-  .second .top h3{
+  .second .top h3 {
     font-size: 1.5rem;
   }
 }
 @media (max-width: 700px) {
-  .bottom{
+  .bottom {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 600px) {
-  .bottom{
+  .bottom {
     grid-template-columns: repeat(1, 1fr);
   }
   .img-card {
     width: 200px;
   }
-  .par p{
+  .par p {
     font-size: 1rem;
   }
-  .title h4{
+  .title h4 {
     font-size: 1.3rem;
   }
-  .second .top h3{
+  .second .top h3 {
     font-size: 1.8rem;
   }
 }
 @media (max-width: 400px) {
-  .bottom{
+  .bottom {
     grid-template-columns: repeat(1, 1fr);
   }
   .img-card {
     width: 120px;
   }
-  .par p{
+  .par p {
     font-size: 0.8rem;
   }
-  .title h4{
+  .title h4 {
     font-size: 1.1rem;
   }
-  .second .top h3{
+  .second .top h3 {
     font-size: 1.4rem;
   }
 }

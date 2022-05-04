@@ -98,6 +98,17 @@ span.cursor.typing {
   }
 }
 
+@media (min-width: 2000px){
+  p , span.typed-text {
+    font-size: 4.6rem;
+  }
+}
+@media (min-width: 1400px) and (max-width: 2000px){
+  p , span.typed-text {
+    font-size: 3.6rem;
+  }
+}
+
 @media (max-width: 980px) {
   p , span.typed-text {
     font-size: 2rem;

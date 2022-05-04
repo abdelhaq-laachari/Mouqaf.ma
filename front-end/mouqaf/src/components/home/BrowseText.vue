@@ -66,6 +66,11 @@ export default {
   /* align-items: center; */
   justify-content: center;
 }
+.title h3 {
+  color: #3347a3;
+  font-family: "poppins";
+  font-size: 2rem;
+}
 .third-bot {
   width: 100%;
   height: auto;
@@ -101,9 +106,49 @@ export default {
   font-family: "poppins";
   font-size: 1.5rem;
 }
-P{
-    font-size: 1.3rem;
+P {
+  font-size: 1.3rem;
+}
+
+@media (min-width: 2000px) {
+  .title h3 {
+    color: #3347a3;
+    font-family: "poppins";
+    font-size: 3rem;
+    padding-bottom: 2rem;
   }
+  .brow-img {
+    width: 100px;
+  }
+  #img {
+    width: 80px !important;
+  }
+  .brow-top h4 {
+    font-size: 2.3rem;
+  }
+  P {
+    font-size: 1.9rem;
+  }
+}
+
+@media (min-width: 1400px) and (max-width: 2000px) {
+  .title h3 {
+    font-size: 2.5rem;
+    padding-bottom: 2rem;
+  }
+  .brow-img {
+    width: 90px;
+  }
+  #img {
+    width: 70px !important;
+  }
+  .brow-top h4 {
+    font-size: 2rem;
+  }
+  P {
+    font-size: 1.5rem;
+  }
+}
 @media (max-width: 900px) {
   .brow-img {
     width: 50px;
@@ -114,7 +159,7 @@ P{
   .brow-top h4 {
     font-size: 1.3rem;
   }
-  P{
+  P {
     font-size: 1rem;
   }
 }
@@ -128,21 +173,21 @@ P{
   .brow-top h4 {
     font-size: 1.1rem;
   }
-  P{
+  P {
     font-size: 0.9rem;
   }
 }
 @media (max-width: 600px) {
-  .third{
+  .third {
     /* height: 120vh; */
   }
-  .third-bot{
+  .third-bot {
     flex-direction: column;
   }
-  .brow{
+  .brow {
     width: 100%;
   }
-  .brow-top{
+  .brow-top {
     justify-content: flex-start;
     gap: 1rem;
   }
@@ -155,12 +200,12 @@ P{
   .brow-top h4 {
     font-size: 1.4rem;
   }
-  P{
+  P {
     font-size: 1.2rem;
   }
 }
 @media (max-width: 500px) {
-  .brow-top{
+  .brow-top {
     justify-content: flex-start;
     gap: 1rem;
   }
@@ -173,12 +218,12 @@ P{
   .brow-top h4 {
     font-size: 1.2rem;
   }
-  P{
+  P {
     font-size: 1rem;
   }
 }
 @media (max-width: 380px) {
-  .brow-top{
+  .brow-top {
     justify-content: flex-start;
     gap: 1rem;
   }
@@ -191,7 +236,7 @@ P{
   .brow-top h4 {
     font-size: 1.2rem;
   }
-  P{
+  P {
     font-size: 1rem;
   }
 }

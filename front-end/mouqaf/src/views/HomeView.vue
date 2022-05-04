@@ -100,6 +100,7 @@ export default {
 .right img {
   width: 100%;
 }
+
 @media (max-width: 600px) {
   .right{
     display: none;

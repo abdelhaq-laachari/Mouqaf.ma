@@ -80,6 +80,28 @@ export default {
   font-size: 1.1rem;
   font-family: "poppins";
 }
+@media (min-width: 2000px) {
+  .title h3 {
+    font-size: 4rem;
+  }
+  .par p {
+    font-size: 2.1rem;
+  }
+  .store-img {
+    width: 35%;
+  }
+}
+@media (min-width: 1400px) and (max-width: 2000px) {
+  .title h3 {
+    font-size: 3rem;
+  }
+  .par p {
+    font-size: 1.6rem;
+  }
+  .store-img {
+    width: 40%;
+  }
+}
 @media (max-width: 800px) {
   .app {
     flex-direction: column;

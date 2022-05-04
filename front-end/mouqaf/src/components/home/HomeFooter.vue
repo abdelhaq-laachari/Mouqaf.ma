@@ -92,6 +92,23 @@ a > span {
 .inst:hover {
   color: #8a3ab9;
 }
+@media (min-width: 1500px){
+  .footer{
+    padding: 2rem 0;
+  }
+  a > span{
+    font-size: 2rem;
+  }
+  .footer__copyright {
+  font-size: 1.3rem;
+}
+.footer__links{
+  font-size: 2rem;
+}
+.social{
+  font-size: 2.2rem;
+}
+}
 @media (max-width: 750px) {
   .footer,
   .container {

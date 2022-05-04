@@ -63,6 +63,16 @@ export default {
 .logo {
   width: 80px;
 }
+@media (min-width: 1500px) {
+  .link-r {
+    font-weight: 600;
+    font-size: 2rem;
+  }
+  .logo {
+    width: 100px;
+  }
+}
+
 @media (max-width: 500px) {
   .logo {
     width: 70px;

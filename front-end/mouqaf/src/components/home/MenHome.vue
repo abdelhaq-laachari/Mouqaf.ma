@@ -59,6 +59,26 @@ export default {
   font-size: 1.2rem;
   font-family: "Serif";
 }
+@media (min-width: 2000px) {
+  .title h3 {
+    font-size: 3.5rem;
+    padding-bottom: 2rem;
+  }
+  .par p {
+    font-size: 2.2rem;
+    padding-bottom: 2rem;
+  }
+}
+@media (min-width: 1500px) and (max-width: 2000px) {
+  .title h3 {
+    font-size: 3rem;
+    padding-bottom: 2rem;
+  }
+  .par p {
+    font-size: 1.5rem;
+    padding-bottom: 2rem;
+  }
+}
 @media (max-width: 900px) {
   .title h3 {
     font-size: 1.8rem;
@@ -76,19 +96,19 @@ export default {
   }
 }
 @media (max-width: 800px) {
-    .left{
-        display: none;
-    }
-    .right{
-        width: 95%;
-        margin: auto;
-        padding: 2rem;
-    }
+  .left {
+    display: none;
+  }
+  .right {
+    width: 95%;
+    margin: auto;
+    padding: 2rem;
+  }
   .title h3 {
     font-size: 1.5rem;
   }
-  .par{
-      width: 100%;
+  .par {
+    width: 100%;
   }
   .par p {
     font-size: 1rem;

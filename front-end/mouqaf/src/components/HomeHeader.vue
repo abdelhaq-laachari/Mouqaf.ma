@@ -3,8 +3,9 @@
   <div class="home">
     <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
-        <!-- <a class="navbar-brand" href="#">Web Zone</a> -->
-        <img src="../assets/logo/mouqaf.png" class="logo" alt="" />
+        <a href="/">
+          <img src="../assets/logo/mouqaf.png" class="logo" alt="" />
+        </a>
         <button
           class="navbar-toggler btn-dark"
           type="button"
@@ -36,7 +37,7 @@
               >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link text-light link-r" to="/signIn"
+              <router-link class="nav-link text-light link-r" to="/signin"
                 >Sign In</router-link
               >
             </li>

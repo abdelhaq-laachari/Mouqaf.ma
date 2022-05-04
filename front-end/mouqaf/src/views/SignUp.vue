@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div class="logo">
-      <a href="">
+      <a href="/">
         <img src="../assets/logo/mouqaf.png" alt="" />
       </a>
     </div>
@@ -86,7 +86,7 @@
           </form>
           <span class="footer__link"
             >You already have an account?
-            <a href="">Sign In</a>
+            <a href="signin">Sign In</a>
           </span>
         </div>
       </div>

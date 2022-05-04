@@ -7,14 +7,34 @@
     </div>
     <div class="home__frame">
       <div class="left">
-        <img src="../assets/img/signin.png" alt="" />
+        <img src="../assets/img/signup.png" alt="" />
       </div>
       <div class="right">
         <div class="right__title">
-          <h3>WELCOME BACK</h3>
+          <h3>Join Our Community</h3>
         </div>
         <div class="right__form">
           <form action="">
+            <div class="form-group">
+              <label for="exampleInputEmail1">First Name</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="First Name"
+              />
+            </div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Last Name</label>
+              <input
+                type="email"
+                class="form-control"
+                id="exampleInputEmail1"
+                aria-describedby="emailHelp"
+                placeholder="Last Name"
+              />
+            </div>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -62,11 +82,11 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" class="btn btn-primary">Sign Up</button>
           </form>
           <span class="footer__link"
-            >Don't have an account
-            <a href="">Sign Up</a>
+            >You already have an account?
+            <a href="">Sign In</a>
           </span>
         </div>
       </div>
@@ -138,12 +158,12 @@ export default {
   width: 45%;
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
 }
 .right__title h3 {
   display: flex;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.6rem;
   font-weight: 600;
   font-family: "poppins";
 }
@@ -153,7 +173,7 @@ export default {
 .right__form form {
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 0.7rem;
 }
 .field {
   display: flex;
@@ -206,7 +226,7 @@ export default {
     width: 80px;
   }
   .right__title h3 {
-    font-size: 1.6rem;
+    font-size: 1.4rem;
   }
   .footer__link,
   .footer__link a {

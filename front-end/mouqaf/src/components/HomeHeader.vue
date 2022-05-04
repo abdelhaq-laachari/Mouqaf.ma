@@ -1,11 +1,10 @@
 <template>
-
-<!-- Nav Bar -->
-<div class="home">
-    <nav class="navbar navbar-expand-lg navbar-dark ">
+  <!-- Nav Bar -->
+  <div class="home">
+    <nav class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
         <!-- <a class="navbar-brand" href="#">Web Zone</a> -->
-        <img src="../assets/logo/mouqaf.png" style="width:80px;" alt="">
+        <img src="../assets/logo/mouqaf.png" class="logo" alt="" />
         <button
           class="navbar-toggler btn-dark"
           type="button"
@@ -22,42 +21,51 @@
           <div class="mx-auto"></div>
           <ul class="navbar-nav">
             <li class="nav-item">
-              <router-link class="nav-link text-light link-r" to="/">Home</router-link>
+              <router-link class="nav-link text-light link-r" to="/"
+                >Home</router-link
+              >
             </li>
             <li class="nav-item">
-                <router-link class="nav-link text-light link-r" to="/about">About</router-link>
+              <router-link class="nav-link text-light link-r" to="/about"
+                >About</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link text-light link-r" to="/service">Service</router-link>
+              <router-link class="nav-link text-light link-r" to="/service"
+                >Service</router-link
+              >
             </li>
             <li class="nav-item">
-              <router-link class="nav-link text-light link-r" to="/signIn">Sign In</router-link>
+              <router-link class="nav-link text-light link-r" to="/signIn"
+                >Sign In</router-link
+              >
             </li>
           </ul>
         </div>
       </div>
     </nav>
-</div>
-
-    
+  </div>
 </template>
 
 <script>
 export default {
-    name: 'HomeHeader',
-  components: {
-  }
-}
+  name: "HomeHeader",
+  components: {},
+};
 </script>
 
-
 <style scop>
-.link-r{
-  font-weight: 500;
-  font-size: 1.1rem;
+.link-r {
+  font-weight: 600;
+  font-size: 1.3rem;
+  font-family: serif;
 }
-
-
+.logo {
+  width: 80px;
+}
+@media (max-width: 500px) {
+  .logo {
+    width: 70px;
+  }
+}
 </style>
-
-

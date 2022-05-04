@@ -1,6 +1,8 @@
 <template>
   <div class="home">
+    <!-- NavBar -->
     <HomeHeader />
+    <!-- First section -->
     <div class="first">
       <div class="left">
         <TypedText />
@@ -13,16 +15,23 @@
         <img src="../assets/svg/first.svg" alt="" />
       </div>
     </div>
+    <!-- Card Section -->
     <CardText />
+    <!-- Third Section -->
     <BrowseText />
+    <!-- Slide Section -->
     <!-- <div class="slide">
       <div class="carousel-title">
         <h3>Most popular services.</h3>
       </div>
       <SlideHome />
     </div> -->
+    <!-- NEIGHBORLY -->
     <MenHome/>
+    <!-- Mouqaf App -->
     <MouqafApp/>
+    <!-- Footer -->
+    <HomeFooter/>
   </div>
 </template>
 
@@ -33,6 +42,7 @@ import CardText from "../components/home/CardText.vue";
 import BrowseText from "../components/home/BrowseText.vue";
 import MenHome from "@/components/home/MenHome.vue";
 import MouqafApp from "../components/home/MouqafApp.vue";
+import HomeFooter from "@/components/home/HomeFooter.vue";
 // import SlideHome from "../components/home/SlideHome.vue";
 // @ is an alias to /src
 
@@ -44,7 +54,8 @@ export default {
     CardText,
     BrowseText,
     MenHome,
-    MouqafApp
+    MouqafApp,
+    HomeFooter
 },
 };
 </script>
@@ -88,5 +99,13 @@ export default {
 }
 .right img {
   width: 100%;
+}
+@media (max-width: 600px) {
+  .right{
+    display: none;
+  }
+  .left{
+    width: 100%;
+  }
 }
 </style>

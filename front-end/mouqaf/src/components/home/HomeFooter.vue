@@ -2,13 +2,13 @@
   <div class="footer">
     <div class="container">
       <div class="footer__logo">
-        <a href="">
+        <button class="scroll__up" @click="scrollToTop">
           <span>MOUQAF</span>
-        </a>
+        </button>
         <span class="footer__copyright">© 2022 MOUQAF</span>
       </div>
       <div class="footer__links">
-        <a href="/">Home</a>
+        <a href="">Home</a>
         <a href="/about">About</a>
         <a href="/service">Service</a>
         <a href="/signin">Sign In</a>
@@ -34,6 +34,20 @@
 <script>
 export default {
   name: "HomeFooter",
+  methods: {
+    scrollToTop() {
+      let currentScroll = document.documentElement.scrollTop,
+        int = setInterval(frame,);
+
+      function frame() {
+        if (0 > currentScroll) clearInterval(int);
+        else {
+          currentScroll = currentScroll - 150;
+          document.documentElement.scrollTop = currentScroll;
+        }
+      }
+    },
+  },
 };
 </script>
 
@@ -54,7 +68,11 @@ a {
   text-decoration: none;
   color: #22211f;
 }
-a > span {
+.scroll__up{
+  border: none;
+  background-color: #fff;
+}
+.scroll__up > span {
   font-size: 1.3rem;
   font-weight: 800;
   transition: all 0.2s ease;
@@ -92,22 +110,22 @@ a > span {
 .inst:hover {
   color: #8a3ab9;
 }
-@media (min-width: 1500px){
-  .footer{
+@media (min-width: 1500px) {
+  .footer {
     padding: 2rem 0;
   }
-  a > span{
+  .scroll__up > span {
     font-size: 2rem;
   }
   .footer__copyright {
-  font-size: 1.3rem;
-}
-.footer__links{
-  font-size: 2rem;
-}
-.social{
-  font-size: 2.2rem;
-}
+    font-size: 1.3rem;
+  }
+  .footer__links {
+    font-size: 2rem;
+  }
+  .social {
+    font-size: 2.2rem;
+  }
 }
 @media (max-width: 750px) {
   .footer,
@@ -121,7 +139,7 @@ a > span {
   .footer__logo {
     gap: 0.5rem;
   }
-  a > span {
+  .scroll__up > span {
     font-size: 2rem;
   }
   .footer__copyright {
@@ -134,11 +152,11 @@ a > span {
     font-size: 2rem;
   }
 }
-@media (max-width: 380px){
-.footer__links{
-  flex-direction: column;
-}
-/* .social{
+@media (max-width: 380px) {
+  .footer__links {
+    flex-direction: column;
+  }
+  /* .social{
   flex-direction: column;
 } */
 }

@@ -88,28 +88,77 @@ export default {
 .right__title{
     /* background-color: #000; */
     width: 100%;
-    height: 60%;
+    height: 50%;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
 
 .right__title h3{
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     font-weight: bold;
     color: #fff;
     font-family: 'serif';
 }
 .right__title span{
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     font-weight: 500;
     color: #DFDFDE;
     font-family: 'poppins';
 }
 .right__title p{
-    font-size: 0.8rem;
+    font-size: 0.7rem;
     font-weight: 500;
     color: #fff;
     font-family: 'poppins';
+}
+@media (min-width: 2000px){
+  .right__title h3{
+    font-size: 3.5rem;
+}
+.right__title span{
+    font-size: 2.3rem;
+}
+.right__title p{
+    font-size: 1.5rem;
+}
+}
+@media (min-width: 1400px) and (max-width: 2000px){
+  .right__title{
+    height: 40%;
+  }
+  .right__title h3{
+    font-size: 3rem;
+}
+.right__title span{
+    font-size: 2rem;
+}
+.right__title p{
+    font-size: 1rem;
+}
+}
+@media (max-width: 900px){
+  .first{
+    width: 100%;
+    height: 70%;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+}
+.left {
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  /* background-color: #fff; */
+}
+.left img {
+  width: 70%;
+}
+
+.right {
+  width: 90%;
+  height: 50%;
+}
+
 }
 </style>

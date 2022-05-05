@@ -4,18 +4,21 @@
     <HomeService/>
   </div>
   <OurService/>
+  <HomeFooter/>
 </template>
 
 <script>
 import HomeHeader from "../components/HomeHeader.vue";
 import HomeService from "../components/service/HomeService.vue"
 import OurService from "../components/service/OurService.vue"
+import HomeFooter from "../components/home/HomeFooter.vue"
 export default {
   name: "ServiceView",
   components: {
     HomeHeader,
     HomeService,
-    OurService
+    OurService,
+    HomeFooter
   },
 };
 </script>

@@ -33,16 +33,18 @@
       </div>
     </div>
   </div>
-  <div class="second">
-    <h1>second</h1>
-  </div>
+  <HomeFooter />
 </template>
 
 <script>
 import HomeHeader from "@/components/HomeHeader.vue";
+import HomeFooter from "../components/home/HomeFooter.vue";
 export default {
   name: "AboutView",
-  components: { HomeHeader },
+  components: {
+    HomeHeader,
+    HomeFooter,
+  },
 };
 </script>
 
@@ -59,20 +61,35 @@ export default {
   ); */
   background-color: #4700d8;
 }
-.first{
+.first {
   width: 90%;
   height: 70%;
   margin: 0 auto;
   display: flex;
   align-items: center;
 }
-.left{
-  width: 1500px;
-  background-color: red;
+.left {
+  width: 50%;
+  order: 1;
 }
-.left img{
+.left img {
   width: 100%;
 }
+.right {
+  width: 50%;
+}
+.right__title {
+  font-size: 2rem;
+  color: #fff;
+  font-family: "poppins";
+  font-weight: 600;
+}
+.right__par {
+  font-size: 1rem;
+  color: #f8f8f8;
+  /* font-weight: 600; */
+}
+
 .custom-shape-divider-bottom-1651707686 {
   position: absolute;
   bottom: 0;

@@ -51,14 +51,7 @@ export default {
 <style scoped>
 .about {
   height: 100vh;
-  /* background: rgb(30, 25, 126);
-  background: linear-gradient(
-    90deg,
-    rgba(30, 25, 126, 1) 0%,
-    rgba(58, 56, 167, 1) 31%,
-    rgba(53, 53, 210, 1) 57%,
-    rgba(0, 103, 243, 1) 100%
-  ); */
+  margin-bottom: 1rem;
   background-color: #4700d8;
 }
 .first {
@@ -67,6 +60,7 @@ export default {
   margin: 0 auto;
   display: flex;
   align-items: center;
+
 }
 .left {
   width: 50%;

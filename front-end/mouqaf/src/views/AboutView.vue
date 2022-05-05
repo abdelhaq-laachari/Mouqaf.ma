@@ -105,4 +105,54 @@ export default {
 .custom-shape-divider-bottom-1651707686 .shape-fill {
   fill: #ffffff;
 }
+@media (min-width: 1400px) and (max-width: 2500px){
+  .right__title {
+  font-size: 3rem;
+  font-weight: 600;
+}
+.right__par {
+  font-size: 1.4rem;
+}
+}
+
+@media (max-width: 800px){
+.first{
+  flex-direction: column;
+  justify-content: space-around;
+}
+.left{
+  width: 600px;
+}
+.right{
+  width: 100%;
+  order: 1;
+}
+}
+@media (max-width: 700px){
+.left{
+  width: 500px;
+}
+}
+@media (max-width: 600px){
+.left{
+  width: 400px;
+}
+}
+@media (max-width: 500px){
+.left{
+  width: 350px;
+}
+}
+@media (max-width: 400px){
+.left{
+  width: 300px;
+}
+  .right__title {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+.right__par {
+  font-size: 0.9rem;
+}
+}
 </style>

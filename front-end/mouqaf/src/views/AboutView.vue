@@ -14,6 +14,24 @@
         ></path>
       </svg>
     </div>
+    <div class="first">
+      <div class="left">
+        <img src="../assets/svg/hello.svg" alt="" />
+      </div>
+      <div class="right">
+        <div class="right__title">
+          <span>Who We Are</span>
+        </div>
+        <div class="right__par">
+          <p>
+            Mouqaf.ma is a platform that connects handymen with customers. Over
+            5912 firms and workers from across the country are connected through
+            us. Employers may recruit workers for jobs such as plumber,
+            electrician, and painter through our marketplace.
+          </p>
+        </div>
+      </div>
+    </div>
   </div>
   <div class="second">
     <h1>second</h1>
@@ -41,8 +59,19 @@ export default {
   ); */
   background-color: #4700d8;
 }
-.second {
-  height: 100vh;
+.first{
+  width: 90%;
+  height: 70%;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+}
+.left{
+  width: 1500px;
+  background-color: red;
+}
+.left img{
+  width: 100%;
 }
 .custom-shape-divider-bottom-1651707686 {
   position: absolute;

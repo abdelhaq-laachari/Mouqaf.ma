@@ -3,19 +3,19 @@
     <HomeHeader />
     <HomeService/>
   </div>
-  <div class="first">
-      <h1>home</h1>
-  </div>
+  <OurService/>
 </template>
 
 <script>
 import HomeHeader from "../components/HomeHeader.vue";
 import HomeService from "../components/service/HomeService.vue"
+import OurService from "../components/service/OurService.vue"
 export default {
   name: "ServiceView",
   components: {
     HomeHeader,
-    HomeService
+    HomeService,
+    OurService
   },
 };
 </script>
@@ -27,6 +27,6 @@ export default {
   background-color: #4700d8;
 }
 .first{
-    height: 100vh;
+    /* height: 100vh; */
 }
 </style>

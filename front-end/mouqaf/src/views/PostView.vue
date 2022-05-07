@@ -16,7 +16,7 @@ export default {
 
 <style scoped>
 .first{
-    background-color: red;
+    /* background-color: #4700d8; */
     height: 100vh;
 }
 </style>

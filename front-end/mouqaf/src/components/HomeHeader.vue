@@ -62,7 +62,7 @@ export default {
   font-family: serif;
 }
 .logo {
-  width: 80px;
+  width: 70px;
 }
 @media (min-width: 1500px) {
   .link-r {

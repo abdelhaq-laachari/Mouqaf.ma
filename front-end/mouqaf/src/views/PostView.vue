@@ -1,15 +1,15 @@
 <template>
     <div class="first">
-        <ClientHeader/>
+        <SideBar/>
     </div>
 </template>
 
 <script>
-import ClientHeader from "../components/client/ClientHeader.vue"
+import SideBar from "../components/sidebar/SideBar.vue"
 export default {
     name: "PostView",
     components:{
-        ClientHeader
+        SideBar
     }
 }
 </script>

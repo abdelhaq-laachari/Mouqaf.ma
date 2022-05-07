@@ -2,26 +2,35 @@
   <div class="sidebar" :style="{ width: sidebarWidth }">
     <div class="logo__title">
       <span v-if="collapsed">
-        <FIcons :icon="['fas', 'align-justify']" class="b-menu" @click="toggleSidebar" />
-        <!-- M -->
+        <FIcons
+          :icon="['fas', 'align-justify']"
+          class="b-menu"
+          @click="toggleSidebar"
+        />
       </span>
       <h3 v-else @click="toggleSidebar">MOUQAF</h3>
     </div>
+    <SidebarLink to="/" icon="['fas', 'home']" >
+      Home
+    </SidebarLink>
     <span class="collapse-icon" @click="toggleSidebar">
       <FIcons
         :icon="['fas', 'angle-double-left']"
         class="b-icon"
-        :class="{ 'rotate-180': !collapsed , 'rotate-0': collapsed }"
+        :class="{ 'rotate-180': !collapsed, 'rotate-0': collapsed }"
       />
     </span>
   </div>
 </template>
 
 <script>
+import SidebarLink from "./SidebarLink.vue";
 import { collapsed, toggleSidebar, sidebarWidth } from "./state";
 export default {
-  name: "ClientHeader",
-  components: {},
+  name: "SideBar",
+  components: {
+    SidebarLink,
+  },
   setup() {
     return {
       collapsed,
@@ -72,18 +81,19 @@ export default {
   transform: rotate(0deg);
   transition: 0.2s linear;
 }
-.logo__title{
-    display: flex;
-    align-items: center;
+.logo__title {
+  display: flex;
+  align-items: center;
 }
-.logo__title h3 , .logo__title span{
-  font-size: 2rem;
+.logo__title h3,
+.logo__title span {
+  font-size: 1.5rem;
   font-family: serif;
   padding-top: 1rem;
   margin: 0;
   cursor: pointer;
 }
-.b-menu{
-    font-weight: 200;
+.b-menu {
+  font-weight: 200;
 }
 </style>

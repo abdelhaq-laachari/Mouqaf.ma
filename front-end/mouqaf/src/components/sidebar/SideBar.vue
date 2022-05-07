@@ -10,8 +10,13 @@
       </span>
       <h3 v-else @click="toggleSidebar">MOUQAF</h3>
     </div>
-    <SidebarLink to="/" icon="['fas', 'home']" >
-      Home
+    <SidebarLink to="/" class="link__side">
+      <span><FIcons :icon="['fas', 'home']" class="b-icon" /></span>
+      <span class="link__name" v-if="!collapsed">Home</span>
+    </SidebarLink>
+    <SidebarLink to="/" class="link__side">
+      <span><FIcons :icon="['fas', 'user']" class="b-icon" /></span>
+      <span class="link__name" v-if="!collapsed">Profile</span>
     </SidebarLink>
     <span class="collapse-icon" @click="toggleSidebar">
       <FIcons
@@ -95,5 +100,14 @@ export default {
 }
 .b-menu {
   font-weight: 200;
+}
+
+.link__name{
+  font-size: 1.3rem;
+  margin-left: 1rem;
+}
+
+.b-icon{
+  font-size: 1.2rem;
 }
 </style>

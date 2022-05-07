@@ -1,8 +1,7 @@
 <template>
   <router-link :to="to" class="link" :class="{ active: isActive }">
     <div class="link__fade">
-      <FIcons :icon="icon" />
-      <span v-if="!collapsed">
+      <span>
         <slot />
       </span>
     </div>
@@ -17,7 +16,7 @@ export default {
   name: "SidebarLink",
   props: {
     to: { type: String, required: true },
-    icon: { type: String, required: true }
+    icon: { type: String, required: true },
   },
   setup(props) {
     const route = useRoute();
@@ -40,7 +39,6 @@ export default {
 
 .link {
   display: flex;
-  align-items: center;
 
   cursor: pointer;
   position: relative;
@@ -50,7 +48,8 @@ export default {
   margin: 0.1em 0;
   padding: 0.4em;
   border-radius: 0.25em;
-  height: 1.5em;
+  width: 100%;
+  height: 3em;
 
   color: white;
   text-decoration: none;
@@ -61,9 +60,5 @@ export default {
 .link:active {
   background-color: var(--sidebar-item-active);
 }
-.link .icon {
-  flex-shrink: 0;
-  width: 25px;
-  margin-right: 10px;
-}
+
 </style>

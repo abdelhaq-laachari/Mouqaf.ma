@@ -10,7 +10,17 @@
       </span>
       <h3 v-else @click="toggleSidebar">MOUQAF</h3>
     </div>
+
+    <!-- sidebar menu link -->
     <SidebarLink to="/dashboard" icon="home">Home</SidebarLink>
+    <SidebarLink to="/dashboard" icon="home">Posts</SidebarLink>
+    <SidebarLink to="/dashboard" icon="home">Profile</SidebarLink>
+    <SidebarLink to="/dashboard" icon="home">Sign Out</SidebarLink>
+
+
+
+
+    <!-- collapse button -->
     <span class="collapse-icon" @click="toggleSidebar">
       <FIcons
         :icon="['fas', 'angle-double-left']"
@@ -81,7 +91,8 @@ export default {
 }
 .logo__title {
   display: flex;
-  align-items: center;
+  /* align-items: center; */
+  height: 70px;
 }
 .logo__title h3,
 .logo__title span {

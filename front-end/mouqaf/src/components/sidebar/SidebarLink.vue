@@ -2,7 +2,7 @@
   <router-link :to="to" class="link" :class="{ active: isActive }">
     <FIcons :icon="icon" class="icon" />
     <transition name="link__fade">
-      <span v-if="!collapsed">
+      <span class="link__name" v-if="!collapsed">
         <slot />
       </span>
     </transition>
@@ -68,4 +68,6 @@ export default {
   width: 25px;
   margin-right: 10px;
 }
+
+
 </style>

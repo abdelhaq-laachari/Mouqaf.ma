@@ -12,10 +12,10 @@
     </div>
 
     <!-- sidebar menu link -->
-    <SidebarLink to="/dashboard" icon="home">Home</SidebarLink>
+    <SidebarLink to="/home" icon="home">Home</SidebarLink>
     <SidebarLink to="/post" icon="file-text">Posts</SidebarLink>
     <SidebarLink to="/profile" icon="user">Profile</SidebarLink>
-    <SidebarLink to="/dashboard" icon="sign-out">Sign Out</SidebarLink>
+    <SidebarLink to="/" icon="sign-out">Sign Out</SidebarLink>
 
 
 

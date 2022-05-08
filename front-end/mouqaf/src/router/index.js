@@ -3,8 +3,9 @@ import HomeView from '../views/HomeView.vue'
 import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import ServiceView from '../views/ServiceView.vue'
-import PostView from '../views/PostView.vue'
-import ProfileClient from '../views/ProfileClient.vue'
+import PostView from '../views/client/PostView.vue'
+import ProfileClient from '../views/client/ProfileClient.vue'
+import HomeClient from '../views/client/HomeClient.vue'
 
 const routes = [
   {
@@ -36,6 +37,11 @@ const routes = [
     path: '/profile',
     name: 'profile',
     component: ProfileClient
+  },
+  {
+    path: '/home',
+    name: 'home',
+    component: HomeClient
   },
   {
     path: '/about',

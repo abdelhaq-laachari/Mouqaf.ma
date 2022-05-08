@@ -1,19 +1,19 @@
 <template>
   <SideBar />
-  <div class="profile__main" :style="{ 'margin-left': sidebarWidth }">
-    <h1>Profile View</h1>
+  <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+    <h1>Home view</h1>
   </div>
 </template>
 
 <script>
-import SideBar from "../components/sidebar/SideBar.vue";
+import SideBar from "../../components/sidebar/SideBar.vue";
 import {
   collapsed,
   toggleSidebar,
   sidebarWidth,
-} from "../components/sidebar/state";
+} from "../../components/sidebar/state";
 export default {
-  name: "ProfileClient",
+  name: "PostView",
   components: {
     SideBar,
   },
@@ -24,9 +24,10 @@ export default {
 </script>
 
 <style scoped>
-.profile__main {
+.post__main {
   width: calc(100% - 180px);
   padding: 2rem;
   transition: 0.2s ease;
+  height: 100vh;
 }
 </style>

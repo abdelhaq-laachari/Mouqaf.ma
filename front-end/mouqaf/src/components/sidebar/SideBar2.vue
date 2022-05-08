@@ -1,3 +1,30 @@
+<template>
+  <div class="sidebar" :style="{ width: sidebarWidth }">
+    <h1>
+      <div v-if="collapsed">
+        <FIcons icon="home" class="icon" />
+      </div>
+      <h3 v-else @click="toggleSidebar">MOUQAF</h3>
+    </h1>
+
+    <SidebarLink2 to="/" icon="home">Home</SidebarLink2>
+
+    <SidebarLink2 to="/dashboard"  icon="home" >Dashboard</SidebarLink2>
+    <SidebarLink2 to="/analytics" icon="chart-bar">Analytics</SidebarLink2>
+    <SidebarLink2 to="/friends" icon="users">Friends</SidebarLink2>
+    <SidebarLink2 to="/image" icon="image">Images</SidebarLink2>
+
+    <span
+      class="collapse-icon"
+      :class="{ 'rotate-180': collapsed }"
+      @click="toggleSidebar"
+    >
+      <FIcons class="icon" icon="angle-double-left" />
+    </span>
+  </div>
+</template>
+
+
 <script>
 import SidebarLink2 from "./SidebarLink2";
 import { collapsed, toggleSidebar, sidebarWidth } from "./state";
@@ -11,42 +38,14 @@ export default {
 };
 </script>
 
-<template>
-  <div class="sidebar" :style="{ width: sidebarWidth }">
-    <h1>
-      <span v-if="collapsed">
-        <div>V</div>
-        <div>S</div>
-      </span>
-      <span v-else>Vue Sidebar</span>
-    </h1>
 
-    <SidebarLink2 to="/" icon="fas fa-home">Home</SidebarLink2>
-    <SidebarLink2 to="/" 
-      ><span><FIcons :icon="['fas', 'home']" class="b-icon" /></span>
-      <span class="link__name" v-if="!collapsed">Home</span></SidebarLink2
-    >
-
-    <!-- <SidebarLink2 to="/dashboard" icon="fas fa-columns">Dashboard</SidebarLink2>
-    <SidebarLink2 to="/analytics" icon="fas fa-chart-bar">Analytics</SidebarLink2>
-    <SidebarLink2 to="/friends" icon="fas fa-users">Friends</SidebarLink2>
-    <SidebarLink2 to="/image" icon="fas fa-image">Images</SidebarLink2> -->
-
-    <span
-      class="collapse-icon"
-      :class="{ 'rotate-180': collapsed }"
-      @click="toggleSidebar"
-    >
-      <i class="fas fa-angle-double-left" />
-    </span>
-  </div>
-</template>
+// css style 
 
 <style>
 :root {
-  --sidebar-bg-color: #2f855a;
-  --sidebar-item-hover: #38a169;
-  --sidebar-item-active: #276749;
+  --sidebar-bg-color: #4700d8;
+  --sidebar-item-hover: #9900f0;
+  --sidebar-item-active: #0c5df4;
 }
 </style>
 

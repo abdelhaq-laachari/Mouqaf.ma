@@ -1,10 +1,11 @@
 <template>
   <router-link :to="to" class="link" :class="{ active: isActive }">
-    <div class="link__fade">
-      <span>
+    <FIcons :icon="icon" class="icon" />
+    <transition name="link__fade">
+      <span v-if="!collapsed">
         <slot />
       </span>
-    </div>
+    </transition>
   </router-link>
 </template>
 
@@ -39,6 +40,7 @@ export default {
 
 .link {
   display: flex;
+  align-items: center;
 
   cursor: pointer;
   position: relative;
@@ -61,4 +63,9 @@ export default {
   background-color: var(--sidebar-item-active);
 }
 
+.link .icon {
+  flex-shrink: 0;
+  width: 25px;
+  margin-right: 10px;
+}
 </style>

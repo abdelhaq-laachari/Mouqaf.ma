@@ -13,9 +13,9 @@
 
     <!-- sidebar menu link -->
     <SidebarLink to="/dashboard" icon="home">Home</SidebarLink>
-    <SidebarLink to="/dashboard" icon="home">Posts</SidebarLink>
-    <SidebarLink to="/dashboard" icon="home">Profile</SidebarLink>
-    <SidebarLink to="/dashboard" icon="home">Sign Out</SidebarLink>
+    <SidebarLink to="/dashboard" icon="file-text">Posts</SidebarLink>
+    <SidebarLink to="/dashboard" icon="user">Profile</SidebarLink>
+    <SidebarLink to="/dashboard" icon="sign-out">Sign Out</SidebarLink>
 
 
 

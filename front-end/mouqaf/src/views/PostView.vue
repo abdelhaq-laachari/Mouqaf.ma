@@ -1,7 +1,7 @@
 <template>
   <SideBar />
-  <div class="first" :style="{ 'margin-left': sidebarWidth }">
-    <h1>post view</h1>
+  <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+    <h1>Post view</h1>
   </div>
 </template>
 
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.first {
+.post__main {
   width: calc(100% - 180px);
   padding: 2rem;
   transition: 0.2s ease;

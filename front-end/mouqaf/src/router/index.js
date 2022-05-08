@@ -28,8 +28,8 @@ const routes = [
     component: ServiceView
   },
   {
-    path: '/postview',
-    name: 'postview',
+    path: '/post',
+    name: 'post',
     component: PostView
   },
   {

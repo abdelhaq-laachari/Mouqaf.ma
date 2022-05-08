@@ -13,7 +13,7 @@
 
     <!-- sidebar menu link -->
     <SidebarLink to="/dashboard" icon="home">Home</SidebarLink>
-    <SidebarLink to="/postview" icon="file-text">Posts</SidebarLink>
+    <SidebarLink to="/post" icon="file-text">Posts</SidebarLink>
     <SidebarLink to="/profile" icon="user">Profile</SidebarLink>
     <SidebarLink to="/dashboard" icon="sign-out">Sign Out</SidebarLink>
 
@@ -51,7 +51,7 @@ export default {
 <style>
 :root {
   --sidebar-bg-color: #4700d8;
-  --sidebar-item-hover: #9900f0;
+  --sidebar-item-hover: #0c5df4;
   --sidebar-item-active: #0c5df4;
 }
 </style>

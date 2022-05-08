@@ -1,6 +1,6 @@
 <template>
   <SideBar />
-  <div class="test" :style="{ 'margin-left': sidebarWidth }">
+  <div class="profile__main" :style="{ 'margin-left': sidebarWidth }">
     <h1>Profile View</h1>
   </div>
 </template>
@@ -24,7 +24,7 @@ export default {
 </script>
 
 <style scoped>
-.test {
+.profile__main {
   width: calc(100% - 180px);
   padding: 2rem;
   transition: 0.2s ease;

@@ -4,6 +4,7 @@ import SignIn from '../views/SignIn.vue'
 import SignUp from '../views/SignUp.vue'
 import ServiceView from '../views/ServiceView.vue'
 import PostView from '../views/PostView.vue'
+import ProfileClient from '../views/ProfileClient.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/postview',
     name: 'postview',
     component: PostView
+  },
+  {
+    path: '/profile',
+    name: 'profile',
+    component: ProfileClient
   },
   {
     path: '/about',

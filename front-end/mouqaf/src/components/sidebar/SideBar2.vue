@@ -10,9 +10,9 @@
     <SidebarLink2 to="/" icon="home">Home</SidebarLink2>
 
     <SidebarLink2 to="/dashboard"  icon="home" >Dashboard</SidebarLink2>
-    <SidebarLink2 to="/analytics" icon="chart-bar">Analytics test</SidebarLink2>
+    <SidebarLink2 to="/postview" icon="chart-bar">Posts</SidebarLink2>
     <SidebarLink2 to="/friends" icon="users">Friends</SidebarLink2>
-    <SidebarLink2 to="/image" icon="image">Images</SidebarLink2>
+    <SidebarLink2 to="/profile" icon="image">Images</SidebarLink2>
 
     <span
       class="collapse-icon"

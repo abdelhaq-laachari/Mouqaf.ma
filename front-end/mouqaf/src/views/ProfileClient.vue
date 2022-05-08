@@ -1,7 +1,7 @@
 <template>
   <SideBar />
-  <div class="first" :style="{ 'margin-left': sidebarWidth }">
-    <h1>post view</h1>
+  <div class="test" :style="{ 'margin-left': sidebarWidth }">
+    <h1>Profile View</h1>
   </div>
 </template>
 
@@ -13,7 +13,7 @@ import {
   sidebarWidth,
 } from "../components/sidebar/state";
 export default {
-  name: "PostView",
+  name: "ProfileClient",
   components: {
     SideBar,
   },
@@ -24,10 +24,9 @@ export default {
 </script>
 
 <style scoped>
-.first {
+.test {
   width: calc(100% - 180px);
   padding: 2rem;
   transition: 0.2s ease;
-  height: 100vh;
 }
 </style>

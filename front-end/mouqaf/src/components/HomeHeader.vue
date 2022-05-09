@@ -53,7 +53,7 @@ export default {
   name: "HomeHeader",
   components: {},
 };
-</script>
+</script> 
 
 <style scop>
 .link-r {

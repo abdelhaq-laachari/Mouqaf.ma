@@ -59,7 +59,7 @@ export default {
 .link-r {
   font-weight: 600;
   font-size: 1.3rem;
-  font-family: serif;
+  font-family: serif; 
 }
 .logo {
   width: 70px;

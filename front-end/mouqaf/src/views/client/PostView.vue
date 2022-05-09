@@ -1,7 +1,7 @@
 <template>
   <SideBar />
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Post View"/>
+    <ClientHeader name="Post View" src="../../assets/avatar/a1.jpg" />
   </div>
 </template>
 

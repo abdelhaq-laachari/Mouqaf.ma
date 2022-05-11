@@ -27,22 +27,22 @@
       <SlideHome />
     </div> -->
     <!-- NEIGHBORLY -->
-    <MenHome/>
+    <MenHome />
     <!-- Mouqaf App -->
-    <MouqafApp/>
+    <MouqafApp />
     <!-- Footer -->
-    <HomeFooter/>
+    <HomeFooter />
   </div>
 </template>
 
 <script>
-import HomeHeader from "@/components/HomeHeader.vue";
+import HomeHeader from "../components/HomeHeader.vue";
 import TypedText from "../components/home/TypedText.vue";
 import CardText from "../components/home/CardText.vue";
 import BrowseText from "../components/home/BrowseText.vue";
-import MenHome from "@/components/home/MenHome.vue";
+import MenHome from "../components/home/MenHome.vue";
 import MouqafApp from "../components/home/MouqafApp.vue";
-import HomeFooter from "@/components/home/HomeFooter.vue";
+import HomeFooter from "../components/home/HomeFooter.vue";
 // import SlideHome from "../components/home/SlideHome.vue";
 // @ is an alias to /src
 
@@ -55,8 +55,8 @@ export default {
     BrowseText,
     MenHome,
     MouqafApp,
-    HomeFooter
-},
+    HomeFooter,
+  },
 };
 </script>
 
@@ -102,10 +102,10 @@ export default {
 }
 
 @media (max-width: 600px) {
-  .right{
+  .right {
     display: none;
   }
-  .left{
+  .left {
     width: 100%;
   }
 }

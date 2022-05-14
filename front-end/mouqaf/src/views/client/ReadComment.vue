@@ -37,11 +37,22 @@
                         </div>
                         <div class="comment__info">
                             <div class="comment">
-                                <FIcons :icon="['fas', 'phone']" class="b-icon face" />&nbsp;
-                                <span>0612345678</span>
+                                <FIcons :icon="['fas', 'phone']" class="b-icon" />&nbsp;
+                                <span class="text-muted">0612345678</span>
+                            </div>
+                            <div class="comment">
+                                <FIcons :icon="['fas', 'map-marker-alt']" class="b-icon" />&nbsp;
+                                <span class="text-muted">Safi</span>
+                            </div>
+                            <div class="comment">
+                                <FIcons :icon="['fas', 'clock']" class="b-icon " />&nbsp;
+                                <span class="text-muted">6 Week ago</span>
                             </div>
                         </div>
                     </div>
+                </div>
+                <div class="comment__btn">
+                    <button class="btn btn-danger">Report</button>
                 </div>
             </div>
         </div>

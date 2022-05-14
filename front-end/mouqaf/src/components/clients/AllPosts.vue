@@ -4,8 +4,8 @@
       <div class="post__header">
         <h3>Post Title</h3>
         <div class="time">
-          <span>6 weeks ago</span>
-          <span>
+          <span class="text-muted">6 weeks ago</span>
+          <span class="text-muted">
             <FIcons
               :icon="['fas', 'map-marker-alt']"
               class="b-icon face"
@@ -57,15 +57,20 @@ export default {
 }
 .post__header h3 {
   font-size: 1.6rem;
-  font-family: 'poppins';
+  font-family: "poppins";
   margin-bottom: 0 !important;
   font-weight: 600;
 }
-.time{
-    display: flex;
-    gap: 1rem;
+.time {
+  display: flex;
+  gap: 1rem;
 }
-.time span{
-    
+.time span {
+  font-size: 1rem;
+  font-family: serif;
+}
+.post__topic {
+  font-size: 1rem;
+  font-family: 'serif';
 }
 </style>

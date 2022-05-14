@@ -3,6 +3,7 @@
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
     <ClientHeader name="Home" />
     <SearchBar/>
+    <AllPosts/>
   </div>
 </template>
 
@@ -15,12 +16,14 @@ import {
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
 import SearchBar from "../../components/clients/SearchBar.vue";
+import AllPosts from "../../components/clients/AllPosts.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     ClientHeader,
-    SearchBar
+    SearchBar,
+    AllPosts
 },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };

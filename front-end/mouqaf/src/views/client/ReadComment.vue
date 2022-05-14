@@ -21,6 +21,31 @@
       </div>
       <button class="btn btn-danger post__btn">Delete</button>
     </div>
+    <div class="main__comment">
+        <div class="number__comment">
+            <h3>34 Comment on this jop</h3>
+        </div>
+        <div class="comment">
+            <div class="comment__header">
+                <div class="worker__info">
+                    <div class="worker__img">
+                        <img src="../../assets/avatar/a2.jpg" width="30px" alt="">
+                    </div>
+                    <div class="worker">
+                        <div class="name">
+                            <h3>Eric Parker</h3>
+                        </div>
+                        <div class="comment__info">
+                            <div class="comment">
+                                <FIcons :icon="['fas', 'phone']" class="b-icon face" />&nbsp;
+                                <span>0612345678</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
   </div>
 </template>
 

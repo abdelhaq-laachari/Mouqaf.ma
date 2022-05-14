@@ -5,7 +5,7 @@
         class="form-select form-select-m"
         aria-label=".form-select-sm example"
       >
-        <option selected disabled>Open this select menu</option>
+        <option selected disabled>Select Category</option>
         <option value="1">One</option>
         <option value="2">Two</option>
         <option value="3">Three</option>
@@ -15,7 +15,7 @@
           type="text"
           class="form-control"
           id="exampleInputPassword1"
-          placeholder="Password"
+          placeholder="All morocco"
         />
       </div>
       <button type="submit" class="btn btn-primary">

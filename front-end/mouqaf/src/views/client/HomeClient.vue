@@ -2,7 +2,7 @@
   <SideBar />
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
     <ClientHeader name="Home" />
-    <div class="search__form">
+    <div class="search__form shadow p-3 mb-5 bg-white rounded">
       <form action="" class="search__bar">
         <select
           class="form-select form-select-m"
@@ -68,7 +68,7 @@ export default {
   display: flex;
   gap: 2rem;
 }
-.form-select {
+.form-select , .form-control{
   width: auto;
 }
 </style>

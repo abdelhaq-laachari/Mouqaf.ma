@@ -21,7 +21,7 @@
           Velit, eum.
         </p>
       </div>
-      <button class="btn btn-primary">Read Comment</button>
+      <button @click="ReadComment()" class="btn btn-primary">Read Comment</button>
     </div>
   </div>
 </template>
@@ -29,6 +29,11 @@
 <script>
 export default {
   name: "AllPosts",
+  methods:{
+    ReadComment(){
+      this.$router.push("/comment");
+    },
+  }
 };
 </script>
 

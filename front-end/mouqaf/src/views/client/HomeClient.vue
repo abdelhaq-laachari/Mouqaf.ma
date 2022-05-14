@@ -1,7 +1,24 @@
 <template>
   <SideBar />
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Home"/>
+    <ClientHeader name="Home" />
+    <div class="search__bar">
+      <form action="" class="search__bar">
+        <select class="form-control">
+          <option>Default select</option>
+        </select>
+        <div class="form-group">
+          <label for="exampleInputPassword1">Password</label>
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPassword1"
+            placeholder="Password"
+          />
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+    </div>
   </div>
 </template>
 
@@ -17,8 +34,8 @@ export default {
   name: "PostView",
   components: {
     SideBar,
-    ClientHeader
-},
+    ClientHeader,
+  },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },

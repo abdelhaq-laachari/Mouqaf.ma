@@ -68,12 +68,28 @@ export default {
   transition: 0.2s ease;
   height: 100vh;
 }
-.create__form{
-    padding: 2rem !important;
+.title h4 {
+  font-size: 1.5rem;
+  font-family: 'poppins';
+  font-weight: 600;
+  text-align: center;
+  margin: 2rem 0;
+}
+.create__form {
+  padding: 2rem !important;
 }
 .create__form form {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+@media (max-width: 600px){
+.create__form {
+  padding: 1rem !important;
+}
+.title h4 {
+  font-size: 1.2rem;
+  margin: 2rem 0;
+}
 }
 </style>

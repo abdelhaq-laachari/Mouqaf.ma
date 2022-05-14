@@ -6,7 +6,7 @@
       <div class="title">
         <h3>My Posts</h3>
       </div>
-      <button class="btn btn-primary">Create Post</button>
+      <button @click="CreatePost()" class="btn btn-primary">Create Post</button>
     </div>
     <AllPosts />
   </div>
@@ -28,6 +28,11 @@ export default {
     ClientHeader,
     AllPosts,
   },
+  methods: {
+    CreatePost() {
+      this.$router.push("/CreatePost");
+    },
+  },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -40,14 +45,14 @@ export default {
   transition: 0.2s ease;
   height: 100vh;
 }
-.create__post{
+.create__post {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.8rem;
 }
-.title h3{
+.title h3 {
   font-size: 1.5rem;
   font-family: serif;
   font-weight: 600;

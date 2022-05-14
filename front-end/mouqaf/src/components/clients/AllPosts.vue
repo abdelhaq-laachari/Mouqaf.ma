@@ -45,12 +45,10 @@ export default {
   flex-direction: column;
 }
 .post button {
-  width: 20%;
+  width: 200px;
 }
 .post__header {
   display: flex;
-  /* height: 50px; */
-  /* background-color: red; */
   align-items: center;
   gap: 1rem;
   margin-bottom: 0.6rem;
@@ -72,5 +70,13 @@ export default {
 .post__topic {
   font-size: 1rem;
   font-family: 'serif';
+}
+@media (max-width: 700px){
+  .post__header h3 {
+  font-size: 1.2rem;
+}
+.time span , .post__topic p {
+  font-size: 0.8rem;
+}
 }
 </style>

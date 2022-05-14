@@ -84,6 +84,7 @@ export default {
   .user__info {
     gap: 2rem;
     justify-content: space-around;
+    width: auto ;
   }
   .header__title h3 {
     font-size: 1rem;

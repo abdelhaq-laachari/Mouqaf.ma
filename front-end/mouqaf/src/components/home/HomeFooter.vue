@@ -8,7 +8,7 @@
         <span class="footer__copyright">© 2022 MOUQAF</span>
       </div>
       <div class="footer__links">
-        <a href="">Home</a>
+        <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/service">Service</a>
         <a href="/signin">Sign In</a>

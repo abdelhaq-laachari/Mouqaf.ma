@@ -1,7 +1,7 @@
 <template>
   <SideBar />
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <h1>Home view</h1>
+    <ClientHeader name="Home"/>
   </div>
 </template>
 
@@ -12,11 +12,13 @@ import {
   toggleSidebar,
   sidebarWidth,
 } from "../../components/sidebar/state";
+import ClientHeader from "@/components/clients/ClientHeader.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
-  },
+    ClientHeader
+},
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -25,8 +27,7 @@ export default {
 
 <style scoped>
 .post__main {
-  width: calc(100% - 180px);
-  padding: 2rem;
+  padding: 1rem 1rem;
   transition: 0.2s ease;
   height: 100vh;
 }

@@ -1,7 +1,7 @@
 <template>
   <SideBar />
   <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Post View" />
+    <ClientHeader name="Posts"/>
   </div>
 </template>
 
@@ -27,8 +27,7 @@ export default {
 
 <style scoped>
 .post__main {
-  width: calc(100% - 180px);
-  padding: 2rem;
+  padding: 1rem 1rem;
   transition: 0.2s ease;
   height: 100vh;
 }

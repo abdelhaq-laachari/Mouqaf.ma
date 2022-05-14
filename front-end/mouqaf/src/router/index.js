@@ -6,6 +6,7 @@ import ServiceView from '../views/ServiceView.vue'
 import PostView from '../views/client/PostView.vue'
 import ProfileClient from '../views/client/ProfileClient.vue'
 import HomeClient from '../views/client/HomeClient.vue'
+import CreatePost from '../views/client/CreatePost.vue'
 
 const routes = [
   {
@@ -42,6 +43,11 @@ const routes = [
     path: '/home',
     name: 'homeClient',
     component: HomeClient
+  },
+  {
+    path: '/CreatePost',
+    name: 'CreatePost',
+    component: CreatePost
   },
   {
     path: '/about',

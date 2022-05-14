@@ -82,7 +82,6 @@ export default {
     display: none;
   }
   .user__info {
-    width: 100%;
     gap: 2rem;
     justify-content: space-around;
   }

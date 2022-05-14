@@ -37,7 +37,7 @@ export default {
 }
 .header__title h3{
   color: #000;
-  font-size: 2rem;
+  font-size: 1.7rem;
   font-family: 'serif';
   font-weight: 600;
 }
@@ -45,12 +45,13 @@ export default {
   width: 20%;
   display: flex;
   align-items: center;
+  gap: 1rem;
 }
 .user__image{
-  width: 100px;
+  width: 50px;
 }
 .user__image img{
-  width: 70%;
+  width: 100%;
   border-radius: 50%;
 }
 

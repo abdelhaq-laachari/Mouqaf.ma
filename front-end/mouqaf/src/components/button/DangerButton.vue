@@ -1,7 +1,7 @@
 <template>
 
 <router-link :to="to" class="button__hover" >
-    <button class="btn btn-primary button__hover ">{{ name }}</button>
+    <button class="btn btn-danger button__hover ">{{ name }}</button>
 </router-link>
   
 

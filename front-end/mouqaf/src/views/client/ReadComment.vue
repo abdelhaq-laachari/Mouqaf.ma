@@ -19,7 +19,7 @@
           nemo fugiat. Laboriosam.
         </p>
       </div>
-      <button class="btn btn-danger post__btn">Delete</button>
+      <DangerButton name="Delete" to="" />
     </div>
     <div class="main__comment">
       <div class="number__comment">
@@ -55,7 +55,7 @@
             </div>
           </div>
           <div class="comment__btn">
-            <button class="btn btn-danger">Report</button>
+            <DangerButton name="Report" to="" />
           </div>
         </div>
         <div class="comment__topic">
@@ -81,12 +81,14 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
+import DangerButton from "@/components/button/DangerButton.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     ClientHeader,
-  },
+    DangerButton
+},
   methods: {
     CreatePost() {
       this.$router.push("/CreatePost");

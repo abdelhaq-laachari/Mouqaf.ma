@@ -7,9 +7,7 @@
       <div class="left">
         <TypedText />
         <div class="bott">
-          <!-- <button @click="Explore()" class="btn btn-info">Explore</button>
-          <button @click="Explore()" class="btn btn-light">Join</button> -->
-          <ButtonComponent/>
+          <ButtonComponent name="Join Us" to="/SignIn" />
         </div>
       </div>
       <div class="right">
@@ -60,11 +58,6 @@ export default {
     HomeFooter,
     ButtonComponent
 },
-  methods: {
-    Explore() {
-      this.$router.push("/SignIn");
-    },
-  },
 };
 </script>
 
@@ -81,7 +74,7 @@ export default {
 }
 .first {
   width: 90%;
-  height: 85vh;
+  height: 90vh;
   margin: 0 auto;
   display: flex;
   align-items: center;

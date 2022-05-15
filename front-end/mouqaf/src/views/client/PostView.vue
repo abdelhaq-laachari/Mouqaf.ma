@@ -6,7 +6,7 @@
       <div class="title">
         <h3>My Posts</h3>
       </div>
-      <button @click="CreatePost()" class="btn btn-primary">Create Post</button>
+      <ButtonComponent name="Create Post" to="CreatePost" />
     </div>
     <AllPosts />
   </div>
@@ -21,13 +21,15 @@ import {
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
 import AllPosts from "@/components/clients/AllPosts.vue";
+import ButtonComponent from "@/components/button/ButtonComponent.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     ClientHeader,
     AllPosts,
-  },
+    ButtonComponent
+},
   methods: {
     CreatePost() {
       this.$router.push("/CreatePost");

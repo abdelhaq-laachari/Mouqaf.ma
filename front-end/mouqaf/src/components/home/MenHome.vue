@@ -14,14 +14,16 @@
           dedicated to meeting all of your home service requirements.
         </p>
       </div>
-      <button class="btn btn-info">Explore</button>
+      <ButtonComponent name="Explore" to="/SignIn" />
     </div>
   </div>
 </template>
 
 <script>
+import ButtonComponent from "../button/ButtonComponent.vue";
 export default {
-  name: "MenHome",
+    name: "MenHome",
+    components: { ButtonComponent }
 };
 </script>
 

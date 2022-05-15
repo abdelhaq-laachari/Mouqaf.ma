@@ -21,19 +21,16 @@
           Velit, eum.
         </p>
       </div>
-      <button @click="ReadComment()" class="btn btn-primary">Read Comment</button>
+      <ButtonComponent name="Read Comment" to="/comment" />
     </div>
   </div>
 </template>
 
 <script>
+import ButtonComponent from "../button/ButtonComponent.vue";
 export default {
-  name: "AllPosts",
-  methods:{
-    ReadComment(){
-      this.$router.push("/comment");
-    },
-  }
+    name: "AllPosts",
+    components: { ButtonComponent }
 };
 </script>
 
@@ -48,9 +45,6 @@ export default {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-}
-.post button {
-  width: 200px;
 }
 .post__header {
   display: flex;

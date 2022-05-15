@@ -29,7 +29,7 @@
         <div class="comment__header">
           <div class="worker__info">
             <div class="worker__img">
-              <img src="../../assets/avatar/a2.jpg" alt="" />
+              <img src="../../assets/avatar/a3.jpg" alt="" />
             </div>
             <div class="worker">
               <div class="name">

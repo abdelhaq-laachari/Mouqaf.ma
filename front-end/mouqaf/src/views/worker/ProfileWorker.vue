@@ -1,7 +1,7 @@
 <template>
   <SideBar />
-  <div class="profile__main" :style="{ 'margin-left': sidebarWidth }">
-  <ClientHeader name="Profile" />
+  <div class="profile__worker" :style="{ 'margin-left': sidebarWidth }">
+  <HeaderWorker name="Profile" />
     <div class="container rounded bg-white mt-5 mb-5">
       <div class="row">
         <div class="col-md-3 border-right">
@@ -11,7 +11,7 @@
             <img
               class="rounded-circle mt-5"
               width="150px"
-              src="../../assets/avatar/a1.jpg"
+              src="../../assets/avatar/a4.jpg"
             /><span class="font-weight-bold">Edogaru</span
             ><span class="text-black-50">edogaru@mail.com.my</span
             ><span> </span>
@@ -75,18 +75,18 @@
 </template>
 
 <script>
-import SideBar from "../../components/sidebar/SideBar.vue";
+import SideBar from "../../components/worker/SideBar.vue";
 import {
   collapsed,
   toggleSidebar,
   sidebarWidth,
 } from "../../components/sidebar/state";
-import ClientHeader from "@/components/clients/ClientHeader.vue";
+import HeaderWorker from "@/components/worker/HeaderWorker.vue";
 export default {
   name: "ProfileClient",
   components: {
     SideBar,
-    ClientHeader
+    HeaderWorker
 },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
@@ -95,7 +95,7 @@ export default {
 </script>
 
 <style scoped>
-.profile__main {
+.profile__worker {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }

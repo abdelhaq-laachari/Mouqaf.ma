@@ -8,6 +8,9 @@ import ProfileClient from '../views/client/ProfileClient.vue'
 import HomeClient from '../views/client/HomeClient.vue'
 import CreatePost from '../views/client/CreatePost.vue'
 import ReadComment from '../views/client/ReadComment.vue'
+import HomeWorker from '../views/worker/HomeWorker.vue'
+import ProfileWorker from '../views/worker/ProfileWorker.vue'
+import AppliedView from '../views/worker/AppliedView.vue'
 
 const routes = [
   {
@@ -62,7 +65,22 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/HomeWorker',
+    name: 'homeWork',
+    component: HomeWorker
+  },
+  {
+    path: '/ProfileWorker',
+    name: 'ProfileWorker',
+    component: ProfileWorker
+  },
+  {
+    path: '/applied',
+    name: 'applied',
+    component: AppliedView
+  },
 ]
 
 const router = createRouter({

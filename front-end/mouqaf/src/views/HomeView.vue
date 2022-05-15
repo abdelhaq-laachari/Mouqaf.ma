@@ -7,8 +7,9 @@
       <div class="left">
         <TypedText />
         <div class="bott">
-          <button class="btn btn-info">Explore</button>
-          <button class="btn btn-light">Join</button>
+          <!-- <button @click="Explore()" class="btn btn-info">Explore</button>
+          <button @click="Explore()" class="btn btn-light">Join</button> -->
+          <ButtonComponent/>
         </div>
       </div>
       <div class="right">
@@ -43,6 +44,7 @@ import BrowseText from "../components/home/BrowseText.vue";
 import MenHome from "../components/home/MenHome.vue";
 import MouqafApp from "../components/home/MouqafApp.vue";
 import HomeFooter from "../components/home/HomeFooter.vue";
+import ButtonComponent from "@/components/button/ButtonComponent.vue";
 // import SlideHome from "../components/home/SlideHome.vue";
 // @ is an alias to /src
 
@@ -56,6 +58,12 @@ export default {
     MenHome,
     MouqafApp,
     HomeFooter,
+    ButtonComponent
+},
+  methods: {
+    Explore() {
+      this.$router.push("/SignIn");
+    },
   },
 };
 </script>

@@ -65,6 +65,9 @@
             perspiciatis iste impedit dicta labore minus a nemo magnam commodi.
           </p>
         </div>
+        <div class="comment__btn2">
+            <button class="btn btn-danger">Report</button>
+          </div>
       </div>
     </div>
   </div>
@@ -171,5 +174,27 @@ export default {
 .comment__topic {
   font-size: 1rem;
   font-family: "serif";
+}
+.comment__btn2{
+    display: none;
+}
+@media (max-width: 700px){
+    .post__title{
+        gap: 0.4rem;
+    }
+    .comment__btn2{
+        display: block;
+    }
+    .comment__btn{
+        display: none;
+    }
+    .worker__info{
+        align-items: flex-start;
+    }
+    .comment__info{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.2rem;
+    }
 }
 </style>

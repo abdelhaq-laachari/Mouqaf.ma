@@ -36,22 +36,23 @@
       <div class="apply__form">
         <form action="">
           <div class="form-group">
-            <label for="">Phone Number</label>
+            <label class="mb-2">Phone Number</label>
             <input
               type="text"
-              class="form-control"
+              class="form-control mb-2"
               id="exampleInputPassword1"
               placeholder="All morocco"
             />
           </div>
           <div class="form-group">
-            <label for="">Describe your proposal</label>
+            <label class="mb-2">Describe your proposal</label>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="3"
             ></textarea>
           </div>
+          <button class="btn btn-primary mt-2">Apply</button>
         </form>
       </div>
     </div>
@@ -102,10 +103,44 @@ export default {
   font-size: 1rem;
   font-family: serif;
   padding: 1rem 0;
+  padding-left: 1rem;
 }
 .about__client {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.client__name {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding-left: 1rem;
+}
+.apply__form {
+  width: 80%;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+.apply__form button{
+    width: 150px;
+}
+@media (max-width: 750px){
+.apply__form{
+    padding: 0;
+    width: 100%;
+}
+.post__content{
+  padding-left: 0;
+  font-size: 0.8rem;
+}
+.post__header{
+    flex-direction: column;
+    align-items: flex-start;
+}
+.title h3 {
+  font-size: 1.5rem;
+  margin: 0;
+}
 }
 </style>

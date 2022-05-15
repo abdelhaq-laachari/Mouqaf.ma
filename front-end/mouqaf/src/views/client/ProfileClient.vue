@@ -128,19 +128,9 @@ body {
   box-shadow: none;
 }
 
-.back:hover {
-  color: #682773;
-  cursor: pointer;
-}
 
 .labels {
   font-size: 11px;
 }
 
-.add-experience:hover {
-  background: #ba68c8;
-  color: #fff;
-  cursor: pointer;
-  border: solid 1px #ba68c8;
-}
 </style>

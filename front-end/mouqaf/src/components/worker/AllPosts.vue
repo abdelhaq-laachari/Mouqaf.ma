@@ -21,19 +21,22 @@
           Velit, eum.
         </p>
       </div>
-      <button @click="Apply()" class="btn btn-primary">Apply</button>
+      <!-- <button @click="Apply()" class="btn btn-primary">Apply</button> -->
+      <ButtonComponent name="Apply" to="/apply" />
     </div>
   </div>
 </template>
 
 <script>
+import ButtonComponent from "../button/ButtonComponent.vue";
 export default {
-  name: "AllPosts",
-  methods:{
-    Apply(){
-      this.$router.push("/apply");
+    name: "AllPosts",
+    methods: {
+        Apply() {
+            this.$router.push("/apply");
+        },
     },
-  }
+    components: { ButtonComponent }
 };
 </script>
 

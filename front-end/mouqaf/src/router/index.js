@@ -11,6 +11,7 @@ import ReadComment from '../views/client/ReadComment.vue'
 import HomeWorker from '../views/worker/HomeWorker.vue'
 import ProfileWorker from '../views/worker/ProfileWorker.vue'
 import AppliedView from '../views/worker/AppliedView.vue'
+import ApplyJob from '../views/worker/ApplyJob.vue'
 
 const routes = [
   {
@@ -80,6 +81,11 @@ const routes = [
     path: '/applied',
     name: 'applied',
     component: AppliedView
+  },
+  {
+    path: '/apply',
+    name: 'apply',
+    component: ApplyJob
   },
 ]
 

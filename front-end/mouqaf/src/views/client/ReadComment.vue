@@ -7,7 +7,7 @@
         <h3>Post Title</h3>
         <span class="text-muted">6 weeks ago</span>
         <span class="text-muted">
-          <FIcons :icon="['fas', 'map-marker-alt']" class="b-icon face" />&nbsp;
+          <FIcons :icon="['fas', 'map-marker-alt']" />&nbsp;
           Safi
         </span>
       </div>
@@ -22,40 +22,50 @@
       <button class="btn btn-danger post__btn">Delete</button>
     </div>
     <div class="main__comment">
-        <div class="number__comment">
-            <h3>34 Comment on this jop</h3>
-        </div>
-        <div class="comment">
-            <div class="comment__header">
-                <div class="worker__info">
-                    <div class="worker__img">
-                        <img src="../../assets/avatar/a2.jpg" width="30px" alt="">
-                    </div>
-                    <div class="worker">
-                        <div class="name">
-                            <h3>Eric Parker</h3>
-                        </div>
-                        <div class="comment__info">
-                            <div class="comment">
-                                <FIcons :icon="['fas', 'phone']" class="b-icon" />&nbsp;
-                                <span class="text-muted">0612345678</span>
-                            </div>
-                            <div class="comment">
-                                <FIcons :icon="['fas', 'map-marker-alt']" class="b-icon" />&nbsp;
-                                <span class="text-muted">Safi</span>
-                            </div>
-                            <div class="comment">
-                                <FIcons :icon="['fas', 'clock']" class="b-icon " />&nbsp;
-                                <span class="text-muted">6 Week ago</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="comment__btn">
-                    <button class="btn btn-danger">Report</button>
-                </div>
+      <div class="number__comment">
+        <h3>34 Comment on this jop</h3>
+      </div>
+      <div class="comment__card shadow p-3 mb-5 bg-white rounded">
+        <div class="comment__header">
+          <div class="worker__info">
+            <div class="worker__img">
+              <img src="../../assets/avatar/a2.jpg" alt="" />
             </div>
+            <div class="worker">
+              <div class="name">
+                <h3>Eric Parker</h3>
+              </div>
+              <div class="comment__info">
+                <div class="comment">
+                  <FIcons :icon="['fas', 'phone']" class="b-icon" />&nbsp;
+                  <span class="text-muted">0612345678</span>
+                </div>
+                <div class="comment">
+                  <FIcons
+                    :icon="['fas', 'map-marker-alt']"
+                    class="b-icon"
+                  />&nbsp;
+                  <span class="text-muted">Safi</span>
+                </div>
+                <div class="comment">
+                  <FIcons :icon="['fas', 'clock']" class="b-icon" />&nbsp;
+                  <span class="text-muted">6 Week ago</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="comment__btn">
+            <button class="btn btn-danger">Report</button>
+          </div>
         </div>
+        <div class="comment__topic">
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
+            nam asperiores sit hic, placeat, qui quibusdam est aut aperiam vitae
+            perspiciatis iste impedit dicta labore minus a nemo magnam commodi.
+          </p>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -116,7 +126,50 @@ export default {
   font-size: 1rem;
   font-family: "serif";
 }
-.post__btn{
-    width: 150px;
+.post__btn {
+  width: 150px;
+}
+.comment__card {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+.comment__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.worker__info {
+  display: flex;
+  gap: 2rem;
+  align-items: center;
+}
+.worker__img {
+  width: 80px;
+}
+.worker__img img {
+  width: 100%;
+  border-radius: 50%;
+}
+.comment__info{
+    display: flex;
+    gap: 2rem;
+}
+.worker .name h3{
+    font-size: 1.2rem;
+    font-family: serif;
+    font-weight: 600;
+}
+.comment__info .comment span{
+    font-size: 0.7rem;
+    font-family: 'poppins';
+}
+.b-icon{
+    font-size: 0.8rem;
+}
+.comment__topic {
+  font-size: 1rem;
+  font-family: "serif";
 }
 </style>

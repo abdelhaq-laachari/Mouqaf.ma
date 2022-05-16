@@ -57,29 +57,40 @@ class Client
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $role = '';
-        echo 'test';
-        echo $role;
+        $role = $_POST['role'];
 
         $new = new ClientMethods();
         // check if email exists
 
-        $check = $new->SignIn($email, $role);
+        $check = $new->SignIn($email,$role);
 
-        if ($check) {
+        if ($check && $role == 'client') {
             // check password
             $verify = password_verify($password, $check['password']);
 
             if ($verify) 
             {
                 http_response_code(200);
-                echo json_encode(array("message" => "you're logged in"));
-                echo $role;
+                echo json_encode(array("message" => "you're logged in client"));
             } else {
                 http_response_code(400);
                 echo json_encode(array("message" => "Password or email is wrong"));
             }
-        }else {
+        }else
+        if ($check && $role == 'worker') {
+            // check password
+            $verify = password_verify($password, $check['password']);
+
+            if ($verify) 
+            {
+                http_response_code(200);
+                echo json_encode(array("message" => "you're logged in worker"));
+            } else {
+                http_response_code(400);
+                echo json_encode(array("message" => "Password or email is wrong"));
+            }
+        }
+        else {
             http_response_code(400);
             echo json_encode(array("message" => "Password or email is wrong"));
         }

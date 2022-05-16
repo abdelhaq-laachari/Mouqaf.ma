@@ -17,7 +17,7 @@ class ClientMethods extends Connection
     {
 
         if ($this->check($email) == null) {
-            $query = "INSERT INTO client (first_name, last_name, email, password , role) VALUES ( '$Fname', '$Lname',  '$email', '$hashed_password' , 'client')";
+            $query = "INSERT INTO client (first_name, last_name, email, password , role ) VALUES ( '$Fname', '$Lname',  '$email', '$hashed_password' , 'client')";
             $log = $this->connect()->prepare($query);
             $log->execute();
             if ($log) {
@@ -30,11 +30,9 @@ class ClientMethods extends Connection
 
     // sign in client function
 
-    // public function SignIn($email, $role)
-    public function SignIn()
+    public function SignIn($email,$role)
     {
-        // $query = "SELECT * FROM `client` WHERE  email='$email' AND role = '$role'";
-        $query = "SELECT * FROM `client`";
+        $query = "SELECT * FROM `client` WHERE  email='$email' AND role='$role'";
         $log = $this->connect()->prepare($query);
         $log->execute();
         $res = $log->fetch(PDO::FETCH_ASSOC);

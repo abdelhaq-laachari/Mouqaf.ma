@@ -41,6 +41,7 @@
                 >Sign In</router-link
               >
             </li> -->
+            <DropDown />
           </ul>
         </div>
       </div>
@@ -49,9 +50,10 @@
 </template>
 
 <script>
+import DropDown from "./dropdown/DropDown.vue";
 export default {
   name: "HomeHeader",
-  components: {  },
+  components: { DropDown },
 };
 </script>
 

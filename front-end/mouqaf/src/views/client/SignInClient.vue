@@ -3,7 +3,7 @@
     <HomeHeader/>
     <div class="home__frame">
       <div class="left">
-        <img src="../assets/img/signin.png" alt="" />
+        <img src="../../assets/img/signin.png" alt="">
       </div>
       <div class="right">
         <div class="right__title">

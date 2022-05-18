@@ -7,7 +7,7 @@
     </div>
     <div class="home__frame">
       <div class="left">
-        <img src="../assets/img/signup.png" alt="" />
+        <img src="../assets/auth/signup.png" alt="" />
       </div>
       <div class="right">
         <div class="right__title">

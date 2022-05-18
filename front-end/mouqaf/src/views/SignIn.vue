@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <div class="logo">
-      <a href="/">
-        <img src="../assets/logo/mouqaf.png" alt="" />
-      </a>
-    </div>
+    <HomeHeader/>
     <div class="home__frame">
       <div class="left">
         <img src="../assets/img/signin.png" alt="" />
@@ -75,31 +71,33 @@
 </template>
 
 <script>
+import HomeHeader from '@/components/HomeHeader.vue';
 export default {
-  name: "SignIn",
-  data() {
-    return {
-      showPassword: false,
-      password: null,
-    };
-  },
-  computed: {
-    buttonLabel() {
-      return this.showPassword ? "Hide" : "Show";
+    name: "SignIn",
+    data() {
+        return {
+            showPassword: false,
+            password: null,
+        };
     },
-  },
-  methods: {
-    toggleShow() {
-      this.showPassword = !this.showPassword;
+    computed: {
+        buttonLabel() {
+            return this.showPassword ? "Hide" : "Show";
+        },
     },
-  },
+    methods: {
+        toggleShow() {
+            this.showPassword = !this.showPassword;
+        },
+    },
+    components: { HomeHeader }
 };
 </script>
 
 <style scoped>
 .home {
   width: 100%;
-  height: 100vh;
+  height: 101vh;
   display: flex;
   flex-direction: column;
   background: rgb(30, 25, 126);

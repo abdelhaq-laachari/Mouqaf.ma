@@ -41,25 +41,6 @@
                 >Sign In</router-link
               >
             </li> -->
-            <li class="nav-item ">
-              <div
-                class="nav-link text-light link-r dropdown-toggle"
-                href="#"
-                id="navbarDropdown"
-                role="button"
-                data-toggle="dropdown"
-                aria-haspopup="true"
-                aria-expanded="false"
-              >
-                Dropdown
-              </div>
-              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-              </div>
-            </li>
           </ul>
         </div>
       </div>
@@ -70,7 +51,7 @@
 <script>
 export default {
   name: "HomeHeader",
-  components: {},
+  components: {  },
 };
 </script>
 

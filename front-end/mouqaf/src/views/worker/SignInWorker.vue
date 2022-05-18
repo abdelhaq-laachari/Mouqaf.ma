@@ -128,6 +128,7 @@ export default {
 }
 .left {
   width: 50%;
+  order: 1;
 }
 .left img {
   width: 100%;

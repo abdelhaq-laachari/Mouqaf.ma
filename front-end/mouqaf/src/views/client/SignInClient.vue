@@ -73,7 +73,7 @@
 <script>
 import HomeHeader from '@/components/HomeHeader.vue';
 export default {
-    name: "SignIn",
+    name: "SignInClient",
     data() {
         return {
             showPassword: false,

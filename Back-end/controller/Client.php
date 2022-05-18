@@ -18,13 +18,14 @@ class Client
         $Lname = $_POST['last_name'];
         $email = $_POST['email'];
         $password = $_POST['password'];
+        $role = $_POST['role'];
 
         // The hash of the password that
         // can be stored in the database
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
         $logC = new ClientMethods();
-        $var = $logC->SignUp($Fname, $Lname, $email, $hashed_password);
+        $var = $logC->SignUp($Fname, $Lname, $email, $hashed_password, $role);
 
         if ($var) {
             http_response_code(200);
@@ -35,62 +36,31 @@ class Client
         }
     }
 
-    // sign in client function
-    // public function SignIn()
-    // {
-    //     $email = $_POST['email'];
-    //     $password = $_POST['password'];
 
-    //     $logC = new ClientMethods();
-    //     $var = $logC->SignIn($email, $password);
-
-    //     if ($var) {
-    //         http_response_code(200);
-    //         echo json_encode(array("message" => "signIn"));
-    //     } else {
-    //         http_response_code(400);
-    //         echo json_encode(array("message" => "error"));
-    //     }
-    // }
+    // sign in function for client
 
     public function SignIn()
     {
         $email = $_POST['email'];
         $password = $_POST['password'];
-        $role = $_POST['role'];
 
         $new = new ClientMethods();
         // check if email exists
 
-        $check = $new->SignIn($email,$role);
+        $check = $new->SignIn($email);
 
-        if ($check && $role == 'client') {
+        if ($check) {
             // check password
             $verify = password_verify($password, $check['password']);
 
-            if ($verify) 
-            {
+            if ($verify) {
                 http_response_code(200);
-                echo json_encode(array("message" => "you're logged in client"));
+                echo json_encode(array("message" => "you're logged as client"));
             } else {
                 http_response_code(400);
                 echo json_encode(array("message" => "Password or email is wrong"));
             }
-        }else
-        if ($check && $role == 'worker') {
-            // check password
-            $verify = password_verify($password, $check['password']);
-
-            if ($verify) 
-            {
-                http_response_code(200);
-                echo json_encode(array("message" => "you're logged in worker"));
-            } else {
-                http_response_code(400);
-                echo json_encode(array("message" => "Password or email is wrong"));
-            }
-        }
-        else {
+        } else {
             http_response_code(400);
             echo json_encode(array("message" => "Password or email is wrong"));
         }

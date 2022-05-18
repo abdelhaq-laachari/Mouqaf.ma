@@ -1,10 +1,6 @@
 <template>
   <div class="home">
-    <div class="logo">
-      <a href="/">
-        <img src="../assets/logo/mouqaf.png" alt="" />
-      </a>
-    </div>
+  <HomeHeader/>
     <div class="home__frame">
       <div class="left">
         <img src="../assets/auth/signup.png" alt="" />
@@ -16,7 +12,7 @@
         <div class="right__form">
           <form action="">
             <div class="form-group">
-              <label for="exampleInputEmail1">First Name</label>
+              <label class="form-label" for="exampleInputEmail1">First Name</label>
               <input
                 type="email"
                 class="form-control"
@@ -26,7 +22,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Last Name</label>
+              <label class="form-label" for="exampleInputEmail1">Last Name</label>
               <input
                 type="email"
                 class="form-control"
@@ -36,7 +32,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
+              <label class="form-label" for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
                 class="form-control"
@@ -46,7 +42,7 @@
               />
             </div>
             <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
+              <label class="form-label" for="exampleInputPassword1">Password</label>
               <div class="field has-addons">
                 <div class="control is-expanded">
                   <input
@@ -82,6 +78,13 @@
                 </div>
               </div>
             </div>
+            <div class="form-group">
+              <label class="form-label" for="">Choose your account type.</label>
+              <select class="form-select" aria-label="Default select example">
+                <option value="client">Client</option>
+                <option value="worker">Worker</option>
+              </select>
+            </div>
             <button type="submit" class="btn btn-primary">Sign Up</button>
           </form>
           <span class="footer__link"
@@ -95,8 +98,12 @@
 </template>
 
 <script>
+import HomeHeader from '../components/HomeHeader.vue'
 export default {
   name: "SignIn",
+  components: {
+    HomeHeader
+  },
   data() {
     return {
       showPassword: false,
@@ -119,7 +126,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 100vh;
+  height: 115vh;
   display: flex;
   flex-direction: column;
   background: rgb(30, 25, 126);
@@ -130,6 +137,10 @@ export default {
     rgba(53, 53, 210, 1) 57%,
     rgba(0, 103, 243, 1) 100%
   );
+}
+.form-label{
+  margin-bottom: 5px;
+  margin-left: 5px;
 }
 .logo {
   width: 95px;

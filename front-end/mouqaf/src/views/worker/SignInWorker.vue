@@ -1,9 +1,9 @@
 <template>
   <div class="home">
-    <HomeHeader/>
+    <HomeHeader />
     <div class="home__frame">
       <div class="left">
-        <img src="../../assets/auth/signin.png" alt="">
+        <img src="../../assets/auth/worker.svg" alt="" />
       </div>
       <div class="right">
         <div class="right__title">
@@ -60,10 +60,10 @@
             </div>
             <button type="submit" class="btn btn-primary">Sign In</button>
           </form>
-          <span class="footer__link"
+          <!-- <span class="footer__link"
             >Don't have an account
             <a href="signup">Sign Up</a>
-          </span>
+          </span> -->
         </div>
       </div>
     </div>
@@ -71,26 +71,26 @@
 </template>
 
 <script>
-import HomeHeader from '@/components/HomeHeader.vue';
+import HomeHeader from "@/components/HomeHeader.vue";
 export default {
-    name: "SignInWorker",
-    data() {
-        return {
-            showPassword: false,
-            password: null,
-        };
+  name: "SignInWorker",
+  data() {
+    return {
+      showPassword: false,
+      password: null,
+    };
+  },
+  computed: {
+    buttonLabel() {
+      return this.showPassword ? "Hide" : "Show";
     },
-    computed: {
-        buttonLabel() {
-            return this.showPassword ? "Hide" : "Show";
-        },
+  },
+  methods: {
+    toggleShow() {
+      this.showPassword = !this.showPassword;
     },
-    methods: {
-        toggleShow() {
-            this.showPassword = !this.showPassword;
-        },
-    },
-    components: { HomeHeader }
+  },
+  components: { HomeHeader },
 };
 </script>
 
@@ -121,13 +121,14 @@ export default {
   height: 80%;
   margin: 0 auto;
   display: flex;
+  justify-content: space-around;
   align-items: center;
   background-color: #fff;
   border-radius: 1rem;
   gap: 1rem;
 }
 .left {
-  width: 50%;
+  width: 300px;
   order: 1;
 }
 .left img {
@@ -187,6 +188,11 @@ export default {
 }
 .footer__link {
   font-size: 1rem;
+}
+@media (max-width: 930px) {
+  .left {
+    width: 250px;
+  }
 }
 @media (max-width: 800px) {
   .logo {

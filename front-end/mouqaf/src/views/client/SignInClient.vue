@@ -1,20 +1,21 @@
 <template>
   <div class="home">
-    <HomeHeader/>
+    <HomeHeader />
     <div class="home__frame">
       <div class="left">
-        <img src="../../assets/auth/signin.png" alt="">
+        <img src="../../assets/auth/client.svg" alt="" />
       </div>
       <div class="right">
         <div class="right__title">
           <h3>WELCOME BACK</h3>
         </div>
         <div class="right__form">
-          <form action="">
+          <form v-on:submit.prevent="SignIn()">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
+                name="email"
                 class="form-control"
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
@@ -28,6 +29,7 @@
                   <input
                     v-if="showPassword"
                     type="text"
+                    name="password"
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
@@ -35,6 +37,7 @@
                   <input
                     v-else
                     type="password"
+                    name="password"
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
@@ -58,7 +61,7 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" name="submit" class="btn btn-primary">Sign In</button>
           </form>
           <span class="footer__link"
             >Don't have an account
@@ -71,26 +74,42 @@
 </template>
 
 <script>
-import HomeHeader from '@/components/HomeHeader.vue';
+import HomeHeader from "@/components/HomeHeader.vue";
+import axios from 'axios'
 export default {
-    name: "SignInClient",
-    data() {
-        return {
-            showPassword: false,
-            password: null,
-        };
+  name: "SignInClient",
+  data() {
+    return {
+      showPassword: false,
+      password: null,
+      email: '',
+      password_hash: '',
+    };
+  },
+  computed: {
+    buttonLabel() {
+      return this.showPassword ? "Hide" : "Show";
     },
-    computed: {
-        buttonLabel() {
-            return this.showPassword ? "Hide" : "Show";
-        },
+  },
+  methods: {
+    SignIn(){
+      console.log("test");
+      const formData = new FormData()
+      formData.append('email',this.email)
+      formData.append('password',this.password_hash)
+      axios.post("http://localhost/youcode/mouqaf/client/signin",formData)
+      .then(Response=>{
+          console.log(Response.status);
+          console.log(Response.data);
+          console.log("test");
+          this.$router.push({ name: 'home' });
+      })
     },
-    methods: {
-        toggleShow() {
-            this.showPassword = !this.showPassword;
-        },
+    toggleShow() {
+      this.showPassword = !this.showPassword;
     },
-    components: { HomeHeader }
+  },
+  components: { HomeHeader },
 };
 </script>
 
@@ -122,12 +141,13 @@ export default {
   margin: 0 auto;
   display: flex;
   align-items: center;
+  justify-content: space-around;
   background-color: #fff;
   border-radius: 1rem;
   gap: 1rem;
 }
 .left {
-  width: 50%;
+  width: 300px;
 }
 .left img {
   width: 100%;
@@ -186,6 +206,11 @@ export default {
 }
 .footer__link {
   font-size: 1rem;
+}
+@media (max-width: 930px) {
+  .left {
+    width: 250px;
+  }
 }
 @media (max-width: 800px) {
   .logo {

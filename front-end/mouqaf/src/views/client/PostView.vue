@@ -1,14 +1,16 @@
 <template>
-  <SideBar />
-  <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Posts" />
-    <div class="create__post shadow p-3 mb-5 bg-white rounded">
-      <div class="title">
-        <h3>My Posts</h3>
+  <div v-if="typeof this.id !== 'undefined' " >
+    <SideBar />
+    <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+      <ClientHeader name="Posts" />
+      <div class="create__post shadow p-3 mb-5 bg-white rounded">
+        <div class="title">
+          <h3>My Posts</h3>
+        </div>
+        <ButtonComponent name="Create Post" to="CreatePost" />
       </div>
-      <ButtonComponent name="Create Post" to="CreatePost" />
+      <AllPosts />
     </div>
-    <AllPosts />
   </div>
 </template>
 
@@ -28,8 +30,13 @@ export default {
     SideBar,
     ClientHeader,
     AllPosts,
-    ButtonComponent
-},
+    ButtonComponent,
+  },
+  data() {
+    return {
+      id: localStorage["id"],
+    };
+  },
   methods: {
     CreatePost() {
       this.$router.push("/CreatePost");

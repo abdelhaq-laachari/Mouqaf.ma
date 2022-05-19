@@ -1,5 +1,5 @@
 <template>
-  <div v-if="typeof this.id !== 'undefined'">
+  <div v-if="typeof this.id !== 'undefined' " >
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader name="Home" />
@@ -24,16 +24,16 @@ import SearchBar from "../../components/clients/SearchBar.vue";
 import AllPosts from "../../components/clients/AllPosts.vue";
 export default {
   name: "PostView",
-  data() {
-    return {
-      id: localStorage["id"],
-    };
-  },
   components: {
     SideBar,
     ClientHeader,
     SearchBar,
     AllPosts,
+  },
+  data() {
+    return {
+      id: localStorage["id"],
+    };
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };

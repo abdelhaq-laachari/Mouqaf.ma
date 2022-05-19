@@ -1,44 +1,49 @@
 <template>
-  <SideBar />
-  <div class="create__post" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Create Poste" />
-    <div class="title">
-      <h4>Tell us what you need done</h4>
+  <div v-if="typeof this.id !== 'undefined'">
+    <SideBar />
+    <div class="create__post" :style="{ 'margin-left': sidebarWidth }">
+      <ClientHeader name="Create Poste" />
+      <div class="title">
+        <h4>Tell us what you need done</h4>
+      </div>
+      <div class="create__form shadow p-3 mb-5 bg-white rounded">
+        <form action="">
+          <div class="select__cat">
+            <label for="">Choose a category</label>
+            <select
+              class="form-select form-select-m"
+              aria-label=".form-select-sm example"
+            >
+              <option selected disabled>Select Category</option>
+              <option value="1">Electrician</option>
+              <option value="2">Plumbing</option>
+              <option value="3">Gardener</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="">Choose a city</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="Safi, Casablanca . . ."
+            />
+          </div>
+          <div class="form-group">
+            <label for="">Tell us more about your project</label>
+            <textarea
+              class="form-control"
+              id="exampleFormControlTextarea1"
+              rows="3"
+            ></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Post</button>
+        </form>
+      </div>
     </div>
-    <div class="create__form shadow p-3 mb-5 bg-white rounded">
-      <form action="">
-        <div class="select__cat">
-          <label for="">Choose a category</label>
-          <select
-            class="form-select form-select-m"
-            aria-label=".form-select-sm example"
-          >
-            <option selected disabled>Select Category</option>
-            <option value="1">Electrician</option>
-            <option value="2">Plumbing</option>
-            <option value="3">Gardener</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="">Choose a city</label>
-          <input
-            type="text"
-            class="form-control"
-            id="exampleInputPassword1"
-            placeholder="Safi, Casablanca . . ."
-          />
-        </div>
-        <div class="form-group">
-          <label for="">Tell us more about your project</label>
-          <textarea
-            class="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-          ></textarea>
-        </div>
-        <button type="submit" class="btn btn-primary">Post</button>
-      </form>
-    </div>
+  </div>
+  <div v-else>
+    {{ this.$router.push({ name: "SignInClient" }) }}
   </div>
 </template>
 
@@ -56,6 +61,11 @@ export default {
     SideBar,
     ClientHeader,
   },
+  data() {
+    return {
+      id: localStorage["id"],
+    };
+  },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -70,7 +80,7 @@ export default {
 }
 .title h4 {
   font-size: 1.5rem;
-  font-family: 'poppins';
+  font-family: "poppins";
   font-weight: 600;
   text-align: center;
   margin: 2rem 0;
@@ -83,13 +93,13 @@ export default {
   flex-direction: column;
   gap: 2rem;
 }
-@media (max-width: 600px){
-.create__form {
-  padding: 1rem !important;
-}
-.title h4 {
-  font-size: 1.2rem;
-  margin: 2rem 0;
-}
+@media (max-width: 600px) {
+  .create__form {
+    padding: 1rem !important;
+  }
+  .title h4 {
+    font-size: 1.2rem;
+    margin: 2rem 0;
+  }
 }
 </style>

@@ -13,7 +13,9 @@
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
+              v-model="tester"
             >
+            <option value="" disabled>Select category</option>
               <option v-for="category in cates" :key="category.id" :value="category.name" >
                 {{ category.name }}
               </option>
@@ -64,6 +66,7 @@ export default {
   data() {
     return {
       id: localStorage["id"],
+      tester: "",
       cate: [
         { id: '', name: '' },
       ],

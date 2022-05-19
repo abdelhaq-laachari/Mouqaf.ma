@@ -1,5 +1,5 @@
 <template>
-  <div v-if = " typeof this.id !== 'undefined' " >
+  <div v-if = " typeof this.idWorker !== 'undefined' " >
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <HeaderWorker name="Home" />
@@ -26,7 +26,7 @@ export default {
   },
   data() {
     return {
-      id: localStorage["id"],
+      idWorker: localStorage["idWorker"],
     };
   },
   setup() {

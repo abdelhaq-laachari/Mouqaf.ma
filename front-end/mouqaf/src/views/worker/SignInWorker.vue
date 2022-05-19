@@ -87,7 +87,7 @@ export default {
     buttonLabel() {
       return this.showPassword ? "Hide" : "Show";
     },
-  },
+  }, 
   methods: {
     toggleShow() {
       this.showPassword = !this.showPassword;
@@ -101,6 +101,7 @@ export default {
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
+          localStorage.setItem("idWorker", Response.data.idWorker);
           this.$router.push({ name: "HomeWorker" });
         });
     },

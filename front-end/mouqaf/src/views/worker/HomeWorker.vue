@@ -1,9 +1,14 @@
 <template>
-  <SideBar />
-  <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <HeaderWorker name="Home" />
-    <SearchBar/>
-    <AllPosts/>
+  <div v-if = "typeof this.idWorker !== 'undefined'">
+    <SideBar />
+    <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+      <HeaderWorker name="Home" />
+      <SearchBar />
+      <AllPosts />
+    </div>
+  </div>
+  <div v-else>
+    {{ this.$router.push({ name: "SignInWorker" }) }}
   </div>
 </template>
 
@@ -23,8 +28,13 @@ export default {
     SideBar,
     HeaderWorker,
     SearchBar,
-    AllPosts
-},
+    AllPosts,
+  },
+  data() {
+    return {
+      idWorker: localStorage["idWorker"],
+    };
+  },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -37,5 +47,4 @@ export default {
   transition: 0.2s ease;
   /* height: 100vh; */
 }
-
 </style>

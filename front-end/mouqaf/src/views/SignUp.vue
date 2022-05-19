@@ -12,7 +12,6 @@
         <div class="right__form">
           <form v-on:submit.prevent="SignUp()">
             <div class="form-group">
-              <span> {{firstName}} </span>
               <label class="form-label" for="exampleInputEmail1">First Name</label>
               <input
                 type="text"
@@ -22,7 +21,6 @@
               />
             </div>
             <div class="form-group">
-              <span> {{lastName}} </span>
               <label class="form-label" for="exampleInputEmail1">Last Name</label>
               <input
                 type="text"
@@ -32,7 +30,6 @@
               />
             </div>
             <div class="form-group">
-              <span> {{email}} </span>
               <label class="form-label" for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
@@ -44,8 +41,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputPassword1">Password</label> <br>
-              <span> {{password}} </span>
+              <label class="form-label" for="exampleInputPassword1">Password</label>
               <div class="field has-addons">
                 <div class="control is-expanded">
                   <input
@@ -87,7 +83,6 @@
                 <option value="client">Client</option>
                 <option value="worker">Worker</option>
               </select>
-              <span> {{role}} </span>
             </div>
             <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
           </form>
@@ -140,7 +135,15 @@ export default {
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
-          this.$router.push({ name: "home" });
+          // this.$router.push({ name: "home" });
+          if(this.role == 'client')
+          {
+            this.$router.push({ name: "SignInClient" });
+          }
+          else if(this.role == 'worker')
+          {
+            this.$router.push({ name: "SignInWorker" });
+          }
         });
     }
   },

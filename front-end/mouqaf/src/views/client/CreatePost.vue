@@ -13,11 +13,10 @@
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
+               v-model="category"
             >
               <option selected disabled>Select Category</option>
               <option value="1">Electrician</option>
-              <option value="2">Plumbing</option>
-              <option value="3">Gardener</option>
             </select>
           </div>
           <div class="form-group">
@@ -49,6 +48,7 @@
 
 <script>
 import SideBar from "../../components/sidebar/SideBar.vue";
+import axios from "axios";
 import {
   collapsed,
   toggleSidebar,
@@ -64,7 +64,23 @@ export default {
   data() {
     return {
       id: localStorage["id"],
+      cate: {id: '', name : '' },
+      category: null,
     };
+  },
+  methods: {
+    GetCategory() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/client/getcategory`)
+        .then((Response) => {
+          this.CrnS = Response.data;
+          console.log(Response.status);
+          console.log(Response.data);
+        });
+    },
+  },
+  mounted() {
+    this.GetCategory();
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };

@@ -15,7 +15,7 @@
     <SidebarLink to="/home" icon="home">Home</SidebarLink>
     <SidebarLink to="/post" icon="file-text">Posts</SidebarLink>
     <SidebarLink to="/profile" icon="user">Profile</SidebarLink>
-    <SidebarLink to="/" icon="sign-out">Sign Out</SidebarLink>
+    <SidebarLink to="" @Click="Logout" icon="sign-out">Sign Out</SidebarLink>
 
 
 
@@ -45,6 +45,13 @@ export default {
       toggleSidebar,
       sidebarWidth,
     };
+  },
+  methods : {
+    Logout(){
+      localStorage.clear();
+      localStorage.removeItem("id");
+      this.$router.push({ name: "SignInClient" });
+    }
   },
 };
 </script>

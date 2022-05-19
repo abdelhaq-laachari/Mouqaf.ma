@@ -52,7 +52,7 @@ const routes = [
   },
   {
     path: '/home',
-    name: 'homeClient',
+    name: 'HomeClient',
     component: HomeClient
   },
   {
@@ -75,7 +75,7 @@ const routes = [
   },
   {
     path: '/HomeWorker',
-    name: 'homeWork',
+    name: 'HomeWorker',
     component: HomeWorker
   },
   {

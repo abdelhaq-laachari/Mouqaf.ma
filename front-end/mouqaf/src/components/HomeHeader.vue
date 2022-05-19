@@ -36,11 +36,6 @@
                 >Service</router-link
               >
             </li>
-            <!-- <li class="nav-item">
-              <router-link class="nav-link text-light link-r" to="/signin"
-                >Sign In</router-link
-              >
-            </li> -->
             <DropDown />
           </ul>
         </div>

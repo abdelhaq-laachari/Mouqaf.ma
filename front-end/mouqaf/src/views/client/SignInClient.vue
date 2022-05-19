@@ -8,6 +8,7 @@
       <div class="right">
         <div class="right__title">
           <h3>WELCOME BACK</h3>
+          <!-- <span>error : {{message}}</span> -->
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
@@ -20,6 +21,7 @@
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                v-model="email"
               />
             </div>
             <div class="form-group">
@@ -61,7 +63,9 @@
                 </div>
               </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" name="submit" class="btn btn-primary">
+              Sign In
+            </button>
           </form>
           <span class="footer__link"
             >Don't have an account
@@ -75,15 +79,15 @@
 
 <script>
 import HomeHeader from "@/components/HomeHeader.vue";
-import axios from 'axios'
+import axios from "axios";
 export default {
   name: "SignInClient",
   data() {
     return {
       showPassword: false,
-      password: null,
-      email: '',
-      password_hash: '',
+      password: "",
+      email: "",
+      message: "",
     };
   },
   computed: {
@@ -92,18 +96,19 @@ export default {
     },
   },
   methods: {
-    SignIn(){
-      console.log("test");
-      const formData = new FormData()
-      formData.append('email',this.email)
-      formData.append('password',this.password_hash)
-      axios.post("http://localhost/youcode/mouqaf/client/signin",formData)
-      .then(Response=>{
+    SignIn() {
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+      axios
+        .post("http://localhost/youcode/mouqaf/client/signin", formData)
+        .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
-          console.log("test");
-          this.$router.push({ name: 'home' });
-      })
+          // this.message = Response.data.message;
+          localStorage.setItem("id", Response.data.id);
+          this.$router.push({ name: "HomeClient" });
+        });
     },
     toggleShow() {
       this.showPassword = !this.showPassword;

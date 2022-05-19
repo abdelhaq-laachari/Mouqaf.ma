@@ -1,9 +1,14 @@
 <template>
-  <SideBar />
-  <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <ClientHeader name="Home" />
-    <SearchBar/>
-    <AllPosts/>
+  <div v-if="typeof this.id !== 'undefined'">
+    <SideBar />
+    <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+      <ClientHeader name="Home" />
+      <SearchBar />
+      <AllPosts />
+    </div>
+  </div>
+  <div v-else>
+    {{ this.$router.push({ name: "SignInClient" }) }}
   </div>
 </template>
 
@@ -19,12 +24,17 @@ import SearchBar from "../../components/clients/SearchBar.vue";
 import AllPosts from "../../components/clients/AllPosts.vue";
 export default {
   name: "PostView",
+  data() {
+    return {
+      id: localStorage["id"],
+    };
+  },
   components: {
     SideBar,
     ClientHeader,
     SearchBar,
-    AllPosts
-},
+    AllPosts,
+  },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -37,5 +47,4 @@ export default {
   transition: 0.2s ease;
   /* height: 100vh; */
 }
-
 </style>

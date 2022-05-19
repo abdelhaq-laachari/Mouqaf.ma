@@ -10,28 +10,29 @@
           <h3>Join Our Community</h3>
         </div>
         <div class="right__form">
-          <form action="">
+          <form v-on:submit.prevent="SignUp()">
             <div class="form-group">
+              <span> {{firstName}} </span>
               <label class="form-label" for="exampleInputEmail1">First Name</label>
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
                 placeholder="First Name"
+                v-model="firstName"
               />
             </div>
             <div class="form-group">
+              <span> {{lastName}} </span>
               <label class="form-label" for="exampleInputEmail1">Last Name</label>
               <input
-                type="email"
+                type="text"
                 class="form-control"
-                id="exampleInputEmail1"
-                aria-describedby="emailHelp"
                 placeholder="Last Name"
+                v-model="lastName"
               />
             </div>
             <div class="form-group">
+              <span> {{email}} </span>
               <label class="form-label" for="exampleInputEmail1">Email address</label>
               <input
                 type="email"
@@ -39,10 +40,12 @@
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                v-model="email"
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputPassword1">Password</label>
+              <label class="form-label" for="exampleInputPassword1">Password</label> <br>
+              <span> {{password}} </span>
               <div class="field has-addons">
                 <div class="control is-expanded">
                   <input
@@ -80,12 +83,13 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="">Choose your account type.</label>
-              <select class="form-select" aria-label="Default select example">
+              <select class="form-select" aria-label="Default select example" v-model="role" >
                 <option value="client">Client</option>
                 <option value="worker">Worker</option>
               </select>
+              <span> {{role}} </span>
             </div>
-            <button type="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
           </form>
           <span class="footer__link"
             >You already have an account?
@@ -99,6 +103,7 @@
 
 <script>
 import HomeHeader from '../components/HomeHeader.vue'
+import axios from "axios";
 export default {
   name: "SignIn",
   components: {
@@ -107,7 +112,11 @@ export default {
   data() {
     return {
       showPassword: false,
-      password: null,
+      password: '',
+      role: '',
+      firstName: '',
+      lastName: '',
+      email: '',
     };
   },
   computed: {
@@ -119,6 +128,21 @@ export default {
     toggleShow() {
       this.showPassword = !this.showPassword;
     },
+    SignUp(){
+      const formData = new FormData();
+      formData.append("first_name", this.firstName);
+      formData.append("last_name", this.lastName);
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+      formData.append("role", this.role);
+      axios
+        .post("http://localhost/youcode/mouqaf/client/signup", formData)
+        .then((Response) => {
+          console.log(Response.status);
+          console.log(Response.data);
+          this.$router.push({ name: "home" });
+        });
+    }
   },
 };
 </script>

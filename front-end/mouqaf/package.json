@@ -26,7 +26,7 @@
     "vue-axios": "^3.4.1",
     "vue-router": "^4.0.3",
     "vue3-carousel": "^0.1.40",
-    "vuex": "^4.0.0"
+    "vuex": "^4.0.2"
   },
   "devDependencies": {
     "@babel/core": "^7.12.16",

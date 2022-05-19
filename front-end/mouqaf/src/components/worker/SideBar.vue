@@ -15,10 +15,7 @@
     <SidebarLink to="/HomeWorker" icon="home">Home</SidebarLink>
     <SidebarLink to="/applied" icon="file-text">Applied</SidebarLink>
     <SidebarLink to="/ProfileWorker" icon="user">Profile</SidebarLink>
-    <SidebarLink to="/" icon="sign-out">Sign Out</SidebarLink>
-
-
-
+    <SidebarLink to="" @Click="Logout" icon="sign-out">Sign Out</SidebarLink>
 
     <!-- collapse button -->
     <span class="collapse-icon" @click="toggleSidebar">
@@ -38,6 +35,13 @@ export default {
   name: "SideBar",
   components: {
     SidebarLink,
+  },
+  methods : {
+    Logout(){
+      localStorage.clear();
+      localStorage.removeItem("id");
+      this.$router.push({ name: "SignInWorker" });
+    }
   },
   setup() {
     return {

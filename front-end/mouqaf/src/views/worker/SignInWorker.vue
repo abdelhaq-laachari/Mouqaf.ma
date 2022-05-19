@@ -10,7 +10,7 @@
           <h3>WELCOME BACK</h3>
         </div>
         <div class="right__form">
-          <form action="">
+          <form v-on:submit.prevent="SignIn()">
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -19,6 +19,7 @@
                 id="exampleInputEmail1"
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
+                v-model="email"
               />
             </div>
             <div class="form-group">
@@ -58,12 +59,12 @@
                 </div>
               </div>
             </div>
-            <button type="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" name="submit" class="btn btn-primary">Sign In</button>
           </form>
-          <!-- <span class="footer__link"
+          <span class="footer__link"
             >Don't have an account
             <a href="signup">Sign Up</a>
-          </span> -->
+          </span>
         </div>
       </div>
     </div>
@@ -72,12 +73,14 @@
 
 <script>
 import HomeHeader from "@/components/HomeHeader.vue";
+import axios from "axios";
 export default {
   name: "SignInWorker",
   data() {
     return {
       showPassword: false,
-      password: null,
+      password: '',
+      email: '',
     };
   },
   computed: {
@@ -88,6 +91,18 @@ export default {
   methods: {
     toggleShow() {
       this.showPassword = !this.showPassword;
+    },
+    SignIn() {
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+      axios
+        .post("http://localhost/youcode/mouqaf/Worker/signin", formData)
+        .then((Response) => {
+          console.log(Response.status);
+          console.log(Response.data);
+          this.$router.push({ name: "HomeWorker" });
+        });
     },
   },
   components: { HomeHeader },

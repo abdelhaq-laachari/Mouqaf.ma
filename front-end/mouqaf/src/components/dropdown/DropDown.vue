@@ -22,8 +22,7 @@
 
 <style scoped>
 .dropdown-menu{
-  width: 100px !important;
-  background-color: red;
+  min-width: 120px !important;
 }
 </style>
 

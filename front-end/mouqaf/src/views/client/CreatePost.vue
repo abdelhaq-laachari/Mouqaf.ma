@@ -1,5 +1,5 @@
 <template>
-  <div v-if="typeof this.id !== 'undefined'">
+  <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="create__post" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader name="Create Poste" />
@@ -8,6 +8,7 @@
       </div>
       <div class="create__form shadow p-3 mb-5 bg-white rounded">
         <form action="">
+          <input type="hidden" name="idClient" v-model="id" >
           <div class="select__cat">
             <label for="">Choose a category</label>
             <select
@@ -65,7 +66,7 @@ export default {
   },
   data() {
     return {
-      id: localStorage["id"],
+      idClient: localStorage["id"],
       tester: "",
       cate: [
         { id: '', name: '' },

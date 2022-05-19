@@ -20,3 +20,10 @@
   </li>
 </template>
 
+<style scoped>
+.dropdown-menu{
+  width: 100px !important;
+  background-color: red;
+}
+</style>
+

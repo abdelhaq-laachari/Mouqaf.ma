@@ -61,6 +61,7 @@ export default {
 .logo {
   width: 70px;
 }
+
 @media (min-width: 1500px) {
   .link-r {
     font-weight: 600;

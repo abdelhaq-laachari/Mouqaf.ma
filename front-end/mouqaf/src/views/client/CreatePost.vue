@@ -13,10 +13,10 @@
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
-               v-model="category"
             >
-              <option selected disabled>Select Category</option>
-              <option value="1">Electrician</option>
+              <option v-for="category in cates" :key="category.id" :value="category.name" >
+                {{ category.name }}
+              </option>
             </select>
           </div>
           <div class="form-group">
@@ -64,18 +64,20 @@ export default {
   data() {
     return {
       id: localStorage["id"],
-      cate: {id: '', name : '' },
-      category: null,
+      cate: [
+        { id: '', name: '' },
+      ],
+      cates: [],
     };
   },
   methods: {
     GetCategory() {
       axios
         .get(`http://localhost/youcode/mouqaf/client/getcategory`)
-        .then((Response) => {
-          this.CrnS = Response.data;
-          console.log(Response.status);
-          console.log(Response.data);
+        .then((res) => {
+          this.cates = res.data;
+          // console.log(Response.status);
+          // console.log(Response.data);
         });
     },
   },

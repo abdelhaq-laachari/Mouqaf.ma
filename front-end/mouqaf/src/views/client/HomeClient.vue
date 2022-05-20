@@ -1,5 +1,6 @@
 <template>
   <div v-if="typeof this.id !== 'undefined'">
+  <span> {{id}} </span>
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader name="Home" />
@@ -34,14 +35,6 @@ export default {
     return {
       id: localStorage["id"],
     };
-  },
-  methods: {
-    ClearLocalStorage() {
-      localStorage.removeItem("id");
-    },
-  },
-  created() {
-    window.addEventListener("beforeunload", this.ClearLocalStorage);
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };

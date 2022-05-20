@@ -11,11 +11,11 @@
           <input type="hidden" name="idClient" v-model="idClient" >
           <div class="select__cat">
             <label for="">Choose a category</label> <br>
-            <!-- <span> {{tester}} </span> -->
+            <!-- <span> {{idCategory}} </span> -->
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
-              v-model="tester"
+              v-model="idCategory"
             >
             <option value="" disabled>Select category</option>
               <option v-for="category in cates" :key="category.id" :value="category.id" >
@@ -24,30 +24,36 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="">Choose a city</label>
+            <label for="">Choose a city</label> <br>
+            <!-- <span> {{city}} </span> -->
             <input
               type="text"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Safi, Casablanca . . ."
+              v-model="city"
             />
           </div>
           <div class="form-group">
-            <label for="">Choose a title for your project</label>
+            <label for="">Choose a title for your project</label> <br>
+            <!-- <span> {{title}} </span> -->
             <input
               type="text"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="I need a electrician"
+              v-model="title"
             />
           </div>
           <div class="form-group">
-            <label for="">Tell us more about your project</label>
+            <label for="">Tell us more about your project</label> <br>
+            <!-- <span> {{description}} </span> -->
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
               placeholder="Discribe your project here"
+              v-model="description"
             ></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Post</button>
@@ -78,7 +84,10 @@ export default {
   data() {
     return {
       idClient: localStorage["id"],
-      tester: "",
+      idCategory: "",
+      city: "",
+      title: "",
+      description: "",
       cate: [
         { id: '', name: '' },
       ],
@@ -91,8 +100,6 @@ export default {
         .get(`http://localhost/youcode/mouqaf/client/getcategory`)
         .then((res) => {
           this.cates = res.data;
-          // console.log(Response.status);
-          // console.log(Response.data);
         });
     },
   },

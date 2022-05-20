@@ -64,7 +64,13 @@
             <label for="formFile" class="form-label"
               >Upload a image for more details</label
             >
-            <input class="form-control" type="file" name="file" id="formFile" />
+            <input
+              class="form-control"
+              type="file"
+              name="file"
+              id="formFile"
+              @change="onFileChanged"
+            />
           </div>
           <button type="submit" class="btn btn-primary">Post</button>
         </form>
@@ -97,6 +103,7 @@ export default {
       idCategory: "",
       city: "",
       title: "",
+      selectedFile: "",
       description: "",
       cate: [{ id: "", name: "" }],
       cates: [],
@@ -114,15 +121,22 @@ export default {
     // Create post
     CreatePost() {
       const formData = new FormData();
-      formData.append("email", this.email);
-      formData.append("password", this.password);
+      formData.append("idClient", this.idClient);
+      formData.append("title", this.title);
+      formData.append("idCategory", this.idCategory);
+      formData.append("city", this.city);
+      formData.append("file", this.selectedFile);
       axios
-        .post("http://localhost/youcode/mouqaf/client/signin", formData)
+        .post("http://localhost/youcode/mouqaf/client/CreatePost", formData)
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
+          console.log(this.selectedFile);
           this.$router.push({ name: "HomeClient" });
         });
+    },
+    onFileChanged(event) {
+      this.selectedFile = event.target.files[0];
     },
   },
   mounted() {

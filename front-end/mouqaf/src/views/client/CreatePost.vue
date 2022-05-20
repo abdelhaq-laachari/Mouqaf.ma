@@ -7,24 +7,28 @@
         <h4>Tell us what you need done</h4>
       </div>
       <div class="create__form shadow p-3 mb-5 bg-white rounded">
-        <form action="">
-          <input type="hidden" name="idClient" v-model="idClient" >
+        <form v-on:submit.prevent="CreatePost()">
+          <input type="hidden" name="idClient" v-model="idClient" />
           <div class="select__cat">
-            <label for="">Choose a category</label> <br>
+            <label for="">Choose a category</label> <br />
             <!-- <span> {{idCategory}} </span> -->
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
               v-model="idCategory"
             >
-            <option value="" disabled>Select category</option>
-              <option v-for="category in cates" :key="category.id" :value="category.id" >
+              <option value="" disabled>Select category</option>
+              <option
+                v-for="category in cates"
+                :key="category.id"
+                :value="category.id"
+              >
                 {{ category.name }}
               </option>
             </select>
           </div>
           <div class="form-group">
-            <label for="">Choose a city</label> <br>
+            <label for="">Choose a city</label> <br />
             <!-- <span> {{city}} </span> -->
             <input
               type="text"
@@ -35,7 +39,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="">Choose a title for your project</label> <br>
+            <label for="">Choose a title for your project</label> <br />
             <!-- <span> {{title}} </span> -->
             <input
               type="text"
@@ -46,7 +50,7 @@
             />
           </div>
           <div class="form-group">
-            <label for="">Tell us more about your project</label> <br>
+            <label for="">Tell us more about your project</label> <br />
             <!-- <span> {{description}} </span> -->
             <textarea
               class="form-control"
@@ -55,6 +59,12 @@
               placeholder="Discribe your project here"
               v-model="description"
             ></textarea>
+          </div>
+          <div class="">
+            <label for="formFile" class="form-label"
+              >Upload a image for more details</label
+            >
+            <input class="form-control" type="file" name="file" id="formFile" />
           </div>
           <button type="submit" class="btn btn-primary">Post</button>
         </form>
@@ -88,18 +98,30 @@ export default {
       city: "",
       title: "",
       description: "",
-      cate: [
-        { id: '', name: '' },
-      ],
+      cate: [{ id: "", name: "" }],
       cates: [],
     };
   },
   methods: {
+    // Get category
     GetCategory() {
       axios
         .get(`http://localhost/youcode/mouqaf/client/getcategory`)
         .then((res) => {
           this.cates = res.data;
+        });
+    },
+    // Create post
+    CreatePost() {
+      const formData = new FormData();
+      formData.append("email", this.email);
+      formData.append("password", this.password);
+      axios
+        .post("http://localhost/youcode/mouqaf/client/signin", formData)
+        .then((Response) => {
+          console.log(Response.status);
+          console.log(Response.data);
+          this.$router.push({ name: "HomeClient" });
         });
     },
   },
@@ -133,7 +155,7 @@ export default {
   flex-direction: column;
   gap: 2rem;
 }
-label{
+label {
   margin: 0 0 5px 5px;
 }
 @media (max-width: 600px) {

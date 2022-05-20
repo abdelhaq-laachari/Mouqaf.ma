@@ -10,14 +10,15 @@
         <form action="">
           <input type="hidden" name="idClient" v-model="idClient" >
           <div class="select__cat">
-            <label for="">Choose a category</label>
+            <label for="">Choose a category</label> <br>
+            <!-- <span> {{tester}} </span> -->
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
               v-model="tester"
             >
             <option value="" disabled>Select category</option>
-              <option v-for="category in cates" :key="category.id" :value="category.name" >
+              <option v-for="category in cates" :key="category.id" :value="category.id" >
                 {{ category.name }}
               </option>
             </select>
@@ -32,11 +33,21 @@
             />
           </div>
           <div class="form-group">
+            <label for="">Choose a title for your project</label>
+            <input
+              type="text"
+              class="form-control"
+              id="exampleInputPassword1"
+              placeholder="I need a electrician"
+            />
+          </div>
+          <div class="form-group">
             <label for="">Tell us more about your project</label>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
-              rows="3"
+              rows="5"
+              placeholder="Discribe your project here"
             ></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Post</button>
@@ -114,6 +125,9 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+}
+label{
+  margin: 0 0 5px 5px;
 }
 @media (max-width: 600px) {
   .create__form {

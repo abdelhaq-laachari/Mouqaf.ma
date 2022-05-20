@@ -8,7 +8,7 @@
       </div>
       <div class="create__form shadow p-3 mb-5 bg-white rounded">
         <form action="">
-          <input type="text" name="idClient" v-model="idClient" >
+          <input type="hidden" name="idClient" v-model="idClient" >
           <div class="select__cat">
             <label for="">Choose a category</label>
             <select

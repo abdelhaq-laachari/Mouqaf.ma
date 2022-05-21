@@ -140,12 +140,13 @@ export default {
           axios
             .post("http://localhost/youcode/mouqaf/client/CreatePost", formData)
             .then((Response) => {
-              console.log(Response.status);
+              console.log(Response);
               console.log(Response.data);
             });
           // if click on save button then save the changes and redirect to the home page
-          if (Response.status == 200) {
-            Swal.fire("Saved!", "", "success");
+          // if no error then redirect to the home page
+          if (Response.status === 200) {
+            Swal.fire("Post created successfully", "", "success");
             this.$router.push({ name: "HomeClient" });
           }
         }

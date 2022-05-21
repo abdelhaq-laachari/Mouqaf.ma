@@ -140,15 +140,29 @@ export default {
           axios
             .post("http://localhost/youcode/mouqaf/client/CreatePost", formData)
             .then((Response) => {
-              console.log(Response);
+              console.log(Response.status);
               console.log(Response.data);
+              // this.message = Response.data.message;
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your post has been created successfully",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.$router.push({ name: "HomeClient" });
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e.response.status);
+              console.log(e.response);
+              console.log(e.response.data.message);
+              // console.log("error");
+              Swal.fire("Please check your image file ", "", "error");
             });
-          // if click on save button then save the changes and redirect to the home page
-          // if no error then redirect to the home page
-          if (Response.status === 200) {
-            Swal.fire("Post created successfully", "", "success");
-            this.$router.push({ name: "HomeClient" });
-          }
         }
         // if click on don't save button then don't save the changes
         else if (result.isDenied) {

@@ -8,7 +8,7 @@
       <div class="right">
         <div class="right__title">
           <h3>WELCOME BACK</h3>
-          <!-- <span>error : {{message}}</span> -->
+          <span>error : {{ message }}</span>
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
@@ -106,8 +106,17 @@ export default {
           console.log(Response.status);
           console.log(Response.data);
           // this.message = Response.data.message;
-          localStorage.setItem("id", Response.data.id);
-          this.$router.push({ name: "HomeClient" });
+          if (Response.status === 200) {
+            localStorage.setItem("id", Response.data.id);
+            this.$router.push({ name: "HomeClient" });
+          }
+        })
+        .catch((e) => {
+          console.log(e.response.status);
+          console.log(e.response);
+          if (e.response.status === 400) {
+            this.message = e.response.data.message;
+          }
         });
     },
     toggleShow() {

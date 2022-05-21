@@ -10,12 +10,12 @@
         <form v-on:submit.prevent="CreatePost()">
           <input type="hidden" name="idClient" v-model="idClient" />
           <div class="select__cat">
-            <label for="">Choose a category</label> <br />
-            <!-- <span> {{idCategory}} </span> -->
+            <label for="">Choose a category</label>
             <select
               class="form-select form-select-m"
               aria-label=".form-select-sm example"
               v-model="idCategory"
+              required
             >
               <option value="" disabled id="place">Select category</option>
               <option
@@ -28,36 +28,37 @@
             </select>
           </div>
           <div class="form-group">
-            <label for="">Choose a city</label> <br />
-            <!-- <span> {{city}} </span> -->
+            <label for="">Choose a city</label>
             <input
               type="text"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="Safi, Casablanca . . ."
               v-model="city"
+              required
             />
           </div>
           <div class="form-group">
-            <label for="">Choose a title for your project</label> <br />
-            <!-- <span> {{title}} </span> -->
+            <label for="">Choose a title for your project</label>
             <input
               type="text"
               class="form-control"
               id="exampleInputPassword1"
               placeholder="I need a electrician"
               v-model="title"
+              required
             />
           </div>
           <div class="form-group">
             <label for="">Tell us more about your project</label> <br />
-            <!-- <span> {{description}} </span> -->
+            <span> {{description}} </span>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
               rows="5"
               placeholder="Discribe your project here"
               v-model="description"
+              required
             ></textarea>
           </div>
           <div class="">
@@ -127,6 +128,7 @@ export default {
       formData.append("idCategory", this.idCategory);
       formData.append("city", this.city);
       formData.append("file", this.selectedFile);
+      formData.append("description", this.description);
       // show alert message with three button save, don't save and cancel
       Swal.fire({
         title: "Do you want to save the changes?",

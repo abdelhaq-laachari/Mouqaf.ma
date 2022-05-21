@@ -17,7 +17,7 @@
               aria-label=".form-select-sm example"
               v-model="idCategory"
             >
-              <option value="" disabled>Select category</option>
+              <option value="" disabled id="place" >Select category</option>
               <option
                 v-for="category in cates"
                 :key="category.id"
@@ -111,7 +111,7 @@ export default {
     };
   },
   methods: {
-    // Get category
+    // Get category from database
     GetCategory() {
       axios
         .get(`http://localhost/youcode/mouqaf/client/getcategory`)
@@ -127,29 +127,42 @@ export default {
       formData.append("idCategory", this.idCategory);
       formData.append("city", this.city);
       formData.append("file", this.selectedFile);
-      axios
-        .post("http://localhost/youcode/mouqaf/client/CreatePost", formData)
-        .then((Response) => {
-          console.log(Response.status);
-          console.log(Response.data);
-          console.log(this.selectedFile);
-          // swal("your booking has been confirmed successfully.", "", "success");
-          Swal.fire({
-            title: "Error!",
-            text: "Do you want to continue",
-            icon: "error",
-            confirmButtonText: "Cool",
-          });
+      // show alert message with three button save, don't save and cancel
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        // if click on save button then save the changes
+        if (result.isConfirmed) {
+          axios
+            .post("http://localhost/youcode/mouqaf/client/CreatePost", formData)
+            .then((Response) => {
+              console.log(Response.status);
+              console.log(Response.data);
+            });
+            // if click on save button then save the changes and redirect to the home page
+          Swal.fire("Saved!", "", "success");
           this.$router.push({ name: "HomeClient" });
-        });
+        } else 
+        // if click on don't save button then don't save the changes
+        if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
     },
+    // get file when user select a file
     onFileChanged(event) {
       this.selectedFile = event.target.files[0];
     },
   },
+  // get category when the page is loaded
   mounted() {
     this.GetCategory();
   },
+  // get the width of the sidebar
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
   },
@@ -180,6 +193,7 @@ export default {
 label {
   margin: 0 0 5px 5px;
 }
+
 @media (max-width: 600px) {
   .create__form {
     padding: 1rem !important;

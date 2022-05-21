@@ -39,6 +39,7 @@ export default {
   components: { ButtonComponent },
   data() {
     return {
+      idClient: localStorage["id"],
       posts: [],
       post: [
         { idClient: "", idCategory: "", city: "", title: "", description: "" },
@@ -46,10 +47,10 @@ export default {
     };
   },
   methods: {
-    // Get posts from database
+    //  get posts by id from database
     GetAllPosts() {
       axios
-        .get(`http://localhost/youcode/mouqaf/client/getallposts`)
+        .get(`http://localhost/youcode/mouqaf/client/MyPosts/${this.idClient}`)
         .then((res) => {
           console.log(res.data);
           this.posts = res.data;

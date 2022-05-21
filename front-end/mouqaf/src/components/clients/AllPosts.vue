@@ -26,7 +26,7 @@
           {{ poste.description }}
         </p>
       </div>
-      <ButtonComponent name="Read Comment" to="/comment" />
+      <ButtonComponent v-if="idClient == poste.idClient" name="Read Comment" to="/comment" />
     </div>
   </div>
 </template>
@@ -39,6 +39,7 @@ export default {
   components: { ButtonComponent },
   data() {
     return {
+      idClient: localStorage["id"],
       posts: [],
       post: [
         { idClient: "", idCategory: "", city: "", title: "", description: "" },

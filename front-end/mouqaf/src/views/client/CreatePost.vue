@@ -91,6 +91,7 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
+import Swal from "sweetalert2";
 export default {
   name: "PostView",
   components: {
@@ -132,6 +133,13 @@ export default {
           console.log(Response.status);
           console.log(Response.data);
           console.log(this.selectedFile);
+          // swal("your booking has been confirmed successfully.", "", "success");
+          Swal.fire({
+            title: "Error!",
+            text: "Do you want to continue",
+            icon: "error",
+            confirmButtonText: "Cool",
+          });
           this.$router.push({ name: "HomeClient" });
         });
     },

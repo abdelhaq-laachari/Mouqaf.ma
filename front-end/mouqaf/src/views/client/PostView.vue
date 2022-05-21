@@ -9,7 +9,7 @@
         </div>
         <ButtonComponent name="Create Post" to="CreatePost" />
       </div>
-      <AllPosts />
+      <MyPosts />
     </div>
   </div>
 </template>
@@ -22,14 +22,14 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
-import AllPosts from "@/components/clients/AllPosts.vue";
+import MyPosts from "@/components/clients/MyPosts.vue";
 import ButtonComponent from "@/components/button/ButtonComponent.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     ClientHeader,
-    AllPosts,
+    MyPosts,
     ButtonComponent,
   },
   data() {

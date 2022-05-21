@@ -1,24 +1,29 @@
 <template>
   <div class="all__posts">
-    <div class="post shadow p-3 mb-5 bg-white rounded">
+    <div
+      class="post shadow p-3 mb-5 bg-white rounded"
+      v-for="poste in posts"
+      :key="poste.id"
+    >
       <div class="post__header">
-        <h3>Post Title</h3>
+        <h3>{{ poste.post_title }}</h3>
+        <span> {{ post.title }} </span>
         <div class="time">
           <span class="text-muted">6 weeks ago</span>
           <span class="text-muted">
             <FIcons
               :icon="['fas', 'map-marker-alt']"
               class="b-icon face"
-            />&nbsp; Safi
+            />&nbsp; {{ poste.city }}
           </span>
         </div>
       </div>
+      <div class="post_img">
+        <img src="" alt="" />
+      </div>
       <div class="post__topic">
         <p>
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Et iste
-          beatae dolorem sed labore nobis error voluptatibus non aspernatur
-          dolores? Dolore a accusantium culpa voluptate eius tempore nisi?
-          Velit, eum.
+          {{ poste.description }}
         </p>
       </div>
       <ButtonComponent name="Read Comment" to="/comment" />
@@ -28,9 +33,36 @@
 
 <script>
 import ButtonComponent from "../button/ButtonComponent.vue";
+import axios from "axios";
 export default {
-    name: "AllPosts",
-    components: { ButtonComponent }
+  name: "AllPosts",
+  components: { ButtonComponent },
+  data() {
+    return {
+      posts: [],
+      post: [
+        { idClient: "", idCategory: "", city: "", title: "", description: "" },
+      ],
+    };
+  },
+  methods: {
+    // Get posts from database
+    GetAllPosts() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/client/getallposts`)
+        .then((res) => {
+          console.log(res.data);
+          this.posts = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  // get posts when the page is loaded
+  mounted() {
+    this.GetAllPosts();
+  },
 };
 </script>
 
@@ -68,14 +100,15 @@ export default {
 }
 .post__topic {
   font-size: 1rem;
-  font-family: 'serif';
+  font-family: "serif";
 }
-@media (max-width: 700px){
+@media (max-width: 700px) {
   .post__header h3 {
-  font-size: 1.2rem;
-}
-.time span , .post__topic p {
-  font-size: 0.8rem;
-}
+    font-size: 1.2rem;
+  }
+  .time span,
+  .post__topic p {
+    font-size: 0.8rem;
+  }
 }
 </style>

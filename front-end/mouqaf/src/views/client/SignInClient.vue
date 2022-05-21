@@ -8,7 +8,7 @@
       <div class="right">
         <div class="right__title">
           <h3>WELCOME BACK</h3>
-          <span>error : {{ message }}</span>
+          <span>error : {{ LogInError }}</span>
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
@@ -87,7 +87,7 @@ export default {
       showPassword: false,
       password: "",
       email: "",
-      message: "",
+      LogInError: "",
     };
   },
   computed: {
@@ -115,7 +115,7 @@ export default {
           console.log(e.response.status);
           console.log(e.response);
           if (e.response.status === 400) {
-            this.message = e.response.data.message;
+            this.LogInError = e.response.data.message;
           }
         });
     },

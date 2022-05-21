@@ -51,7 +51,6 @@
           </div>
           <div class="form-group">
             <label for="">Tell us more about your project</label> <br />
-            <span> {{description}} </span>
             <textarea
               class="form-control"
               id="exampleFormControlTextarea1"
@@ -109,6 +108,7 @@ export default {
       description: "",
       cate: [{ id: "", name: "" }],
       cates: [],
+      ExtensionError: "",
     };
   },
   methods: {
@@ -162,8 +162,9 @@ export default {
               console.log(e.response.status);
               console.log(e.response);
               console.log(e.response.data.message);
+              this.ExtensionError = e.response.data.message;
               // console.log("error");
-              Swal.fire("Please check your image file ", "", "error");
+              Swal.fire( this.ExtensionError , "", "error");
             });
         }
         // if click on don't save button then don't save the changes

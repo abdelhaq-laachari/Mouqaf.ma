@@ -17,7 +17,7 @@
               aria-label=".form-select-sm example"
               v-model="idCategory"
             >
-              <option value="" disabled id="place" >Select category</option>
+              <option value="" disabled id="place">Select category</option>
               <option
                 v-for="category in cates"
                 :key="category.id"
@@ -143,12 +143,16 @@ export default {
               console.log(Response.status);
               console.log(Response.data);
             });
-            // if click on save button then save the changes and redirect to the home page
-          Swal.fire("Saved!", "", "success");
-          this.$router.push({ name: "HomeClient" });
-        } else 
+          // if click on save button then save the changes and redirect to the home page
+          if (Response.status == 200) {
+            Swal.fire("Saved!", "", "success");
+            this.$router.push({ name: "HomeClient" });
+          }else{
+            Swal.fire("Error!", "", "error");
+          }
+        }
         // if click on don't save button then don't save the changes
-        if (result.isDenied) {
+        else if (result.isDenied) {
           Swal.fire("Changes are not saved", "", "info");
         }
       });

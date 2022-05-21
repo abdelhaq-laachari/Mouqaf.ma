@@ -147,8 +147,6 @@ export default {
           if (Response.status == 200) {
             Swal.fire("Saved!", "", "success");
             this.$router.push({ name: "HomeClient" });
-          }else{
-            Swal.fire("Error!", "", "error");
           }
         }
         // if click on don't save button then don't save the changes

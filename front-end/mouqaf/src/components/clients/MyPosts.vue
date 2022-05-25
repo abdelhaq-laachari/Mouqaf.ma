@@ -25,7 +25,7 @@
           <p>
             {{ poste.description }}
           </p>
-        <div class="post_img" v-if="poste.images">
+        <div class="post_img" v-if="poste.images" >
           <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
         </div>
         </div>

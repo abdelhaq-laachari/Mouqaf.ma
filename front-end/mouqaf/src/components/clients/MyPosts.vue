@@ -23,7 +23,7 @@
       <div class="image_description" >
         <div class="post__topic">
           <p>
-            {{ poste.description }}
+            {{ poste.description }} 
           </p>
         <div class="post_img" v-if="poste.images" >
           <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />

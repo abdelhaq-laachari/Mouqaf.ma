@@ -53,6 +53,7 @@ const routes = [
   {
     path: '/home',
     name: 'HomeClient',
+    props: true,
     component: HomeClient
   },
   {
@@ -63,6 +64,7 @@ const routes = [
   {
     path: '/comment',
     name: 'comment',
+    props: true,
     component: ReadComment
   },
   {

@@ -1,26 +1,35 @@
 <template>
   <div class="main__header">
     <div class="header__title">
-      <h3>{{ name }}</h3>
+      <h3>{{ title }}</h3>
     </div>
     <div class="user__info">
       <div class="user__image">
         <img src="../../assets/avatar/a1.jpg" alt="" />
       </div>
       <div class="user__name">
-        <span>Client</span>
+        <span>{{ name }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+// import axios from "axios";
 export default {
   name: "ClientHeader",
   props: {
-    name: { type: String, required: true },
-    // icon: { type: String, required: true },
-    // src: { type: String, required: true },
+    title: { type: String, required: true },
+  },
+  data() {
+    return {
+      idClient: localStorage["id"],
+      name: localStorage["name"],
+    };
+  },
+  methods: {
+  },
+  mounted() {
   },
 };
 </script>
@@ -84,7 +93,7 @@ export default {
   .user__info {
     gap: 2rem;
     justify-content: space-around;
-    width: auto ;
+    width: auto;
   }
   .header__title h3 {
     font-size: 1rem;

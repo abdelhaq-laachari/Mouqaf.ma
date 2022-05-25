@@ -18,15 +18,29 @@
           </span>
         </div>
       </div>
-      <div class="post_img">
-        <img src="" alt="" />
+      <div class="image_description" >
+        <div class="post__topic">
+          <p>
+            {{ poste.description }}
+          </p>
+        <div class="post_img" v-if="poste.images">
+          <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+        </div>
+        </div>
       </div>
-      <div class="post__topic">
-        <p>
-          {{ poste.description }}
-        </p>
+      <div>
+        <input type="hidden" v-model="poste.idPost" />
+        <ButtonComponent
+          @click="StoreIdPost(poste.idPost)"
+          v-if="idClient == poste.idClient"
+          name="Read Comment"
+          to=""
+        />
       </div>
-      <ButtonComponent v-if="idClient == poste.idClient" name="Read Comment" to="/comment" />
+        <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
+      <div v-if="seen" id="hide">
+        <span>test</span>
+      </div> -->
     </div>
   </div>
 </template>
@@ -39,10 +53,19 @@ export default {
   components: { ButtonComponent },
   data() {
     return {
+      // seen: false,
+      no: null,
       idClient: localStorage["id"],
       posts: [],
       post: [
-        { idClient: "", idCategory: "", city: "", title: "", description: "" },
+        {
+          idPost: "",
+          idClient: "",
+          idCategory: "",
+          city: "",
+          title: "",
+          description: "",
+        },
       ],
     };
   },
@@ -58,6 +81,15 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+    // store id post in local storage
+    StoreIdPost(idPost) {
+      // clear localStorage
+      localStorage.removeItem("idPost");
+      localStorage.setItem("idPost", idPost);
+      this.$router.push({
+        name: "comment",
+      });
     },
   },
   // get posts when the page is loaded
@@ -102,6 +134,20 @@ export default {
 .post__topic {
   font-size: 1rem;
   font-family: "serif";
+}
+.image_description{
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.post_img {
+  /* width: 300px; */
+  width: 40%;
+  margin-bottom: 1rem;
+}
+.post_img img {
+  width: 100%;
+  height: 100%;
 }
 @media (max-width: 700px) {
   .post__header h3 {

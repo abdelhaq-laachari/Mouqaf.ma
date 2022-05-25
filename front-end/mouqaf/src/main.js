@@ -13,6 +13,7 @@ import {far} from "@fortawesome/free-regular-svg-icons";
 import {fas} from "@fortawesome/free-solid-svg-icons";
 import { fab } from '@fortawesome/free-brands-svg-icons'
 import { faFacebook } from '@fortawesome/free-brands-svg-icons'
+import './assets/tailwind.css'
 
 
 library.add(fas,far,faFacebook,fab);

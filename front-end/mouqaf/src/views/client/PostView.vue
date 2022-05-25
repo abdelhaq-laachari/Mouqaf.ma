@@ -2,7 +2,7 @@
   <div v-if="typeof this.id !== 'undefined' " >
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader name="Posts" />
+      <ClientHeader title="Posts" />
       <div class="create__post shadow p-3 mb-5 bg-white rounded">
         <div class="title">
           <h3>My Posts</h3>

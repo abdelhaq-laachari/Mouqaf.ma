@@ -108,6 +108,7 @@ export default {
           // this.message = Response.data.message;
           if (Response.status === 200) {
             localStorage.setItem("id", Response.data.id);
+            localStorage.setItem("name", Response.data.name);
             this.$router.push({ name: "HomeClient" });
           }
         })

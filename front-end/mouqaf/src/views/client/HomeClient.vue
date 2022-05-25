@@ -3,7 +3,7 @@
   <span> {{id}} </span>
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader name="Home" />
+      <ClientHeader title="Home" />
       <SearchBar />
       <AllPosts />
     </div>

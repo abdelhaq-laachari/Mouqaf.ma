@@ -4,11 +4,17 @@
       <select
         class="form-select form-select-m"
         aria-label=".form-select-sm example"
+        v-model="idCategory"
+        required
       >
-        <option selected disabled>Select Category</option>
-        <option value="1">One</option>
-        <option value="2">Two</option>
-        <option value="3">Three</option>
+        <option value="" disabled selected>Select category</option>
+        <option
+          v-for="category in cates"
+          :key="category.id"
+          :value="category.id"
+        >
+          {{ category.name }}
+        </option>
       </select>
       <div class="form-group">
         <input
@@ -18,7 +24,7 @@
           placeholder="All morocco"
         />
       </div>
-      <button type="submit" class="btn btn-primary">
+      <button type="submit" class="btn bg-blue-500">
         <FIcons :icon="['fas', 'search']" class="b-icon face" />
       </button>
     </form>
@@ -26,8 +32,35 @@
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: "SearchBar",
+  data(){
+    return{
+      idClient: localStorage["id"],
+      idCategory: "",
+      name: "",
+      cate: [{ id: "", name: "" }],
+      cates: [],
+    }
+  },
+  methods: {
+    // Get category from database
+    GetCategory() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/client/getcategory`)
+        .then((res) => {
+          this.cates = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  // get category when the page is loaded
+  mounted() {
+    this.GetCategory();
+  },
 };
 </script>
 
@@ -49,6 +82,9 @@ export default {
 .form-select,
 .form-control {
   width: auto;
+}
+.face{
+  color: #fff;
 }
 @media (min-width: 1500px) and (max-width: 2500px) {
   .form-select,

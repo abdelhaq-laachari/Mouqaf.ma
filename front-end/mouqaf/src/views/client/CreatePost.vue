@@ -2,7 +2,7 @@
   <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="create__post" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader name="Create Poste" />
+      <ClientHeader title="Create Poste" />
       <div class="title">
         <h4>Tell us what you need done</h4>
       </div>
@@ -164,7 +164,7 @@ export default {
               console.log(e.response.data.message);
               this.ExtensionError = e.response.data.message;
               // console.log("error");
-              Swal.fire( this.ExtensionError , "", "error");
+              Swal.fire(this.ExtensionError, "", "error");
             });
         }
         // if click on don't save button then don't save the changes

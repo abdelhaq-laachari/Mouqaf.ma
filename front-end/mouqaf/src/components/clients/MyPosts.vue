@@ -3,13 +3,15 @@
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
-      :key="poste.id"
+      :key="poste.idPost"
     >
       <div class="post__header">
         <h3>{{ poste.post_title }}</h3>
-        <span> {{ post.title }} </span>
         <div class="time">
-          <span class="text-muted">6 weeks ago</span>
+          <div>
+            <FIcons :icon="['fas', 'clock']" class="b-icon text-muted" />&nbsp;
+            <span class="text-muted">6 weeks ago</span>
+          </div>
           <span class="text-muted">
             <FIcons
               :icon="['fas', 'map-marker-alt']"
@@ -18,15 +20,22 @@
           </span>
         </div>
       </div>
-      <div class="post_img">
-        <img src="" alt="" />
+      <div class="image_description" >
+        <div class="post__topic">
+          <p>
+            {{ poste.description }}
+          </p>
+        <div class="post_img" v-if="poste.images">
+          <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+        </div>
+        </div>
       </div>
-      <div class="post__topic">
-        <p>
-          {{ poste.description }}
-        </p>
-      </div>
-      <ButtonComponent name="Read Comment" to="/comment" />
+      <ButtonComponent
+        @click="StoreIdPost(poste.idPost)"
+        v-if="idClient == poste.idClient"
+        name="Read Comment"
+        to=""
+      />
     </div>
   </div>
 </template>
@@ -42,13 +51,22 @@ export default {
       idClient: localStorage["id"],
       posts: [],
       post: [
-        { idClient: "", idCategory: "", city: "", title: "", description: "" },
+        {
+          url: "../../../public/uploads/PostImag/165347177513.jpg",
+          idPost: "",
+          idClient: "",
+          idCategory: "",
+          city: "",
+          title: "",
+          description: "",
+          images: "",
+        },
       ],
     };
   },
   methods: {
     //  get posts by id from database
-    GetAllPosts() {
+    GetMyPosts() {
       axios
         .get(`http://localhost/youcode/mouqaf/client/MyPosts/${this.idClient}`)
         .then((res) => {
@@ -59,10 +77,20 @@ export default {
           console.log(err);
         });
     },
+    // store id post in local storage
+    StoreIdPost(idPost) {
+      // clear localStorage
+      localStorage.removeItem("idPost");
+      localStorage.setItem("idPost", idPost);
+      this.$router.push({
+        name: "comment",
+      });
+    },
   },
   // get posts when the page is loaded
   mounted() {
-    this.GetAllPosts();
+    console.log("Posts : " + this.posts);
+    this.GetMyPosts();
   },
 };
 </script>
@@ -82,7 +110,7 @@ export default {
 .post__header {
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 1.5rem;
   margin-bottom: 0.6rem;
 }
 .post__header h3 {
@@ -102,6 +130,20 @@ export default {
 .post__topic {
   font-size: 1rem;
   font-family: "serif";
+}
+.image_description{
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.post_img {
+  /* width: 300px; */
+  width: 40%;
+  margin-bottom: 1rem;
+}
+.post_img img {
+  width: 100%;
+  height: 100%;
 }
 @media (max-width: 700px) {
   .post__header h3 {

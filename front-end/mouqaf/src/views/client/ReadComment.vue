@@ -1,31 +1,39 @@
 <template>
-  <div v-if="typeof this.id !== 'undefined'">
+  <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader name="Posts" />
-      <div class="my__post shadow p-3 mb-5 bg-white rounded">
+      <ClientHeader title="Posts" />
+      <div
+        class="my__post shadow p-3 mb-5 bg-white rounded"
+        v-for="poste in posts"
+        :key="poste.idPost"
+      >
         <div class="post__title">
-          <h3>Post Title</h3>
+          <h3>{{ poste.post_title }}</h3>
           <span class="text-muted">6 weeks ago</span>
           <span class="text-muted">
-            <FIcons :icon="['fas', 'map-marker-alt']" />&nbsp; Safi
+            <FIcons :icon="['fas', 'map-marker-alt']" />&nbsp;
+            {{ poste.city }}
           </span>
         </div>
         <div class="post__topic">
           <p>
-            Lorem, ipsum dolor sit amet consectetur adipisicing elit. Blanditiis
-            quas debitis saepe repudiandae doloremque maiores, earum at vel,
-            fuga excepturi suscipit id dolore placeat! Exercitationem assumenda
-            fuga nemo fugiat. Laboriosam.
+            {{ poste.description }}
           </p>
         </div>
         <DangerButton name="Delete" to="" />
       </div>
       <div class="main__comment">
         <div class="number__comment">
-          <h3>34 Comment on this jop</h3>
+          <h3 v-if="this.TotalComment > 1" >{{ TotalComment }} Comments on this job</h3>  
+          <h3 v-if="this.TotalComment == 1" >{{ TotalComment }} Comment on this job</h3>
+          <h3 v-if="this.TotalComment == 0" >No Comment on this job</h3>
         </div>
-        <div class="comment__card shadow p-3 mb-5 bg-white rounded">
+        <div
+          class="comment__card shadow p-3 mb-5 bg-white rounded"
+          v-for="comment in comments"
+          :key="comment.id"
+        >
           <div class="comment__header">
             <div class="worker__info">
               <div class="worker__img">
@@ -33,22 +41,26 @@
               </div>
               <div class="worker">
                 <div class="name">
-                  <h3>Eric Parker</h3>
+                  <!-- <h3>Eric Parker</h3> -->
+                  <h3>{{ comment.first_name }} {{ comment.last_name }}</h3>
                 </div>
                 <div class="comment__info">
                   <div class="comment">
                     <FIcons :icon="['fas', 'phone']" class="b-icon" />&nbsp;
-                    <span class="text-muted">0612345678</span>
+                    <span class="text-muted">{{ comment.phone }}</span>
                   </div>
                   <div class="comment">
                     <FIcons
                       :icon="['fas', 'map-marker-alt']"
                       class="b-icon"
                     />&nbsp;
-                    <span class="text-muted">Safi</span>
+                    <span class="text-muted">{{ comment.city }}</span>
                   </div>
                   <div class="comment">
-                    <FIcons :icon="['fas', 'clock']" class="b-icon" />&nbsp;
+                    <FIcons
+                      :icon="['fas', 'clock']"
+                      class="b-icon text-muted"
+                    />&nbsp;
                     <span class="text-muted">6 Week ago</span>
                   </div>
                 </div>
@@ -60,10 +72,7 @@
           </div>
           <div class="comment__topic">
             <p>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Assumenda
-              nam asperiores sit hic, placeat, qui quibusdam est aut aperiam
-              vitae perspiciatis iste impedit dicta labore minus a nemo magnam
-              commodi.
+              {{ comment.proposal }}
             </p>
           </div>
           <div class="comment__btn2">
@@ -87,6 +96,7 @@ import {
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
 import DangerButton from "@/components/button/DangerButton.vue";
+import axios from "axios";
 export default {
   name: "PostView",
   components: {
@@ -94,18 +104,89 @@ export default {
     ClientHeader,
     DangerButton,
   },
+
   data() {
     return {
-      id: localStorage["id"],
+      idClient: localStorage["id"],
+      idPost: localStorage["idPost"],
+      posts: [],
+      post: [
+        {
+          idPost: "",
+          idClient: "",
+          idCategory: "",
+          city: "",
+          title: "",
+          description: "",
+          first_name: "",
+        },
+      ],
+      comments: [],
+      comment: [
+        {
+          id: "",
+          phone: "",
+          proposal: "",
+        },
+      ],
+      TotalComment: "",
     };
   },
   methods: {
-    CreatePost() {
-      this.$router.push("/CreatePost");
+    // button to delete post
+
+    //  get comments by id from database
+    GetComments() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/GetComments/${this.idPost}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.comments = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    // get post by id that is in localstorage
+    MySinglePost() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/MySinglePost/${this.idPost}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.posts = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+
+    // get total of comments
+    TotalComments() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/TotalComments/${this.idPost}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.TotalComment = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
     },
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
+  },
+  mounted() {
+    this.GetComments();
+    this.MySinglePost();
+    this.TotalComments();
   },
 };
 </script>

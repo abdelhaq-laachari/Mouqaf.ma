@@ -89,7 +89,6 @@ export default {
   },
   // get posts when the page is loaded
   mounted() {
-    console.log("Posts : " + this.posts);
     this.GetMyPosts();
   },
 };

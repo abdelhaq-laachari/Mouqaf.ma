@@ -13,13 +13,15 @@
               >
                 <img
                   class="rounded-circle mt-5"
-                  src="../../assets/avatar/a1.jpg"
+                  v-bind:src="'../uploads/ClientProfile/' + info[0].avatar"
+                  alt=""
                 />
                 <input
                   v-if="seen"
-                  @change="onFileChanged"
                   type="file"
+                  name="file"
                   class="custom-file-input"
+                  @change="onFileChanged"
                 />
                 <!-- just fo remember wher i stope -->
                 <span class="font-weight-bold">
@@ -84,11 +86,7 @@
                   >
                     Edit Profile
                   </button>
-                  <button
-                    v-if="seen"
-                    class="btn btn-primary "
-                    type="submit"
-                  >
+                  <button v-if="seen" class="btn btn-primary" type="submit">
                     Save
                   </button>
                   <button
@@ -131,6 +129,7 @@ export default {
   data() {
     return {
       seen: false,
+      selectedFile: "",
       idClient: localStorage["id"],
       info: [
         {
@@ -138,6 +137,7 @@ export default {
           last_name: "",
           email: "",
           phone: "",
+          avatar: "",
         },
       ],
       disable: true,
@@ -167,6 +167,7 @@ export default {
     HideButton() {
       this.disable = true;
       this.seen = false;
+      this.$router.go(this.$router.currentRoute);
     },
     // comment if i missed up on the file
 
@@ -179,6 +180,7 @@ export default {
       formData.append("Lname", this.info[0].last_name);
       formData.append("phone", this.info[0].phone);
       formData.append("email", this.info[0].email);
+      formData.append("file", this.selectedFile);
       // show alert message with three button save, don't save and cancel
       Swal.fire({
         title: "Do you want to save the changes?",

@@ -1,5 +1,6 @@
 <template>
-  <div class="all__posts">
+
+  <div v-if="!posts" class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
@@ -38,6 +39,9 @@
       />
     </div>
   </div>
+  <div class="no__post" v-else >
+    <h3>You have no post for now</h3>
+  </div>
 </template>
 
 <script>
@@ -52,7 +56,6 @@ export default {
       posts: [],
       post: [
         {
-          url: "../../../public/uploads/PostImag/165347177513.jpg",
           idPost: "",
           idClient: "",
           idCategory: "",
@@ -72,6 +75,7 @@ export default {
         .then((res) => {
           console.log(res.data);
           this.posts = res.data;
+          console.log(this.posts.length);
         })
         .catch((err) => {
           console.log(err);
@@ -143,6 +147,19 @@ export default {
 .post_img img {
   width: 100%;
   height: 100%;
+}
+.no__post{
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.no__post h3{
+  font-size: 1.6rem;
+  font-family: "poppins";
+  margin-bottom: 0 !important;
+  font-weight: 600;
 }
 @media (max-width: 700px) {
   .post__header h3 {

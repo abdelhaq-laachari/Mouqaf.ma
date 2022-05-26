@@ -16,18 +16,27 @@
             {{ poste.city }}
           </span>
         </div>
-        <div class="post__topic">
-          <p>
-            {{ poste.description }}
-          </p>
+        <div class="image_description">
+          <div class="post__topic">
+            <p>
+              {{ poste.description }}
+            </p>
+            <div class="post_img" v-if="poste.images">
+              <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+            </div>
+          </div>
         </div>
-        <DangerButton name="Delete" to="" />
+        <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
       </div>
       <div class="main__comment">
         <div class="number__comment">
-          <h3 v-if="this.TotalComment > 1" >{{ TotalComment }} Comments on this job</h3>  
-          <h3 v-if="this.TotalComment == 1" >{{ TotalComment }} Comment on this job</h3>
-          <h3 v-if="this.TotalComment == 0" >No Comment on this job</h3>
+          <h3 v-if="this.TotalComment > 1">
+            {{ TotalComment }} Comments on this job
+          </h3>
+          <h3 v-if="this.TotalComment == 1">
+            {{ TotalComment }} Comment on this job
+          </h3>
+          <h3 v-if="this.TotalComment == 0">No Comment on this job</h3>
         </div>
         <div
           class="comment__card shadow p-3 mb-5 bg-white rounded"
@@ -88,6 +97,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 import SideBar from "../../components/sidebar/SideBar.vue";
 import {
   collapsed,
@@ -178,6 +188,41 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    // delete my post
+
+    DeleteMyPost() {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(
+              `http://localhost/youcode/mouqaf/client/DeleteMyPost/${this.idPost}`
+            )
+            .then((Response) => {
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your file has been deleted.",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+        }
+      });
     },
   },
   setup() {
@@ -270,6 +315,21 @@ export default {
 }
 .comment__btn2 {
   display: none;
+}
+
+.image_description {
+  display: flex;
+  flex-direction: column;
+  /* background-color: red; */
+}
+.post_img {
+  /* width: 300px; */
+  width: 40%;
+  margin-bottom: 1rem;
+}
+.post_img img {
+  width: 100%;
+  height: 100%;
 }
 @media (max-width: 700px) {
   .post__title {

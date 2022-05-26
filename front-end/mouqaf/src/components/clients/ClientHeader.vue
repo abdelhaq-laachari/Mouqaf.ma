@@ -5,31 +5,63 @@
     </div>
     <div class="user__info">
       <div class="user__image">
-        <img src="../../assets/avatar/a1.jpg" alt="" />
+        <!-- <img
+          :src="`../uploads/ClientProfile/${avatar}` "
+        /> -->
+        <img
+          v-bind:src="'../uploads/ClientProfile/' + info[0].avatar"
+          alt=""
+        />
       </div>
       <div class="user__name">
-        <span>{{ name }}</span>
+        <span>{{ info[0].first_name }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
-// import axios from "axios";
+import axios from "axios";
 export default {
   name: "ClientHeader",
   props: {
     title: { type: String, required: true },
+    // first_name: { type: String, required: true },
+    // avatar: { type: String, required: true },
   },
   data() {
     return {
       idClient: localStorage["id"],
       name: localStorage["name"],
+      info: [
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone: "",
+          avatar: "",
+        },
+      ],
     };
   },
   methods: {
+    //  get clients by id from database
+    GetOneClient() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/GetOneClient/${this.idClient}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.info = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   mounted() {
+    this.GetOneClient();
   },
 };
 </script>

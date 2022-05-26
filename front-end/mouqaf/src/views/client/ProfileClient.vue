@@ -3,6 +3,7 @@
     <SideBar />
     <div class="profile__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Profile" />
+      <!-- <ClientHeader title="Profile" :first_name="info[0].first_name" :avatar="info[0].avatar" /> -->
       <form v-on:submit.prevent="UpdateClient()">
         <input type="hidden" name="idClient" v-model="idClient" />
         <div class="container rounded bg-white mt-5 mb-5">

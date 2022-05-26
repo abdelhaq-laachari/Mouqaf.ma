@@ -1,11 +1,11 @@
 <template>
   <div v-if="typeof this.id !== 'undefined'">
-  <span> {{id}} </span>
+    <span> {{ id }} </span>
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Home" />
       <SearchBar />
-      <AllPosts />
+      <AllPosts  />
     </div>
   </div>
   <div v-else>
@@ -23,6 +23,7 @@ import {
 import ClientHeader from "@/components/clients/ClientHeader.vue";
 import SearchBar from "../../components/clients/SearchBar.vue";
 import AllPosts from "../../components/clients/AllPosts.vue";
+// import axios from "axios";
 export default {
   name: "PostView",
   components: {

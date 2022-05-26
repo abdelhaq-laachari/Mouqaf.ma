@@ -1,5 +1,5 @@
 <template>
-  <div class="all__posts">
+  <div v-if="SePosts.length == 0" class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
@@ -18,14 +18,14 @@
           </span>
         </div>
       </div>
-      <div class="image_description" >
+      <div class="image_description">
         <div class="post__topic">
           <p>
             {{ poste.description }}
           </p>
-        <div class="post_img" v-if="poste.images">
-          <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
-        </div>
+          <div class="post_img" v-if="poste.images">
+            <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+          </div>
         </div>
       </div>
       <div>
@@ -37,7 +37,7 @@
           to=""
         />
       </div>
-        <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
+      <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
       <div v-if="seen" id="hide">
         <span>test</span>
       </div> -->
@@ -57,6 +57,7 @@ export default {
       no: null,
       idClient: localStorage["id"],
       posts: [],
+      SePosts: [],
       post: [
         {
           idPost: "",
@@ -135,7 +136,7 @@ export default {
   font-size: 1rem;
   font-family: "serif";
 }
-.image_description{
+.image_description {
   display: flex;
   flex-direction: column;
   /* background-color: red; */

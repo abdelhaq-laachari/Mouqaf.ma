@@ -1,6 +1,6 @@
 <template>
   <div class="search__form shadow p-3 mb-5 bg-white rounded">
-    <form action="" class="search__bar">
+    <form v-on:submit.prevent="SearchPosts()" class="search__bar">
       <select
         class="form-select form-select-m"
         aria-label=".form-select-sm example"
@@ -22,9 +22,10 @@
           class="form-control"
           id="exampleInputPassword1"
           placeholder="All morocco"
+          v-model="city"
         />
       </div>
-      <button type="submit" class="btn bg-blue-500">
+      <button type="submit" class="btn btn-primary">
         <FIcons :icon="['fas', 'search']" class="b-icon face" />
       </button>
     </form>
@@ -32,17 +33,19 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
 export default {
   name: "SearchBar",
-  data(){
-    return{
+  data() {
+    return {
       idClient: localStorage["id"],
       idCategory: "",
+      city: "",
       name: "",
-      cate: [{ id: "", name: "" }],
+      // cate: [{ id: "", name: "" }],
       cates: [],
-    }
+      SePosts: [],
+    };
   },
   methods: {
     // Get category from database
@@ -56,10 +59,26 @@ export default {
           console.log(err);
         });
     },
+    // Get posts from database
+    SearchPosts() {
+      const formData = new FormData();
+      formData.append("idCategory", this.idCategory);
+      formData.append("city", this.city);
+      axios
+        .post(`http://localhost/youcode/mouqaf/client/SearchPosts`, formData)
+        .then((res) => {
+          console.log(res.data);
+          this.SePosts = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   // get category when the page is loaded
   mounted() {
     this.GetCategory();
+    this.SearchPosts();
   },
 };
 </script>
@@ -83,9 +102,7 @@ export default {
 .form-control {
   width: auto;
 }
-.face{
-  color: #fff;
-}
+
 @media (min-width: 1500px) and (max-width: 2500px) {
   .form-select,
   .form-control {

@@ -1,6 +1,6 @@
 <template>
 
-  <div v-if="!posts" class="all__posts">
+  <div v-if="posts.length > 0 " class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"

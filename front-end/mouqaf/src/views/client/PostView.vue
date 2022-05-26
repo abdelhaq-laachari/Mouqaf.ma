@@ -1,5 +1,5 @@
 <template>
-  <div v-if="typeof this.id !== 'undefined' " >
+  <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Posts" />
@@ -34,7 +34,16 @@ export default {
   },
   data() {
     return {
-      id: localStorage["id"],
+      idClient: localStorage["id"],
+      info: [
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone: "",
+          avatar: "",
+        },
+      ],
     };
   },
   methods: {

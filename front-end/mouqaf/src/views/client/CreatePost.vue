@@ -2,7 +2,7 @@
   <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="create__post" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader title="Create Poste" />
+      <ClientHeader title="Create Post" />
       <div class="title">
         <h4>Tell us what you need done</h4>
       </div>

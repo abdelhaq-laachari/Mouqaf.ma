@@ -2,7 +2,7 @@
   <div v-if="typeof this.idClient !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-      <ClientHeader title="Posts" />
+      <ClientHeader title="Comments" />
       <div
         class="my__post shadow p-3 mb-5 bg-white rounded"
         v-for="poste in posts"
@@ -216,7 +216,7 @@ export default {
                   confirmButtonText: "Ok",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    window.location.reload();
+                    this.$router.push({ name: "post" });
                   }
                 });
               }

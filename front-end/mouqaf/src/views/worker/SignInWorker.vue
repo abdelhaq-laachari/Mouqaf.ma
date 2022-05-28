@@ -11,6 +11,9 @@
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
+            <span v-if="this.LogInError" class="error__msg">{{
+              LogInError
+            }}</span>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -59,7 +62,9 @@
                 </div>
               </div>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Sign In</button>
+            <button type="submit" name="submit" class="btn btn-primary">
+              Sign In
+            </button>
           </form>
           <span class="footer__link"
             >Don't have an account
@@ -79,15 +84,16 @@ export default {
   data() {
     return {
       showPassword: false,
-      password: '',
-      email: '',
+      password: "",
+      email: "",
+      LogInError: "",
     };
   },
   computed: {
     buttonLabel() {
       return this.showPassword ? "Hide" : "Show";
     },
-  }, 
+  },
   methods: {
     toggleShow() {
       this.showPassword = !this.showPassword;
@@ -101,8 +107,17 @@ export default {
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
-          localStorage.setItem("idWorker", Response.data.idWorker);
-          this.$router.push({ name: "HomeWorker" });
+          if (Response.status === 200) {
+            localStorage.setItem("idWorker", Response.data.idWorker);
+            this.$router.push({ name: "HomeWorker" });
+          }
+        })
+        .catch((e) => {
+          console.log(e.response.status);
+          console.log(e.response);
+          if (e.response.status === 400) {
+            this.LogInError = e.response.data.message;
+          }
         });
     },
   },
@@ -204,6 +219,11 @@ export default {
 }
 .footer__link {
   font-size: 1rem;
+}
+.error__msg {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 @media (max-width: 930px) {
   .left {

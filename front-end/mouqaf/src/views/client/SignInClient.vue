@@ -8,10 +8,10 @@
       <div class="right">
         <div class="right__title">
           <h3>WELCOME BACK</h3>
-          <span>error : {{ LogInError }}</span>
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
+          <span v-if="this.LogInError" class="error__msg" >{{ LogInError }}</span>
             <div class="form-group">
               <label for="exampleInputEmail1">Email address</label>
               <input
@@ -22,6 +22,7 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 v-model="email"
+                required
               />
             </div>
             <div class="form-group">
@@ -35,6 +36,7 @@
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
+                    required
                   />
                   <input
                     v-else
@@ -221,6 +223,11 @@ export default {
 }
 .footer__link {
   font-size: 1rem;
+}
+.error__msg {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 @media (max-width: 930px) {
   .left {

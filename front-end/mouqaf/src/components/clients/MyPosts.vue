@@ -1,6 +1,5 @@
 <template>
-
-  <div v-if="posts.length > 0 " class="all__posts">
+  <div v-if="posts.length > 0" class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
@@ -21,14 +20,14 @@
           </span>
         </div>
       </div>
-      <div class="image_description" >
+      <div class="image_description">
         <div class="post__topic">
           <p>
-            {{ poste.description }} 
+            {{ poste.description }}
           </p>
-        <div class="post_img" v-if="poste.images" >
-          <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
-        </div>
+          <div class="post_img" v-if="poste.images">
+            <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+          </div>
         </div>
       </div>
       <ButtonComponent
@@ -39,7 +38,7 @@
       />
     </div>
   </div>
-  <div class="no__post" v-else >
+  <div class="no__post" v-else>
     <h3>You have no post for now</h3>
   </div>
 </template>
@@ -134,7 +133,7 @@ export default {
   font-size: 1rem;
   font-family: "serif";
 }
-.image_description{
+.image_description {
   display: flex;
   flex-direction: column;
   /* background-color: red; */
@@ -148,14 +147,14 @@ export default {
   width: 100%;
   height: 100%;
 }
-.no__post{
+.no__post {
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
 }
-.no__post h3{
+.no__post h3 {
   font-size: 1.6rem;
   font-family: "poppins";
   margin-bottom: 0 !important;

@@ -1,41 +1,41 @@
 <template>
-  <div v-if="SePosts.length == 0" class="all__posts">
+  <div class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
       :key="poste.id"
     >
-      <div class="post__header">
-        <h3>{{ poste.post_title }}</h3>
-        <span> {{ post.title }} </span>
-        <div class="time">
-          <span class="text-muted">6 weeks ago</span>
-          <span class="text-muted">
-            <FIcons
-              :icon="['fas', 'map-marker-alt']"
-              class="b-icon face"
-            />&nbsp; {{ poste.city }}
-          </span>
-        </div>
-      </div>
-      <div class="image_description">
-        <div class="post__topic">
-          <p>
-            {{ poste.description }}
-          </p>
-          <div class="post_img" v-if="poste.images">
-            <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+      <div class="post__text">
+        <div class="post__header">
+          <h3>{{ poste.post_title }}</h3>
+          <div class="time">
+            <span class="text-muted">6 weeks ago</span>
+            <span class="text-muted">
+              <FIcons
+                :icon="['fas', 'map-marker-alt']"
+                class="b-icon face"
+              />&nbsp; {{ poste.city }}
+            </span>
+          </div>
+          <div class="post__topic">
+            <p>
+              {{ poste.description }}
+            </p>
           </div>
         </div>
+        <!-- <div class="image_description"></div> -->
+        <div class="post__button">
+          <input type="hidden" v-model="poste.idPost" />
+          <ButtonComponent
+            @click="StoreIdPost(poste.idPost)"
+            v-if="idClient == poste.idClient"
+            name="Read Comment"
+            to=""
+          />
+        </div>
       </div>
-      <div>
-        <input type="hidden" v-model="poste.idPost" />
-        <ButtonComponent
-          @click="StoreIdPost(poste.idPost)"
-          v-if="idClient == poste.idClient"
-          name="Read Comment"
-          to=""
-        />
+      <div class="post_img" v-if="poste.images">
+        <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
       </div>
       <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
       <div v-if="seen" id="hide">
@@ -57,7 +57,6 @@ export default {
       no: null,
       idClient: localStorage["id"],
       posts: [],
-      SePosts: [],
       post: [
         {
           idPost: "",
@@ -110,12 +109,21 @@ export default {
   width: 90%;
   margin: 0 auto;
   display: flex;
+  gap: 1rem;
+  /* flex-direction: column; */
+}
+.post__text {
+  order: 1;
+  width: 60%;
+  display: flex;
   flex-direction: column;
+  justify-content: space-between;
+  /* background-color: red; */
 }
 .post__header {
   display: flex;
-  align-items: center;
-  gap: 1rem;
+  flex-direction: column;
+  /* align-items: center; */
   margin-bottom: 0.6rem;
 }
 .post__header h3 {
@@ -127,6 +135,7 @@ export default {
 .time {
   display: flex;
   gap: 1rem;
+  margin-bottom: 1rem;
 }
 .time span {
   font-size: 1rem;
@@ -136,14 +145,12 @@ export default {
   font-size: 1rem;
   font-family: "serif";
 }
-.image_description {
+.post__button {
   display: flex;
-  flex-direction: column;
-  /* background-color: red; */
+  justify-content: flex-end;
 }
 .post_img {
-  /* width: 300px; */
-  width: 40%;
+  width: 35%;
   margin-bottom: 1rem;
 }
 .post_img img {

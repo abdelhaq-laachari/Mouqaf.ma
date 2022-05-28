@@ -23,6 +23,7 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 v-model="email"
+                required
               />
             </div>
             <div class="form-group">
@@ -35,6 +36,7 @@
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
+                    required
                   />
                   <input
                     v-else

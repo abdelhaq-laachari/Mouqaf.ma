@@ -152,6 +152,7 @@ export default {
 }
 .post_img {
   width: 35%;
+  height: fit-content;
   margin-bottom: 1rem;
 }
 .post_img img {

@@ -3,31 +3,6 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Comments" />
-      <!-- <div
-        class="my__post shadow p-3 mb-5 bg-white rounded"
-        v-for="poste in posts"
-        :key="poste.idPost"
-      >
-        <div class="post__title">
-          <h3>{{ poste.post_title }}</h3>
-          <span class="text-muted">6 weeks ago</span>
-          <span class="text-muted">
-            <FIcons :icon="['fas', 'map-marker-alt']" />&nbsp;
-            {{ poste.city }}
-          </span>
-        </div>
-        <div class="image_description">
-          <div class="post__topic">
-            <p>
-              {{ poste.description }}
-            </p>
-            <div class="post_img" v-if="poste.images">
-              <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
-            </div>
-          </div>
-        </div>
-        <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
-      </div> -->
       <div v-if="posts.length > 0" class="all__posts">
         <div
           class="post shadow p-3 mb-5 bg-white rounded"
@@ -52,7 +27,6 @@
                 </p>
               </div>
             </div>
-            <!-- <div class="image_description"></div> -->
             <div class="post__button">
               <input type="hidden" v-model="poste.idPost" />
               <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
@@ -276,40 +250,10 @@ export default {
 </script>
 
 <style scoped>
- .post__main {
+.post__main {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }
-/*
-.my__post {
-  width: 100%;
-  margin: 1.2rem 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-.post__title {
-  display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-.post__title h3 {
-  font-size: 1.6rem;
-  font-family: "poppins";
-  margin-bottom: 0 !important;
-  font-weight: 600;
-}
-.post__title span {
-  font-size: 1rem;
-  font-family: serif;
-}
-.post__topic {
-  font-size: 1rem;
-  font-family: "serif";
-}
-.post__btn {
-  width: 150px;
-} */
 .comment__card {
   display: flex;
   flex-direction: column;
@@ -415,7 +359,7 @@ export default {
   justify-content: flex-end;
 }
 .post_img {
-  width: 35%;
+  width: 400px;
   height: fit-content;
   margin-bottom: 1rem;
 }
@@ -423,27 +367,39 @@ export default {
   width: 100%;
   height: 100%;
 }
-@media (max-width: 700px) {
+@media (min-width: 1500px) and (max-width: 2500px) {
+  .post_img {
+    width: 600px;
+  }
   .post__header h3 {
-    font-size: 1.2rem;
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1500px) {
+  .post_img {
+    width: 450px;
+  }
+}
+@media (max-width: 950px) {
+  .post_img {
+    width: 350px;
   }
   .time span,
   .post__topic p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
   }
 }
-/* .post_img {
-  width: 40%;
-  margin-bottom: 1rem;
-}
-.post_img img {
-  width: 100%;
-  height: 100%;
-} */
-@media (max-width: 700px) {
-  /* .post__title {
-    gap: 0.4rem;
-  } */
+@media (max-width: 750px) {
+  .post_img {
+    width: 300px;
+  }
+  .post__header h3 {
+    font-size: 1rem;
+  }
+  .time span,
+  .post__topic p {
+    font-size: 0.7rem;
+  }
   .comment__btn2 {
     display: block;
   }
@@ -457,6 +413,31 @@ export default {
     flex-direction: column;
     align-items: flex-start;
     gap: 0.2rem;
+  }
+}
+@media (max-width: 650px) {
+  .post {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .post_img {
+    order: 1;
+  }
+  .post__text {
+    width: 100%;
+  }
+}
+@media (max-width: 520px) {
+  .post_img {
+    width: 250px;
+  }
+}
+@media (max-width: 400px) {
+  .post_img {
+    width: 200px;
   }
 }
 </style>

@@ -289,6 +289,28 @@ export default {
     width: 100%;
   }
 }
+@media (min-width: 1500px) and (max-width: 2500px) {
+  .post_img {
+    width: 600px;
+  }
+  .post__header h3 {
+    font-size: 2rem;
+  }
+}
+@media (min-width: 1000px) and (max-width: 1500px) {
+  .post_img {
+    width: 450px;
+  }
+}
+@media (max-width: 950px) {
+  .post_img {
+    width: 350px;
+  }
+  .time span,
+  .post__topic p {
+    font-size: 0.9rem;
+  }
+}
 @media (max-width: 700px) {
   .post__header h3 {
     font-size: 1.2rem;
@@ -296,6 +318,31 @@ export default {
   .time span,
   .post__topic p {
     font-size: 0.8rem;
+  }
+}
+@media (max-width: 650px) {
+  .post {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+  }
+  .post_img {
+    order: 1;
+  }
+  .post__text {
+    width: 100%;
+  }
+}
+@media (max-width: 520px) {
+  .post_img {
+    width: 250px;
+  }
+}
+@media (max-width: 400px) {
+  .post_img {
+    width: 200px;
   }
 }
 </style>

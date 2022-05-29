@@ -76,7 +76,7 @@
                       :icon="['fas', 'map-marker-alt']"
                       class="b-icon"
                     />&nbsp;
-                    <span class="text-muted">{{ comment.city }}</span>
+                    <span class="text-muted">{{ comment.from }}</span>
                   </div>
                   <div class="comment">
                     <FIcons

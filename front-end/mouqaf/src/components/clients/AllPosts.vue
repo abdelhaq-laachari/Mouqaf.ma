@@ -127,15 +127,16 @@ export default {
   margin-bottom: 0.6rem;
 }
 .post__header h3 {
-  font-size: 1.6rem;
+  font-size: 1.3rem;
   font-family: "poppins";
+  text-transform: capitalize;
   margin-bottom: 0 !important;
   font-weight: 600;
 }
 .time {
   display: flex;
   gap: 1rem;
-  margin-bottom: 1rem;
+  margin: 0.5rem 0rem 1rem 0rem;
 }
 .time span {
   font-size: 1rem;

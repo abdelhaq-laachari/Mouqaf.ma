@@ -1,5 +1,36 @@
 <template>
-  <div class="all__posts">
+  <div class="search__form shadow p-3 mb-5 bg-white rounded">
+    <form v-on:submit.prevent="SearchPosts()" class="search__bar">
+      <select
+        class="form-select form-select-m"
+        aria-label=".form-select-sm example"
+        v-model="idCategory"
+        required
+      >
+        <option value="" disabled selected>Select category</option>
+        <option
+          v-for="category in cates"
+          :key="category.id"
+          :value="category.id"
+        >
+          {{ category.name }}
+        </option>
+      </select>
+      <div class="form-group">
+        <input
+          type="text"
+          class="form-control"
+          id="exampleInputPassword1"
+          placeholder="All morocco"
+          v-model="city"
+        />
+      </div>
+      <button type="submit" name="submit" class="btn btn-primary">
+        <FIcons :icon="['fas', 'search']" class="b-icon face" />
+      </button>
+    </form>
+  </div>
+  <div v-if="SePosts.length == 0" class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
@@ -43,10 +74,51 @@
       </div> -->
     </div>
   </div>
+  <div v-if="SePosts.length !== 0" class="all__posts">
+    <div
+      class="post shadow p-3 mb-5 bg-white rounded"
+      v-for="Seposte in SePosts"
+      :key="Seposte.id"
+    >
+      <div class="post__text">
+        <div class="post__header">
+          <h3>{{ Seposte.post_title }}</h3>
+          <div class="time">
+            <span class="text-muted">6 weeks ago</span>
+            <span class="text-muted">
+              <FIcons
+                :icon="['fas', 'map-marker-alt']"
+                class="b-icon face"
+              />&nbsp; {{ Seposte.city }}
+            </span>
+          </div>
+          <div class="post__topic">
+            <p>
+              {{ Seposte.description }}
+            </p>
+          </div>
+        </div>
+        <!-- <div class="image_description"></div> -->
+        <div class="post__button">
+          <input type="hidden" v-model="Seposte.idPost" />
+          <ButtonComponent
+            @click="StoreIdPost(Seposte.idPost)"
+            v-if="idClient == Seposte.idClient"
+            name="Read Comment"
+            to=""
+          />
+        </div>
+      </div>
+      <div class="post_img" v-if="Seposte.images">
+        <img v-bind:src="'../uploads/PostImage/' + Seposte.images" alt="" />
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
 import ButtonComponent from "../button/ButtonComponent.vue";
+import Swal from "sweetalert2";
 import axios from "axios";
 export default {
   name: "AllPosts",
@@ -54,22 +126,28 @@ export default {
   data() {
     return {
       // seen: false,
+      idCategory: "",
+      city: "",
+      ErrorMessage: "",
       no: null,
       idClient: localStorage["id"],
       posts: [],
-      post: [
-        {
-          idPost: "",
-          idClient: "",
-          idCategory: "",
-          city: "",
-          title: "",
-          description: "",
-        },
-      ],
+      SePosts: [],
+      cates: [],
     };
   },
   methods: {
+    // Get category from database
+    GetCategory() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/client/getcategory`)
+        .then((res) => {
+          this.cates = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     // Get posts from database
     GetAllPosts() {
       axios
@@ -91,9 +169,26 @@ export default {
         name: "comment",
       });
     },
+    // Get posts from database
+    SearchPosts() {
+      const formData = new FormData();
+      formData.append("idCategory", this.idCategory);
+      formData.append("city", this.city);
+      axios
+        .post(`http://localhost/youcode/mouqaf/client/SearchPosts`, formData)
+        .then((res) => {
+          this.SePosts = res.data;
+        })
+        .catch((e) => {
+          console.log(e.response.data.message);
+          this.ErrorMessage = e.response.data.message;
+          Swal.fire(this.ErrorMessage, "", "error");
+        });
+    },
   },
   // get posts when the page is loaded
   mounted() {
+    this.GetCategory();
     this.GetAllPosts();
   },
 };
@@ -158,6 +253,41 @@ export default {
 .post_img img {
   width: 100%;
   height: 100%;
+}
+.search__form {
+  width: 100%;
+  padding: 1rem;
+  margin-top: 0.8rem;
+  border-radius: 5px;
+  background-color: #f8f8f8;
+}
+.search__bar {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+}
+.form-select,
+.form-control {
+  width: auto;
+}
+
+@media (min-width: 1500px) and (max-width: 2500px) {
+  .form-select,
+  .form-control {
+    width: 500px;
+  }
+}
+
+@media (max-width: 800px) {
+  .search__bar {
+    flex-direction: column;
+  }
+  .form-select,
+  .form-control {
+    width: 100%;
+  }
 }
 @media (max-width: 700px) {
   .post__header h3 {

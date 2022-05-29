@@ -164,7 +164,7 @@ export default {
       localStorage.removeItem("idPost");
       localStorage.setItem("idPost", idPost);
       this.$router.push({
-        name: "comment",
+        name: "apply",
       });
     },
     // Get posts from database

@@ -3,7 +3,7 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Comments" />
-      <div v-if="posts.length > 0" class="all__posts">
+      <div class="all__posts">
         <div
           class="post shadow p-3 mb-5 bg-white rounded"
           v-for="poste in posts"
@@ -133,25 +133,7 @@ export default {
       idClient: localStorage["id"],
       idPost: localStorage["idPost"],
       posts: [],
-      post: [
-        {
-          idPost: "",
-          idClient: "",
-          idCategory: "",
-          city: "",
-          title: "",
-          description: "",
-          first_name: "",
-        },
-      ],
       comments: [],
-      comment: [
-        {
-          id: "",
-          phone: "",
-          proposal: "",
-        },
-      ],
       TotalComment: "",
     };
   },
@@ -173,7 +155,7 @@ export default {
         });
     },
 
-    // get post by id that is in localstorage
+    // get post by id that is in localStorage
     MySinglePost() {
       axios
         .get(

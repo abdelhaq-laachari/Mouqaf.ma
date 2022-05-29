@@ -2,7 +2,7 @@
   <div v-if = "typeof this.idWorker !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-      <HeaderWorker name="Home" />
+      <HeaderWorker title="Home" />
       <AllPosts />
     </div>
   </div>

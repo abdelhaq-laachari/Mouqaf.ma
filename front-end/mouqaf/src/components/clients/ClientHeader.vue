@@ -5,9 +5,6 @@
     </div>
     <div class="user__info">
       <div class="user__image">
-        <!-- <img
-          :src="`../uploads/ClientProfile/${avatar}` "
-        /> -->
         <img
           v-bind:src="'../uploads/ClientProfile/' + info[0].avatar"
           alt=""

@@ -4,7 +4,6 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Home" />
-      <!-- <SearchBar /> -->
       <AllPosts  />
     </div>
   </div>
@@ -21,7 +20,6 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
-// import SearchBar from "../../components/clients/SearchBar.vue";
 import AllPosts from "../../components/clients/AllPosts.vue";
 // import axios from "axios";
 export default {
@@ -29,7 +27,6 @@ export default {
   components: {
     SideBar,
     ClientHeader,
-    // SearchBar,
     AllPosts,
   },
   data() {

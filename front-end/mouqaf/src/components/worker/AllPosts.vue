@@ -66,49 +66,44 @@
       <div class="post_img" v-if="poste.images">
         <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
       </div>
-      <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
-      <div v-if="seen" id="hide">
-        <span>test</span>
-      </div> -->
     </div>
   </div>
   <div v-if="SePosts.length !== 0" class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
-      v-for="Seposte in SePosts"
-      :key="Seposte.id"
+      v-for="SePoste in SePosts"
+      :key="SePoste.id"
     >
       <div class="post__text">
         <div class="post__header">
-          <h3>{{ Seposte.post_title }}</h3>
+          <h3>{{ SePoste.post_title }}</h3>
           <div class="time">
             <span class="text-muted">6 weeks ago</span>
             <span class="text-muted">
               <FIcons
                 :icon="['fas', 'map-marker-alt']"
                 class="b-icon face"
-              />&nbsp; {{ Seposte.city }}
+              />&nbsp; {{ SePoste.city }}
             </span>
           </div>
           <div class="post__topic">
             <p>
-              {{ Seposte.description }}
+              {{ SePoste.description }}
             </p>
           </div>
         </div>
         <!-- <div class="image_description"></div> -->
         <div class="post__button">
-          <input type="hidden" v-model="Seposte.idPost" />
+          <input type="hidden" v-model="SePoste.idPost" />
           <ButtonComponent
-            @click="StoreIdPost(Seposte.idPost)"
-            v-if="idClient == Seposte.idClient"
-            name="Read Comment"
+            @click="StoreIdPost(SePoste.idPost)"
+            name="Apply"
             to=""
           />
         </div>
       </div>
-      <div class="post_img" v-if="Seposte.images">
-        <img v-bind:src="'../uploads/PostImage/' + Seposte.images" alt="" />
+      <div class="post_img" v-if="SePoste.images">
+        <img v-bind:src="'../uploads/PostImage/' + SePoste.images" alt="" />
       </div>
     </div>
   </div>

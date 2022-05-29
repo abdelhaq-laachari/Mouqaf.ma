@@ -1,32 +1,65 @@
 <template>
-  <div class="worker__header">
+  <div class="main__header">
     <div class="header__title">
-      <h3>{{ name }}</h3>
+      <h3>{{ title }}</h3>
     </div>
     <div class="user__info">
       <div class="user__image">
-        <img src="../../assets/avatar/a4.jpg" alt="" />
+        <img v-bind:src="'../uploads/ClientProfile/' + info[0].avatar" alt="" />
       </div>
       <div class="user__name">
-        <span>Worker</span>
+        <span>{{ info[0].first_name }}</span>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-  name: "ClientHeader",
+  name: "HeaderWorker",
   props: {
-    name: { type: String, required: true },
-    // icon: { type: String, required: true },
-    // src: { type: String, required: true },
+    title: { type: String, required: true },
+  },
+  data() {
+    return {
+      idWorker: localStorage["idWorker"],
+      info: [
+        {
+          first_name: "",
+          last_name: "",
+          email: "",
+          phone: "",
+          avatar: "",
+        },
+      ],
+    };
+  },
+  methods: {
+    //  get clients by id from database
+    GetOneClient() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/GetOneClient/${this.idWorker}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.info = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  mounted() {
+    this.GetOneClient();
+    console.log(this.idWorker);
   },
 };
 </script>
 
 <style scoped>
-.worker__header {
+.main__header {
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -58,6 +91,7 @@ export default {
   font-size: 1.6rem;
   font-family: serif;
   font-weight: 550;
+  text-transform: capitalize;
 }
 
 @media (min-width: 1500px) and (max-width: 2500px) {
@@ -66,7 +100,6 @@ export default {
   }
   .user__name span {
     font-size: 2rem;
-    font-family: "poppins";
   }
   .user__info {
     width: 20%;
@@ -84,14 +117,13 @@ export default {
   .user__info {
     gap: 2rem;
     justify-content: space-around;
-    width: auto ;
+    width: auto;
   }
   .header__title h3 {
     font-size: 1rem;
   }
   .user__name span {
     font-size: 1rem;
-    font-family: "poppins";
   }
 }
 </style>

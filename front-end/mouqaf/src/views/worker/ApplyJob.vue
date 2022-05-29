@@ -7,7 +7,7 @@
       class="post__main"
       :style="{ 'margin-left': sidebarWidth }"
     >
-      <HeaderWorker name="Apply Job" />
+      <HeaderWorker title="Apply Job" />
       <div class="all__posts">
         <div class="post shadow p-3 mb-5 bg-white rounded">
           <div class="post__text">

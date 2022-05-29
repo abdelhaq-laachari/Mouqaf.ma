@@ -59,7 +59,10 @@
           <div class="comment__header">
             <div class="worker__info">
               <div class="worker__img">
-                <img src="../../assets/avatar/a3.jpg" alt="" />
+                <img
+                  v-bind:src="'../uploads/ClientProfile/' + comment.avatar"
+                  alt=""
+                />
               </div>
               <div class="worker">
                 <div class="name">

@@ -107,7 +107,6 @@ export default {
   }
   .user__name span {
     font-size: 2rem;
-    font-family: "poppins";
   }
   .user__info {
     width: 20%;
@@ -132,7 +131,6 @@ export default {
   }
   .user__name span {
     font-size: 1rem;
-    font-family: "poppins";
   }
 }
 </style>

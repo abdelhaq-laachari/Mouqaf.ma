@@ -3,7 +3,6 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <HeaderWorker name="Home" />
-      <SearchBar />
       <AllPosts />
     </div>
   </div>
@@ -20,14 +19,12 @@ import {
   toggleSidebar,
   sidebarWidth,
 } from "../../components/sidebar/state";
-import SearchBar from "../../components/clients/SearchBar.vue";
 import AllPosts from "../../components/worker/AllPosts.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     HeaderWorker,
-    SearchBar,
     AllPosts,
   },
   data() {

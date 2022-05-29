@@ -1,6 +1,5 @@
 <template>
   <router-link :to="to" class="button__hover">
-    <!-- <button class="btn btn-primary button__hover ">{{ name }}</button> -->
     <button class="button-7" role="button">{{ name }}</button>
   </router-link>
 </template>
@@ -54,5 +53,10 @@ export default {
 .button-7:active {
   background-color: #0064bd;
   box-shadow: none;
+}
+@media (max-width: 600px) {
+  .button-7 {
+    font-size: 10px;
+  }
 }
 </style>

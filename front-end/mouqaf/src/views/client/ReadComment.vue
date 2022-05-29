@@ -3,7 +3,7 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Comments" />
-      <div
+      <!-- <div
         class="my__post shadow p-3 mb-5 bg-white rounded"
         v-for="poste in posts"
         :key="poste.idPost"
@@ -27,6 +27,45 @@
           </div>
         </div>
         <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
+      </div> -->
+      <div v-if="posts.length > 0" class="all__posts">
+        <div
+          class="post shadow p-3 mb-5 bg-white rounded"
+          v-for="poste in posts"
+          :key="poste.id"
+        >
+          <div class="post__text">
+            <div class="post__header">
+              <h3>{{ poste.post_title }}</h3>
+              <div class="time">
+                <span class="text-muted">6 weeks ago</span>
+                <span class="text-muted">
+                  <FIcons
+                    :icon="['fas', 'map-marker-alt']"
+                    class="b-icon face"
+                  />&nbsp; {{ poste.city }}
+                </span>
+              </div>
+              <div class="post__topic">
+                <p>
+                  {{ poste.description }}
+                </p>
+              </div>
+            </div>
+            <!-- <div class="image_description"></div> -->
+            <div class="post__button">
+              <input type="hidden" v-model="poste.idPost" />
+              <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
+            </div>
+          </div>
+          <div class="post_img" v-if="poste.images">
+            <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
+          </div>
+          <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
+      <div v-if="seen" id="hide">
+        <span>test</span>
+      </div> -->
+        </div>
       </div>
       <div class="main__comment">
         <div class="number__comment">
@@ -237,10 +276,11 @@ export default {
 </script>
 
 <style scoped>
-.post__main {
+ .post__main {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }
+/*
 .my__post {
   width: 100%;
   margin: 1.2rem 0;
@@ -269,7 +309,7 @@ export default {
 }
 .post__btn {
   width: 150px;
-}
+} */
 .comment__card {
   display: flex;
   flex-direction: column;
@@ -322,9 +362,61 @@ export default {
   flex-direction: column;
   /* background-color: red; */
 }
+
+.all__posts {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin: 1.2rem 0;
+}
+.post {
+  width: 90%;
+  margin: 0 auto;
+  display: flex;
+  gap: 1rem;
+  /* flex-direction: column; */
+}
+.post__text {
+  order: 1;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  /* background-color: red; */
+}
+.post__header {
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  margin-bottom: 0.6rem;
+}
+.post__header h3 {
+  font-size: 1.3rem;
+  font-family: "poppins";
+  text-transform: capitalize;
+  margin-bottom: 0 !important;
+  font-weight: 600;
+}
+.time {
+  display: flex;
+  gap: 1rem;
+  margin: 0.5rem 0rem 1rem 0rem;
+}
+.time span {
+  font-size: 1rem;
+  font-family: serif;
+}
+.post__topic {
+  font-size: 1rem;
+  font-family: "serif";
+}
+.post__button {
+  display: flex;
+  justify-content: flex-end;
+}
 .post_img {
-  /* width: 300px; */
-  width: 40%;
+  width: 35%;
+  height: fit-content;
   margin-bottom: 1rem;
 }
 .post_img img {
@@ -332,9 +424,26 @@ export default {
   height: 100%;
 }
 @media (max-width: 700px) {
-  .post__title {
-    gap: 0.4rem;
+  .post__header h3 {
+    font-size: 1.2rem;
   }
+  .time span,
+  .post__topic p {
+    font-size: 0.8rem;
+  }
+}
+/* .post_img {
+  width: 40%;
+  margin-bottom: 1rem;
+}
+.post_img img {
+  width: 100%;
+  height: 100%;
+} */
+@media (max-width: 700px) {
+  /* .post__title {
+    gap: 0.4rem;
+  } */
   .comment__btn2 {
     display: block;
   }

@@ -23,6 +23,7 @@
           id="exampleInputPassword1"
           placeholder="All morocco"
           v-model="city"
+          required
         />
       </div>
       <button type="submit" name="submit" class="btn btn-primary">

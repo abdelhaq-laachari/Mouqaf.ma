@@ -21,7 +21,6 @@ import {
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
 import AllPosts from "../../components/clients/AllPosts.vue";
-// import axios from "axios";
 export default {
   name: "PostView",
   components: {

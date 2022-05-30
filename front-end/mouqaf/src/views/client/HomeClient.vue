@@ -1,6 +1,5 @@
 <template>
   <div v-if="typeof this.id !== 'undefined'">
-    <span> {{ id }} </span>
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <ClientHeader title="Home" />
@@ -43,6 +42,5 @@ export default {
 .post__main {
   padding: 1rem 1rem;
   transition: 0.2s ease;
-  /* height: 100vh; */
 }
 </style>

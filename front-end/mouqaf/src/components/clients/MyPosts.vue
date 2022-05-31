@@ -6,7 +6,7 @@
       :key="poste.id"
     >
       <div class="post__text">
-        <div class="post__header">
+        <div class="post__header"> 
           <h3>{{ poste.post_title }}</h3>
           <div class="time">
             <span class="text-muted">6 weeks ago</span>

@@ -1,3 +1,46 @@
 <template>
-    <h1>hello</h1>
+  <div v-if="typeof this.id !== 'undefined'">
+    <SideBar />
+    <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
+      <!-- <ClientHeader title="Home" /> -->
+      <!-- <AllPosts  /> -->
+    </div>
+  </div>
+  <div v-else>
+    {{ this.$router.push({ name: "home" }) }}
+  </div>
 </template>
+ 
+<script>
+import SideBar from "../../components/admin/SideBar.vue";
+import {
+  collapsed,
+  toggleSidebar,
+  sidebarWidth,
+} from "../../components/sidebar/state";
+// import ClientHeader from "@/components/clients/ClientHeader.vue";
+// import AllPosts from "../../components/clients/AllPosts.vue";
+export default {
+  name: "PostView",
+  components: {
+    SideBar,
+    // ClientHeader,
+    // AllPosts,
+  },
+  data() {
+    return {
+      id: localStorage["idAdmin"],
+    };
+  },
+  setup() {
+    return { collapsed, toggleSidebar, sidebarWidth };
+  },
+};
+</script>
+
+<style scoped>
+.post__main {
+  padding: 1rem 1rem;
+  transition: 0.2s ease;
+}
+</style>

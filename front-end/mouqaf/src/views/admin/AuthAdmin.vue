@@ -103,8 +103,8 @@ export default {
           console.log(Response.data);
           // this.message = Response.data.message;
           if (Response.status === 200) {
-            localStorage.setItem("id", Response.data.id);
-            localStorage.setItem("name", Response.data.name);
+            localStorage.setItem("idAdmin", Response.data.idAdmin);
+            localStorage.setItem("Admin name", Response.data.AdminName);
             this.$router.push({ name: "Dashboard" });
           }
         })

@@ -196,6 +196,18 @@ export default {
             this.ErrorMessage = e.response.data.message;
             Swal.fire(this.ErrorMessage, "", "error");
           });
+      } else if (this.idCategory !== "" && this.city === "") {
+        formData.append("idCategory", this.idCategory);
+        axios
+          .post(`http://localhost/youcode/mouqaf/client/SearchPostsByCategory`, formData)
+          .then((res) => {
+            this.SePosts = res.data;
+          })
+          .catch((e) => {
+            console.log(e.response.data.message);
+            this.ErrorMessage = e.response.data.message;
+            Swal.fire(this.ErrorMessage, "", "error");
+          });
       }
     },
   },

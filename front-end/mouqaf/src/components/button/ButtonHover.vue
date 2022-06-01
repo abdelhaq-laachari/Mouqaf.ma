@@ -1,7 +1,17 @@
 <template>
   <!-- HTML !-->
-  <button class="button-7" role="button">Button 7</button>
+  <button class="button-7" role="button"> {{name}} </button>
 </template>
+
+
+<script>
+export default {
+  props: {
+    name: { type: String, required: true },
+  },
+};
+</script>
+
 
 <style scoped>
 /* CSS */

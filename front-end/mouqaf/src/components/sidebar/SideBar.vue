@@ -17,9 +17,6 @@
     <SidebarLink to="/profile" icon="user">Profile</SidebarLink>
     <SidebarLink to="" @Click="Logout" icon="sign-out">Sign Out</SidebarLink>
 
-
-
-
     <!-- collapse button -->
     <span class="collapse-icon" @click="toggleSidebar">
       <FIcons
@@ -46,18 +43,19 @@ export default {
       sidebarWidth,
     };
   },
-  methods : {
-    Logout(){
+  methods: {
+    Logout() {
       localStorage.clear();
       localStorage.removeItem("id");
       this.$router.push({ name: "SignInClient" });
-    }
+    },
   },
 };
 </script>
 <style>
 :root {
-  --sidebar-bg-color: #4700d8;
+  --sidebar-bg-color: #4e73df;
+  /* --sidebar-bg-color: #4700d8; */
   --sidebar-item-hover: #0c5df4;
   --sidebar-item-active: #0c5df4;
 }

@@ -5,7 +5,6 @@
         class="form-select form-select-m"
         aria-label=".form-select-sm example"
         v-model="idCategory"
-        required
       >
         <option value="" disabled selected>Select category</option>
         <option
@@ -162,21 +161,53 @@ export default {
         name: "apply",
       });
     },
-    // Get posts from database
+    // Get posts from database by searching
     SearchPosts() {
       const formData = new FormData();
-      formData.append("idCategory", this.idCategory);
-      formData.append("city", this.city);
-      axios
-        .post(`http://localhost/youcode/mouqaf/client/SearchPosts`, formData)
-        .then((res) => {
-          this.SePosts = res.data;
-        })
-        .catch((e) => {
-          console.log(e.response.data.message);
-          this.ErrorMessage = e.response.data.message;
-          Swal.fire(this.ErrorMessage, "", "error");
-        });
+      if (this.idCategory !== "" && this.city !== "") {
+        formData.append("idCategory", this.idCategory);
+        formData.append("city", this.city);
+        axios
+          .post(`http://localhost/youcode/mouqaf/client/SearchPosts`, formData)
+          .then((res) => {
+            this.SePosts = res.data;
+          })
+          .catch((e) => {
+            console.log(e.response.data.message);
+            this.ErrorMessage = e.response.data.message;
+            Swal.fire(this.ErrorMessage, "", "error");
+          });
+      } else if (this.idCategory === "" && this.city !== "") {
+        formData.append("city", this.city);
+        axios
+          .post(
+            `http://localhost/youcode/mouqaf/client/SearchPostsByCity`,
+            formData
+          )
+          .then((res) => {
+            this.SePosts = res.data;
+          })
+          .catch((e) => {
+            console.log(e.response.data.message);
+            this.ErrorMessage = e.response.data.message;
+            Swal.fire(this.ErrorMessage, "", "error");
+          });
+      } else if (this.idCategory !== "" && this.city === "") {
+        formData.append("idCategory", this.idCategory);
+        axios
+          .post(
+            `http://localhost/youcode/mouqaf/client/SearchPostsByCategory`,
+            formData
+          )
+          .then((res) => {
+            this.SePosts = res.data;
+          })
+          .catch((e) => {
+            console.log(e.response.data.message);
+            this.ErrorMessage = e.response.data.message;
+            Swal.fire(this.ErrorMessage, "", "error");
+          });
+      }
     },
   },
   // get posts when the page is loaded

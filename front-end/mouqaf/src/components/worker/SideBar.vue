@@ -54,7 +54,7 @@ export default {
 </script>
 <style>
 :root {
-  --sidebar-bg-color: #4700d8;
+  --sidebar-bg-color2: #4e73df;
   --sidebar-item-hover: #0c5df4;
   --sidebar-item-active: #0c5df4;
 }
@@ -62,7 +62,7 @@ export default {
 <style scoped>
 .sidebar {
   color: #fff;
-  background-color: var(--sidebar-bg-color);
+  background-color: var(--sidebar-bg-color2);
   float: left;
   position: fixed;
   z-index: 1;

@@ -53,33 +53,23 @@
           </div>
         </div>
         <hr />
-        <div class="title">
+        <div class="title ">
           <h3>Offer to work on this job now!</h3>
         </div>
         <div class="apply__form">
           <form v-on:submit.prevent="CreatePost()">
             <input type="hidden" v-model="poste.idPost" />
             <input type="hidden" v-model="this.idWorker" />
-            <!-- <div class="form-group">
-              <label class="mb-2">Phone Number</label>
-              <input
-                type="text"
-                class="form-control mb-2"
-                id="exampleInputPassword1"
-                placeholder="Enter your phone number"
-                v-model="phone"
-              />
-            </div> -->
             <div class="form-group">
               <label class="mb-2">Describe your proposal</label>
               <textarea
-                class="form-control"
+                class="form-control mb-2"
                 id="exampleFormControlTextarea1"
                 rows="3"
                 v-model="proposal"
               ></textarea>
             </div>
-            <button class="btn btn-primary mt-2">Apply</button>
+            <ButtonHover name="Apply" />
           </form>
         </div>
       </div>
@@ -100,12 +90,14 @@ import {
   toggleSidebar,
   sidebarWidth,
 } from "../../components/sidebar/state";
+import ButtonHover from "@/components/button/ButtonHover.vue";
 export default {
   name: "PostView",
   components: {
     SideBar,
     HeaderWorker,
-  },
+    ButtonHover
+},
   data() {
     return {
       idWorker: localStorage["idWorker"],

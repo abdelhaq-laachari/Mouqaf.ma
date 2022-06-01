@@ -1,17 +1,16 @@
 <template>
   <div class="main__header">
     <div class="header__title">
-      <h3>{{ title }}</h3>
+      <h3 class="h3 text-gray-800">{{ title }}</h3>
     </div>
     <div class="user__info">
       <div class="user__image">
-        <img
-          v-bind:src="'../uploads/ClientProfile/' + info[0].avatar"
-          alt=""
-        />
+        <img v-bind:src="'../uploads/ClientProfile/' + info[0].avatar" alt="" />
       </div>
       <div class="user__name">
-        <span>{{ info[0].first_name }}</span>
+        <span class="mr-2 text-gray-600 small">
+          {{ info[0].first_name }} {{ info[0].last_name }}
+        </span>
       </div>
     </div>
   </div>
@@ -69,15 +68,9 @@ export default {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f9f3ee;
+  background-color: #f8f9fc;
   padding: 0.5rem;
   border-radius: 5px;
-}
-.header__title h3 {
-  color: #000;
-  font-size: 1.7rem;
-  font-family: "serif";
-  font-weight: 600;
 }
 .user__info {
   width: 20%;
@@ -93,9 +86,7 @@ export default {
   border-radius: 50%;
 }
 .user__name span {
-  font-size: 1.6rem;
-  font-family: serif;
-  font-weight: 550;
+  text-transform: capitalize;
 }
 
 @media (min-width: 1500px) and (max-width: 2500px) {
@@ -124,9 +115,6 @@ export default {
     width: auto;
   }
   .header__title h3 {
-    font-size: 1rem;
-  }
-  .user__name span {
     font-size: 1rem;
   }
 }

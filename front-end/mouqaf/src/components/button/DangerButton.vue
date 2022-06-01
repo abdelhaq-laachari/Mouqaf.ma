@@ -43,7 +43,7 @@ export default {
 }
 .button-7:hover,
 .button-7:focus {
-  background-color: #07c;
+  background-color: #e11e1e;
 }
 .button-7:focus {
   box-shadow: 0 0 0 4px rgba(0, 149, 255, 0.15);

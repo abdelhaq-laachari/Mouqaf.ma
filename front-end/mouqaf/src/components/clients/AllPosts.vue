@@ -168,7 +168,7 @@ export default {
         name: "comment",
       });
     },
-    // Get posts from database
+    // Get posts from database by searching
     SearchPosts() {
       const formData = new FormData();
       if (this.idCategory !== "" && this.city !== "") {

@@ -7,7 +7,7 @@
       </div>
       <div class="right">
         <div class="right__title">
-          <h3>WELCOME BACK</h3>
+          <h3 class="text-gray-600 small">Welcome Back Dear Worker!</h3>
         </div>
         <div class="right__form">
           <form v-on:submit.prevent="SignIn()">
@@ -176,9 +176,8 @@ export default {
 .right__title h3 {
   display: flex;
   justify-content: center;
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  font-family: "poppins";
 }
 .right__form {
   width: 100%;

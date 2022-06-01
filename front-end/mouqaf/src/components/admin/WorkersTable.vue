@@ -15,23 +15,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
+          <tr v-for="worker in workers" :key="worker.id">
+            <th scope="row">{{ worker.id }}</th>
+            <td>{{ worker.first_name }}</td>
+            <td>{{ worker.last_name }}</td>
+            <td>{{ worker.email }}</td>
+            <td>{{ worker.phone }}</td>
+            <td>{{ worker.from }}</td>
+            <td class="icons__table">
+              <FIcons
+                :icon="['fas', 'circle-info']"
+                class="btn btn-outline-info"
+              />
+              <FIcons
+                :icon="['fas', 'trash']"
+                class="btn btn-outline-danger"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -80,5 +80,9 @@ export default {
   font-weight: 600;
   margin: 3rem 0rem 1rem 0rem;
   font-family: "poppins";
+}
+.icons__table{
+    display: flex;
+    gap: 1rem;
 }
 </style>

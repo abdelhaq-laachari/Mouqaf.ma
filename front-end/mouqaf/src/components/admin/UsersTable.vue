@@ -15,23 +15,23 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-          </tr>
-          <tr>
-            <th scope="row">3</th>
-            <td>Larry</td>
-            <td>the Bird</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
-            <td>@twitter</td>
+          <tr v-for="client in clients" :key="client.id">
+            <th scope="row">{{ client.id }}</th>
+            <td>{{ client.first_name }}</td>
+            <td>{{ client.last_name }}</td>
+            <td>{{ client.email }}</td>
+            <td>{{ client.phone }}</td>
+            <td>{{ client.from }}</td>
+            <td class="icons__table">
+              <FIcons
+                :icon="['fas', 'circle-info']"
+                class="btn btn-outline-info"
+              />
+              <FIcons
+                :icon="['fas', 'trash']"
+                class="btn btn-outline-danger"
+              />
+            </td>
           </tr>
         </tbody>
       </table>
@@ -40,8 +40,45 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
   name: "UsersTable",
+  data() {
+    return {
+      clients: [],
+      workers: [],
+    };
+  },
+  methods: {
+    // Get Clients from database
+    GetClients() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/admin/GetClients`)
+        .then((res) => {
+          console.log(res.data);
+          this.clients = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    // Get Workers from database
+    GetWorkers() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/admin/GetWorkers`)
+        .then((res) => {
+          this.workers = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  // get posts when the page is loaded
+  mounted() {
+    this.GetClients();
+    this.GetWorkers();
+  },
 };
 </script>
 
@@ -51,5 +88,9 @@ export default {
   font-weight: 600;
   margin: 3rem 0rem 1rem 0rem;
   font-family: "poppins";
+}
+.icons__table{
+    display: flex;
+    gap: 1rem;
 }
 </style>

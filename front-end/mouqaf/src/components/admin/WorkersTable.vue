@@ -40,9 +40,34 @@
 </template>
 
 <script>
+import axios from "axios";
 export default {
-    name:"WorkersTable"
-}
+  name: "WorkersTable",
+  data() {
+    return {
+      clients: [],
+      workers: [],
+    };
+  },
+  methods: {
+    // Get Workers from database
+    GetWorkers() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/admin/GetWorkers`)
+        .then((res) => {
+          console.log(res.data);
+          this.workers = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  // get posts when the page is loaded
+  mounted() {
+    this.GetWorkers();
+  },
+};
 </script>
 
 <style scoped>

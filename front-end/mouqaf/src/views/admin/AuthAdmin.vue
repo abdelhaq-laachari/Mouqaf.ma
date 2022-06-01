@@ -97,7 +97,7 @@ export default {
       formData.append("email", this.email);
       formData.append("password", this.password);
       axios
-        .post("http://localhost/youcode/mouqaf/client/signin", formData)
+        .post("http://localhost/youcode/mouqaf/admin/SignInAdmin", formData)
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
@@ -105,7 +105,7 @@ export default {
           if (Response.status === 200) {
             localStorage.setItem("id", Response.data.id);
             localStorage.setItem("name", Response.data.name);
-            this.$router.push({ name: "HomeClient" });
+            this.$router.push({ name: "Dashboard" });
           }
         })
         .catch((e) => {

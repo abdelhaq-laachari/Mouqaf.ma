@@ -107,7 +107,7 @@ const routes = [
   // admin section
   {
     path: '/dashboard',
-    name: 'dashboard',
+    name: 'Dashboard',
     component: AdminDashboard
   },
   {

@@ -5,7 +5,7 @@
     </div>
     <div class="user__info">
       <div class="user__image">
-        <img v-bind:src="'../uploads/ClientProfile/' + info[0].avatar" alt="" />
+        <img v-bind:src="'../uploads/admin/' + info[0].avatar" alt="" />
       </div>
       <div class="user__name">
         <span class="mr-2 text-gray-600 small">
@@ -19,14 +19,14 @@
 <script>
 import axios from "axios";
 export default {
-  name: "ClientHeader",
+  name: "AdminHeader",
   props: {
     title: { type: String, required: true },
   },
   data() {
     return {
-      idClient: localStorage["id"],
-      name: localStorage["name"],
+      idAdmin: localStorage["idAdmin"],
+      name: localStorage["Admin name"],
       info: [
         {
           first_name: "",
@@ -40,10 +40,10 @@ export default {
   },
   methods: {
     //  get clients by id from database
-    GetOneClient() {
+    GetAdmin() {
       axios
         .get(
-          `http://localhost/youcode/mouqaf/client/GetOneClient/${this.idClient}`
+          `http://localhost/youcode/mouqaf/admin/GetAdmin`
         )
         .then((res) => {
           console.log(res.data);
@@ -55,7 +55,7 @@ export default {
     },
   },
   mounted() {
-    this.GetOneClient();
+    this.GetAdmin();
   },
 };
 </script>

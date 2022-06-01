@@ -19,6 +19,10 @@ import ApplyJob from '../views/worker/ApplyJob.vue'
 // admin section
 import AuthAdmin from '../views/admin/AuthAdmin.vue'
 import AdminDashboard from '../views/admin/DashboardView.vue'
+import AllUsers from '../views/admin/UsersView.vue'
+import AllReports from '../views/admin/ReportsView.vue'
+import AllPosts from '../views/admin/PostsView.vue'
+import ProfileAdmin from '../views/admin/ProfileAdmin.vue'
 
 const routes = [
   // website website 
@@ -106,14 +110,34 @@ const routes = [
   },
   // admin section
   {
+    path: '/auth',
+    name: 'AdminAuth',
+    component: AuthAdmin
+  },
+  {
     path: '/dashboard',
     name: 'Dashboard',
     component: AdminDashboard
   },
   {
-    path: '/auth',
-    name: 'AdminAuth',
-    component: AuthAdmin
+    path: '/users',
+    name: 'AllUsers',
+    component: AllUsers
+  },
+  {
+    path: '/reports',
+    name: 'Reports',
+    component: AllReports
+  },
+  {
+    path: '/AllPosts',
+    name: 'AllPosts',
+    component: AllPosts
+  },
+  {
+    path: '/ProfileAdmin',
+    name: 'ProfileAdmin',
+    component: ProfileAdmin
   },
 ]
 

@@ -12,12 +12,11 @@
     </div>
 
     <!-- sidebar menu link -->
-    <SidebarLink to="/HomeWorker" icon="home">Home</SidebarLink>
-    <SidebarLink to="/applied" icon="users">Users</SidebarLink>
-    <SidebarLink to="/applied" icon="file-text">Posts</SidebarLink>
-    <SidebarLink to="/applied" icon="triangle-exclamation">Reports</SidebarLink>
-    <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
-    <SidebarLink to="/ProfileWorker" icon="user">Profile</SidebarLink>
+    <SidebarLink to="/dashboard" icon="home">Home</SidebarLink>
+    <SidebarLink to="/users" icon="users">Users</SidebarLink>
+    <SidebarLink to="/AllPosts" icon="file-text">Posts</SidebarLink>
+    <SidebarLink to="/reports" icon="triangle-exclamation">Reports</SidebarLink>
+    <SidebarLink to="/ProfileAdmin" icon="user">Profile</SidebarLink>
     <SidebarLink to="" @Click="Logout" icon="sign-out">Sign Out</SidebarLink>
 
     <!-- collapse button -->

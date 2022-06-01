@@ -13,7 +13,10 @@
 
     <!-- sidebar menu link -->
     <SidebarLink to="/HomeWorker" icon="home">Home</SidebarLink>
-    <SidebarLink to="/applied" icon="file-text">Applied</SidebarLink>
+    <SidebarLink to="/applied" icon="users">Users</SidebarLink>
+    <SidebarLink to="/applied" icon="file-text">Posts</SidebarLink>
+    <SidebarLink to="/applied" icon="triangle-exclamation">Reports</SidebarLink>
+    <!-- <i class="fa-solid fa-triangle-exclamation"></i> -->
     <SidebarLink to="/ProfileWorker" icon="user">Profile</SidebarLink>
     <SidebarLink to="" @Click="Logout" icon="sign-out">Sign Out</SidebarLink>
 

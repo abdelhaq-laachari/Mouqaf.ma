@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-  <HomeHeader/>
+    <HomeHeader />
     <div class="home__frame">
       <div class="left">
         <img src="../assets/auth/signup.png" alt="" />
@@ -12,7 +12,9 @@
         <div class="right__form">
           <form v-on:submit.prevent="SignUp()">
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1">First Name</label>
+              <label class="form-label" for="exampleInputEmail1"
+                >First Name</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -21,7 +23,9 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1">Last Name</label>
+              <label class="form-label" for="exampleInputEmail1"
+                >Last Name</label
+              >
               <input
                 type="text"
                 class="form-control"
@@ -30,7 +34,9 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1">Email address</label>
+              <label class="form-label" for="exampleInputEmail1"
+                >Email address</label
+              >
               <input
                 type="email"
                 class="form-control"
@@ -41,7 +47,9 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputPassword1">Password</label>
+              <label class="form-label" for="exampleInputPassword1"
+                >Password</label
+              >
               <div class="field has-addons">
                 <div class="control is-expanded">
                   <input
@@ -78,13 +86,30 @@
               </div>
             </div>
             <div class="form-group">
+              <label class="form-label" for="exampleInputEmail1"
+                >City</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="City"
+                v-model="city"
+              />
+            </div>
+            <div class="form-group">
               <label class="form-label" for="">Choose your account type.</label>
-              <select class="form-select" aria-label="Default select example" v-model="role" >
+              <select
+                class="form-select"
+                aria-label="Default select example"
+                v-model="role"
+              >
                 <option value="client">Client</option>
                 <option value="worker">Worker</option>
               </select>
             </div>
-            <button type="submit" name="submit" class="btn btn-primary">Sign Up</button>
+            <button type="submit" name="submit" class="btn btn-primary">
+              Sign Up
+            </button>
           </form>
           <span class="footer__link"
             >You already have an account?
@@ -97,21 +122,22 @@
 </template>
 
 <script>
-import HomeHeader from '../components/HomeHeader.vue'
+import HomeHeader from "../components/HomeHeader.vue";
 import axios from "axios";
 export default {
   name: "SignIn",
   components: {
-    HomeHeader
+    HomeHeader,
   },
   data() {
     return {
       showPassword: false,
-      password: '',
-      role: '',
-      firstName: '',
-      lastName: '',
-      email: '',
+      password: "",
+      role: "",
+      firstName: "",
+      lastName: "",
+      email: "",
+      city: "",
     };
   },
   computed: {
@@ -123,29 +149,27 @@ export default {
     toggleShow() {
       this.showPassword = !this.showPassword;
     },
-    SignUp(){
+    SignUp() {
       const formData = new FormData();
       formData.append("first_name", this.firstName);
       formData.append("last_name", this.lastName);
       formData.append("email", this.email);
       formData.append("password", this.password);
       formData.append("role", this.role);
+      formData.append("city", this.city);
       axios
         .post("http://localhost/youcode/mouqaf/client/signup", formData)
         .then((Response) => {
           console.log(Response.status);
           console.log(Response.data);
           // this.$router.push({ name: "home" });
-          if(this.role == 'client')
-          {
+          if (this.role == "client") {
             this.$router.push({ name: "SignInClient" });
-          }
-          else if(this.role == 'worker')
-          {
+          } else if (this.role == "worker") {
             this.$router.push({ name: "SignInWorker" });
           }
         });
-    }
+    },
   },
 };
 </script>
@@ -153,7 +177,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 115vh;
+  height: 135vh;
   display: flex;
   flex-direction: column;
   background: rgb(30, 25, 126);
@@ -165,7 +189,7 @@ export default {
     rgba(0, 103, 243, 1) 100%
   );
 }
-.form-label{
+.form-label {
   margin-bottom: 5px;
   margin-left: 5px;
 }

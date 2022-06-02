@@ -5,18 +5,34 @@
 
 <script>
 import Chart from "chart.js/auto";
+import axios from "axios";
 export default {
   name: "ChartView",
-  mounted() {
+  data() {
+    return {};
+  },
+  methods: {},
+  async mounted() {
+    // get dates
+    const GetDate = await axios.get(
+      `http://localhost/youcode/mouqaf/admin/GetDates`
+    );
+    this.dates = GetDate.data.map((date) => date.signed_at);
+    // get users
+    const GetUsers = await axios.get(
+      `http://localhost/youcode/mouqaf/admin/GetNewUsers`
+    );
+    this.users = GetUsers.data.map((user) => user.total);
+
     const ctx = document.getElementById("myChart");
     const myChart = new Chart(ctx, {
       type: "bar",
       data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
+        labels: this.dates,
         datasets: [
           {
-            label: "# of Votes",
-            data: [12, 19, 3, 5, 2, 3],
+            // data:[1,2,3] ,
+            data: this.users,
             backgroundColor: [
               "rgba(255, 99, 132, 0.2)",
               "rgba(54, 162, 235, 0.2)",

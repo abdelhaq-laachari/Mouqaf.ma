@@ -26,13 +26,13 @@
       <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
+            <div class="col mr-2" v-for="poste in posts" :key="poste.NumberOfPosts">
               <div
                 class="text-xs font-weight-bold text-success text-uppercase mb-1"
               >
                 Total Posts
               </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800"> {{poste.NumberOfPosts}} </div>
             </div>
             <div class="col-auto">
               <FIcons :icon="['fas', 'clipboard-list']" class="icon" />
@@ -95,24 +95,28 @@ export default {
   data() {
     return {
       id: localStorage["idAdmin"],
+      posts:[],
     };
   },
   methods:{
     //  get clients by id from database
-    GetAdmin() {
+    GetTotalPosts() {
       axios
         .get(
-          `http://localhost/youcode/mouqaf/admin/GetAdmin`
+          `http://localhost/youcode/mouqaf/admin/GetTotalPosts`
         )
         .then((res) => {
           console.log(res.data);
-          this.info = res.data;
+          this.posts = res.data;
         })
         .catch((err) => {
           console.log(err);
         });
     },
-  }
+  },
+    mounted() {
+        this.GetTotalPosts();
+    },
 };
 </script>
 

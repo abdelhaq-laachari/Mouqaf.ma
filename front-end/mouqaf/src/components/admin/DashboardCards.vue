@@ -5,13 +5,13 @@
       <div class="card border-left-primary shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
+            <div class="col mr-2" v-for="user in users" :key="user">
               <div
                 class="text-xs font-weight-bold text-primary text-uppercase mb-1"
               >
                 Total Users
               </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{user.NumberOfUsers}}</div>
             </div>
             <div class="col-auto">
               <FIcons :icon="['fas', 'users']" class="icon" />
@@ -26,7 +26,7 @@
       <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2"  v-for="poste in posts" :key="poste">
+            <div class="col mr-2" v-for="poste in posts" :key="poste">
               <div
                 class="text-xs font-weight-bold text-success text-uppercase mb-1"
               >
@@ -130,10 +130,25 @@ export default {
           console.log(err);
         });
     },
+    //  get total users
+    GetTotalUsers() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/admin/GetTotalUsers`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.users = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
     mounted() {
         this.GetTotalPosts();
         this.GetTotalCategory();
+        this.GetTotalUsers();
     },
 };
 </script>

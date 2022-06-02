@@ -1,6 +1,8 @@
 <template>
-  <h1>test</h1>
-  <canvas id="myChart" width="400" height="400"></canvas>
+  <div class="users__chart">
+    <h3>new users</h3>
+    <canvas id="myChart" width="400" height="400"></canvas>
+  </div>
 </template>
 
 <script>
@@ -70,3 +72,35 @@ export default {
   },
 };
 </script>
+<style scoped>
+.users__chart {
+  width: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.users__chart h3 {
+  margin-bottom: 1rem;
+  text-transform: capitalize;
+}
+@media (max-width: 1000px) {
+  .users__chart{
+    width: 350px;
+  }
+}
+@media (max-width: 900px) {
+  .users__chart{
+    width: 320px;
+  }
+}
+@media (max-width: 820px) {
+  .users__chart{
+    width: 300px;
+  }
+}
+@media (max-width: 750px) {
+  .users__chart{
+    width: 80%;
+  }
+}
+</style>

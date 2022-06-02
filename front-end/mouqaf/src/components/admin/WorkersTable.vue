@@ -21,7 +21,7 @@
             <td>{{ worker.last_name }}</td>
             <td>{{ worker.email }}</td>
             <td>{{ worker.phone }}</td>
-            <td>{{ worker.from }}</td>
+            <td>{{ worker.city }}</td>
             <td class="icons__table">
               <FIcons
                 :icon="['fas', 'circle-info']"

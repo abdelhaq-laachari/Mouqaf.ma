@@ -3,9 +3,9 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <AdminHeader title="Users" />
-      <div class="users__table" >
-        <UsersTable/>
-        <WorkersTable/>
+      <div class="users__table">
+        <UsersTable />
+        <WorkersTable />
       </div>
     </div>
   </div>
@@ -52,5 +52,4 @@ export default {
   width: 95%;
   margin: 2rem auto;
 }
-
 </style>

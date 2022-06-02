@@ -3,7 +3,7 @@
     <div class="logo__title">
       <span v-if="collapsed">
         <FIcons
-          :icon="['fas', 'align-justify']"
+          :icon="['fas', 'list-ul']"
           class="b-menu"
           @click="toggleSidebar"
         />

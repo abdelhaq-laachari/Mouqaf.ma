@@ -26,7 +26,7 @@
       <div class="card border-left-success shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2" v-for="poste in posts" :key="poste.NumberOfPosts">
+            <div class="col mr-2"  v-for="poste in posts" :key="poste">
               <div
                 class="text-xs font-weight-bold text-success text-uppercase mb-1"
               >
@@ -68,13 +68,13 @@
       <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
+            <div class="col mr-2"  v-for="category in categories" :key="category">
               <div
                 class="text-xs font-weight-bold text-warning text-uppercase mb-1"
               >
                 All Category's
               </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{category.NumberOfCategory}} </div>
             </div>
             <div class="col-auto">
               <FIcons :icon="['fas', 'list-ul']" class="icon" />
@@ -96,10 +96,13 @@ export default {
     return {
       id: localStorage["idAdmin"],
       posts:[],
+      categories:[],
+      users:[],
+      reports:[],
     };
   },
   methods:{
-    //  get clients by id from database
+    //  get total posts
     GetTotalPosts() {
       axios
         .get(
@@ -113,9 +116,24 @@ export default {
           console.log(err);
         });
     },
+    //  get total comments
+    GetTotalCategory() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/admin/GetTotalCategory`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.categories = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
     mounted() {
         this.GetTotalPosts();
+        this.GetTotalCategory();
     },
 };
 </script>

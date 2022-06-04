@@ -3,7 +3,7 @@
     <h3 class="title">All Posts</h3>
     <div class="table-responsive col-lg-12">
       <table class="table table-hover table-borderless">
-        <thead class="table-dark">
+        <thead class="table__bar">
           <tr>
             <th scope="col">#</th>
             <th scope="col">Post Title</th>
@@ -93,5 +93,9 @@ export default {
 }
 td {
   height: 50px;
+}
+.table__bar {
+  background-color: #4e73df;
+  color: #f5f5f5;
 }
 </style>

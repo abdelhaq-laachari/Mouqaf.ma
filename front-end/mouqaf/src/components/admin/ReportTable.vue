@@ -39,7 +39,7 @@
 <script>
 import axios from "axios";
 export default {
-  name: "UsersTable",
+  name: "ReportTable",
   data() {
     return {
       clients: [],
@@ -50,10 +50,21 @@ export default {
     // Get Clients from database
     GetClients() {
       axios
-        .get(`http://localhost/youcode/mouqaf/admin/GetClients`)
+        .get(`http://localhost/youcode/mouqaf/admin/GetAllReports`)
         .then((res) => {
           console.log(res.data);
           this.clients = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    // Get Workers from database
+    GetWorkers() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/admin/GetWorkers`)
+        .then((res) => {
+          this.workers = res.data;
         })
         .catch((err) => {
           console.log(err);

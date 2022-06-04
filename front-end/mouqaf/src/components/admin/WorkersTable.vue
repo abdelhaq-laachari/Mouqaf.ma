@@ -3,7 +3,7 @@
     <h3 class="title">All Workers</h3>
     <div class="table-responsive col-lg-12">
       <table class="table table-hover table-borderless">
-        <thead class="table-dark">
+        <thead class="table__bar">
           <tr>
             <th scope="col">#</th>
             <th scope="col">First Name</th>
@@ -84,5 +84,9 @@ export default {
 .icons__table{
     display: flex;
     gap: 1rem;
+}
+.table__bar {
+  background-color: #4e73df;
+  color: #f5f5f5;
 }
 </style>

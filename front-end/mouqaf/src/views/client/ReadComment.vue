@@ -27,11 +27,11 @@
                 </p>
               </div>
             </div>
-            <div class="post__button" v-if=" poste.images">
+            <div class="post__button" v-if="poste.images">
               <input type="hidden" v-model="poste.idPost" />
               <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
             </div>
-            <div class="post__btn" v-if=" !poste.images">
+            <div class="post__btn" v-if="!poste.images">
               <input type="hidden" v-model="poste.idPost" />
               <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
             </div>
@@ -39,10 +39,6 @@
           <div class="post_img" v-if="poste.images">
             <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
           </div>
-          <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
-      <div v-if="seen" id="hide">
-        <span>test</span>
-      </div> -->
         </div>
       </div>
       <div class="main__comment">
@@ -96,7 +92,14 @@
               </div>
             </div>
             <div class="comment__btn">
-              <DangerButton name="Report" to="" />
+              <input type="hidden" v-model="comment.idComment" />
+              <DangerButton
+                name="Report"
+                to=""
+                data-bs-toggle="modal"
+                data-bs-target="#exampleModal"
+                @click="SelectOne(comment.idComment)"
+              />
             </div>
           </div>
           <div class="comment__topic">
@@ -110,6 +113,8 @@
         </div>
       </div>
     </div>
+    <!-- i need to complete pop up and report comment -->
+    <!-- <ReportModal /> -->
   </div>
   <div v-else>
     {{ this.$router.push({ name: "SignInClient" }) }}
@@ -125,6 +130,7 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
+// import ReportModal from "@/components/clients/ReportModal.vue";
 import DangerButton from "@/components/button/DangerButton.vue";
 import axios from "axios";
 export default {
@@ -133,6 +139,7 @@ export default {
     SideBar,
     ClientHeader,
     DangerButton,
+    // ReportModal,
   },
 
   data() {
@@ -141,6 +148,7 @@ export default {
       idPost: localStorage["idPost"],
       posts: [],
       comments: [],
+      oneComment: [],
       TotalComment: "",
     };
   },
@@ -226,6 +234,21 @@ export default {
         }
       });
     },
+
+    // select one comment to report
+    SelectOne(idComment) {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/client/TotalComments/${idComment}`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.oneComment = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
@@ -243,10 +266,19 @@ export default {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }
+.number__comment h3 {
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+}
 .comment__card {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  width: 80%;
+  margin: auto;
 }
 .comment__header {
   display: flex;

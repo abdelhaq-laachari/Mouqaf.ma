@@ -3,8 +3,8 @@
     <SideBar />
     <div class="profile__main" :style="{ 'margin-left': sidebarWidth }">
       <AdminHeader title="Profile" />
-      <form v-on:submit.prevent="UpdateClient()">
-        <input type="hidden" name="idClient" v-model="idClient" />
+      <form v-on:submit.prevent="UpdateAdmin()">
+        <input type="hidden" name="idClient" v-model="id" />
         <div class="container rounded bg-white mt-5 mb-5">
           <div class="row">
             <div class="col-md-3 border-right">
@@ -173,9 +173,9 @@ export default {
 
     // update profile information
     // Create post
-    UpdateClient() {
+    UpdateAdmin() {
       const formData = new FormData();
-      formData.append("idClient", this.idClient);
+      formData.append("idAdmin", this.id);
       formData.append("Fname", this.info[0].first_name);
       formData.append("Lname", this.info[0].last_name);
       formData.append("phone", this.info[0].phone);
@@ -193,7 +193,7 @@ export default {
         if (result.isConfirmed) {
           axios
             .post(
-              "http://localhost/youcode/mouqaf/client/updateclient",
+              "http://localhost/youcode/mouqaf/admin/UpdateAdmin",
               formData
             )
             .then((Response) => {

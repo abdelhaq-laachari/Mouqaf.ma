@@ -23,11 +23,16 @@
             <td>{{ client.phone }}</td>
             <td>{{ client.city }}</td>
             <td class="icons__table">
-              <FIcons
+              <input type="hidden" v-model="client.id" />
+              <!-- <FIcons
                 :icon="['fas', 'circle-info']"
                 class="btn btn-outline-info"
+              /> -->
+              <FIcons
+                :icon="['fas', 'trash']"
+                class="btn btn-outline-danger"
+                @click="DeleteComment(report.idComment)"
               />
-              <FIcons :icon="['fas', 'trash']" class="btn btn-outline-danger" />
             </td>
           </tr>
         </tbody>

@@ -22,7 +22,11 @@
             <th scope="row">{{ report.idWorker }}</th>
             <td class="icons__table">
               <input type="hidden" v-model="report.idComment" />
-              <FIcons :icon="['fas', 'trash']" class="btn btn-outline-danger" />
+              <FIcons
+                :icon="['fas', 'trash']"
+                class="btn btn-outline-danger"
+                @click="DeleteComment(report.idComment)"
+              />
             </td>
           </tr>
         </tbody>
@@ -78,6 +82,7 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
 import axios from "axios";
 export default {
   name: "ReportTable",
@@ -118,7 +123,7 @@ export default {
 
     // delete comment
 
-    DeleteComment() {
+    DeleteComment(idComment) {
       Swal.fire({
         title: "Are you sure?",
         text: "You won't be able to revert this!",
@@ -131,7 +136,7 @@ export default {
         if (result.isConfirmed) {
           axios
             .post(
-              `http://localhost/youcode/mouqaf/admin/DeleteComment/${this.idComment}`
+              `http://localhost/youcode/mouqaf/admin/DeleteComment/${idComment}`
             )
             .then((Response) => {
               if (Response.status === 200) {
@@ -142,7 +147,8 @@ export default {
                   confirmButtonText: "Ok",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                    this.$router.push({ name: "post" });
+                  // reload page
+                  window.location.reload();
                   }
                 });
               }

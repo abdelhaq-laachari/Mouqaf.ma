@@ -27,15 +27,17 @@
                 alt=""
               />
             </td>
-            <td >
+            <td>
               <div class="icons__table">
-                <FIcons
+                <input type="hidden" v-model="poste.idPost" />
+                <!-- <FIcons
                   :icon="['fas', 'circle-info']"
                   class="btn btn-outline-info"
-                />
+                /> -->
                 <FIcons
                   :icon="['fas', 'trash']"
                   class="btn btn-outline-danger"
+                  @click="DeleteUserPost(poste.idPost)"
                 />
               </div>
             </td>
@@ -48,6 +50,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "PostsTable",
   data() {
@@ -67,6 +70,40 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    // delete post
+
+    DeleteUserPost(idPost) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(`http://localhost/youcode/mouqaf/admin/DeleteUserPost/${idPost}`)
+            .then((Response) => {
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your file has been deleted.",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    // reload page
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+        }
+      });
     },
   },
   // get posts when the page is loaded

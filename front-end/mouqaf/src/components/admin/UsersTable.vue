@@ -31,7 +31,7 @@
               <FIcons
                 :icon="['fas', 'trash']"
                 class="btn btn-outline-danger"
-                @click="DeleteComment(report.idComment)"
+                @click="DeleteUser(client.id)"
               />
             </td>
           </tr>
@@ -43,6 +43,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "UsersTable",
   data() {
@@ -63,6 +64,42 @@ export default {
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    // delete client
+
+    DeleteUser(idUser) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(
+              `http://localhost/youcode/mouqaf/admin/DeleteUser/${idUser}`
+            )
+            .then((Response) => {
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your file has been deleted.",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    // reload page
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+        }
+      });
     },
   },
   // get posts when the page is loaded

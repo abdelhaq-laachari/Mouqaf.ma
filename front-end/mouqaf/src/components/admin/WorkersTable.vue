@@ -23,13 +23,15 @@
             <td>{{ worker.phone }}</td>
             <td>{{ worker.city }}</td>
             <td class="icons__table">
-              <FIcons
+              <input type="hidden" v-model="worker.id" />
+              <!-- <FIcons
                 :icon="['fas', 'circle-info']"
                 class="btn btn-outline-info"
-              />
+              /> -->
               <FIcons
                 :icon="['fas', 'trash']"
                 class="btn btn-outline-danger"
+                @click="DeleteUser(worker.id)"
               />
             </td>
           </tr>
@@ -41,6 +43,7 @@
 
 <script>
 import axios from "axios";
+import Swal from "sweetalert2";
 export default {
   name: "WorkersTable",
   data() {
@@ -62,6 +65,40 @@ export default {
           console.log(err);
         });
     },
+
+    // delete worker
+
+    DeleteUser(idUser) {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(`http://localhost/youcode/mouqaf/admin/DeleteUser/${idUser}`)
+            .then((Response) => {
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your file has been deleted.",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    // reload page
+                    window.location.reload();
+                  }
+                });
+              }
+            });
+        }
+      });
+    },
   },
   // get posts when the page is loaded
   mounted() {
@@ -81,9 +118,9 @@ export default {
   margin: 3rem 0rem 1rem 0rem;
   font-family: "poppins";
 }
-.icons__table{
-    display: flex;
-    gap: 1rem;
+.icons__table {
+  display: flex;
+  gap: 1rem;
 }
 .table__bar {
   background-color: #4e73df;

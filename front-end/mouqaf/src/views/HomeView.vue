@@ -7,7 +7,7 @@
       <div class="left">
         <TypedText />
         <div class="bott">
-          <ButtonComponent name="Join Us" to="/SignIn" />
+          <ButtonComponent name="Join Us" to="/SignUp" />
         </div>
       </div>
       <div class="right">
@@ -18,13 +18,6 @@
     <CardText />
     <!-- Third Section -->
     <BrowseText />
-    <!-- Slide Section -->
-    <!-- <div class="slide">
-      <div class="carousel-title">
-        <h3>Most popular services.</h3>
-      </div>
-      <SlideHome />
-    </div> -->
     <!-- NEIGHBORLY -->
     <MenHome />
     <!-- Mouqaf App -->
@@ -43,8 +36,6 @@ import MenHome from "../components/home/MenHome.vue";
 import MouqafApp from "../components/home/MouqafApp.vue";
 import HomeFooter from "../components/home/HomeFooter.vue";
 import ButtonComponent from "@/components/button/ButtonComponent.vue";
-// import SlideHome from "../components/home/SlideHome.vue";
-// @ is an alias to /src
 
 export default {
   name: "HomeView",

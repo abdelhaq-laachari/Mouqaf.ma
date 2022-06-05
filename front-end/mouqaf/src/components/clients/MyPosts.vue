@@ -24,11 +24,22 @@
           </div>
         </div>
         <!-- <div class="image_description"></div> -->
-        <div class="post__button">
+        <div
+          class="post__button"
+          v-if="idClient == poste.idClient && poste.images">
           <input type="hidden" v-model="poste.idPost" />
           <ButtonComponent
             @click="StoreIdPost(poste.idPost)"
-            v-if="idClient == poste.idClient"
+            name="Read Comment"
+            to=""
+          />
+        </div>
+        <div
+          class="post__btn"
+          v-if="idClient == poste.idClient && !poste.images">
+          <input type="hidden" v-model="poste.idPost" />
+          <ButtonComponent
+            @click="StoreIdPost(poste.idPost)"
             name="Read Comment"
             to=""
           />

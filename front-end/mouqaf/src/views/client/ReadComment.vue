@@ -27,7 +27,11 @@
                 </p>
               </div>
             </div>
-            <div class="post__button">
+            <div class="post__button" v-if=" poste.images">
+              <input type="hidden" v-model="poste.idPost" />
+              <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
+            </div>
+            <div class="post__btn" v-if=" !poste.images">
               <input type="hidden" v-model="poste.idPost" />
               <DangerButton @click="DeleteMyPost()" name="Delete" to="" />
             </div>

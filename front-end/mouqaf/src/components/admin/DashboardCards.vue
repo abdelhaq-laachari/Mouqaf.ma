@@ -47,13 +47,13 @@
       <div class="card border-left-danger shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2">
+            <div class="col mr-2" v-for="report in reports" :key="report">
               <div
                 class="text-xs font-weight-bold text-danger text-uppercase mb-1"
               >
                 Total Reports
               </div>
-              <div class="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+              <div class="h5 mb-0 font-weight-bold text-gray-800">{{report.NumberOfReports}} </div>
             </div>
             <div class="col-auto">
               <FIcons :icon="['fas', 'triangle-exclamation']" class="icon" />
@@ -68,7 +68,7 @@
       <div class="card border-left-warning shadow h-100 py-2">
         <div class="card-body">
           <div class="row no-gutters align-items-center">
-            <div class="col mr-2"  v-for="category in categories" :key="category">
+            <div class="col mr-2" v-for="category in categories" :key="category">
               <div
                 class="text-xs font-weight-bold text-warning text-uppercase mb-1"
               >
@@ -116,6 +116,20 @@ export default {
           console.log(err);
         });
     },
+    //  get total posts
+    GetTotalReports() {
+      axios
+        .get(
+          `http://localhost/youcode/mouqaf/admin/GetTotalReports`
+        )
+        .then((res) => {
+          console.log(res.data);
+          this.reports = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
     //  get total comments
     GetTotalCategory() {
       axios
@@ -147,6 +161,7 @@ export default {
   },
     mounted() {
         this.GetTotalPosts();
+        this.GetTotalReports();
         this.GetTotalCategory();
         this.GetTotalUsers();
     },

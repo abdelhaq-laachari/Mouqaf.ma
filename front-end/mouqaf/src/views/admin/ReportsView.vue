@@ -3,6 +3,7 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
     <AdminHeader title="Reports" />
+    <ReportTable/>
     </div>
   </div>
   <div v-else>
@@ -13,6 +14,7 @@
 <script>
 import SideBar from "../../components/admin/SideBar.vue";
 import AdminHeader from "../../components/admin/AdminHeader.vue";
+import ReportTable from "../../components/admin/ReportTable.vue";
 import {
   collapsed,
   toggleSidebar,
@@ -23,6 +25,7 @@ export default {
   components: {
     SideBar,
     AdminHeader,
+    ReportTable,
   },
   data() {
     return {

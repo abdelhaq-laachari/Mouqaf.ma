@@ -1,37 +1,78 @@
 <template>
   <div class="client">
-    <h3 class="title">All Clients</h3>
+    <h3 class="title">All Reports</h3>
     <div class="table-responsive col-lg-12">
       <table class="table table-hover table-borderless">
         <thead class="table__bar">
           <tr>
             <th scope="col">#</th>
-            <th scope="col">First Name</th>
-            <th scope="col">Last Name</th>
-            <th scope="col">Email</th>
-            <th scope="col">Phone Number</th>
-            <th scope="col">From</th>
+            <th scope="col">Report's Subject</th>
+            <th scope="col">Comment Id</th>
+            <th scope="col">reported comment</th>
+            <th scope="col">Worker Id</th>
             <th scope="col">Action</th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="client in clients" :key="client.id">
-            <th scope="row">{{ client.id }}</th>
-            <td>{{ client.first_name }}</td>
-            <td>{{ client.last_name }}</td>
-            <td>{{ client.email }}</td>
-            <td>{{ client.phone }}</td>
-            <td>{{ client.city }}</td>
+          <tr v-for="report in reports" :key="report.id">
+            <th scope="row">{{ report.idReport }}</th>
+            <td>{{ report.topic }}</td>
+            <th scope="row">{{ report.idComment }}</th>
+            <td>{{ report.proposal }}</td>
+            <th scope="row">{{ report.idWorker }}</th>
             <td class="icons__table">
-              <FIcons
-                :icon="['fas', 'circle-info']"
-                class="btn btn-outline-info"
-              />
+              <input type="hidden" v-model="report.idComment" />
               <FIcons :icon="['fas', 'trash']" class="btn btn-outline-danger" />
             </td>
           </tr>
         </tbody>
       </table>
+    </div>
+  </div>
+
+  <div class="popup__modal">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">
+              Post & Worker info
+            </h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div
+            class="modal-body"
+            v-for="OneReport in OneReports"
+            :key="OneReport.idReport"
+          >
+            <span>Post Title : {{ OneReport.post_title }} </span> <br />
+            <span>Post Title : {{ OneReport.idReport }} </span> <br />
+            <span>Description : {{ OneReport.description }} </span>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button type="button" class="btn btn-primary">Save changes</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -42,39 +83,77 @@ export default {
   name: "ReportTable",
   data() {
     return {
-      clients: [],
-      workers: [],
+      reports: [],
+      OneReports: [],
+      idReport: localStorage["idReport"],
     };
   },
   methods: {
     // Get Clients from database
-    GetClients() {
+    GetAllReports() {
       axios
         .get(`http://localhost/youcode/mouqaf/admin/GetAllReports`)
         .then((res) => {
           console.log(res.data);
-          this.clients = res.data;
+          this.reports = res.data;
         })
         .catch((err) => {
           console.log(err);
         });
     },
     // Get Workers from database
-    GetWorkers() {
+    GetOneReport() {
       axios
-        .get(`http://localhost/youcode/mouqaf/admin/GetWorkers`)
+        .get(
+          `http://localhost/youcode/mouqaf/admin/GetOneReport/${this.idReport}`
+        )
         .then((res) => {
-          this.workers = res.data;
+          this.OneReports = res.data;
+          console.log(this.OneReports);
         })
         .catch((err) => {
           console.log(err);
         });
     },
+
+    // delete comment
+
+    DeleteComment() {
+      Swal.fire({
+        title: "Are you sure?",
+        text: "You won't be able to revert this!",
+        icon: "warning",
+        showCancelButton: true,
+        confirmButtonColor: "#3085d6",
+        cancelButtonColor: "#d33",
+        confirmButtonText: "Yes, delete it!",
+      }).then((result) => {
+        if (result.isConfirmed) {
+          axios
+            .post(
+              `http://localhost/youcode/mouqaf/admin/DeleteComment/${this.idComment}`
+            )
+            .then((Response) => {
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your file has been deleted.",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    this.$router.push({ name: "post" });
+                  }
+                });
+              }
+            });
+        }
+      });
+    },
   },
-  // get posts when the page is loaded
+  // get All reports when the page is loaded
   mounted() {
-    this.GetClients();
-    // this.GetWorkers();
+    this.GetAllReports();
   },
 };
 </script>

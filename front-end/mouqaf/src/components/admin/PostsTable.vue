@@ -58,7 +58,7 @@ export default {
       posts: [],
     };
   },
-  methods: {
+  methods: { 
     // Get Workers from database
     GetAllPosts() {
       axios

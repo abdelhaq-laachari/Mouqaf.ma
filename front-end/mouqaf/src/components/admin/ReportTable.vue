@@ -1,5 +1,5 @@
 <template>
-  <div class="client">
+  <div class="client" v-if="reports.length > 0">
     <h3 class="title">All Reports</h3>
     <div class="table-responsive col-lg-12">
       <table class="table table-hover table__width table-borderless">
@@ -33,14 +33,20 @@
       </table>
     </div>
   </div>
-
+  <div v-else>
+    <EmptyTable message="there is no report for now." />
+  </div>
 </template>
 
 <script>
 import Swal from "sweetalert2";
 import axios from "axios";
+import EmptyTable from "../empty/EmptyTable.vue";
 export default {
   name: "ReportTable",
+  components: {
+    EmptyTable,
+  },
   data() {
     return {
       reports: [],
@@ -103,8 +109,8 @@ export default {
                   confirmButtonText: "Ok",
                 }).then((result) => {
                   if (result.isConfirmed) {
-                  // reload page
-                  window.location.reload();
+                    // reload page
+                    window.location.reload();
                   }
                 });
               }
@@ -135,7 +141,8 @@ export default {
   background-color: #4e73df;
   color: #f5f5f5;
 }
-td, th {
+td,
+th {
   overflow: hidden;
   white-space: nowrap;
 }
@@ -145,5 +152,16 @@ td, th {
   margin: auto;
   position: relative;
   overflow: auto;
+}
+.message {
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+  text-align: center;
+  margin-top: 10rem;
+  text-transform: capitalize;
 }
 </style>

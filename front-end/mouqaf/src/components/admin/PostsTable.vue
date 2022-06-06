@@ -1,5 +1,5 @@
 <template>
-  <div class="client">
+  <div class="client" v-if="posts.length > 0">
     <h3 class="title">All Posts</h3>
     <div class="table-responsive col-lg-12 table__width">
       <table class="table table-hover table-borderless">
@@ -46,13 +46,20 @@
       </table>
     </div>
   </div>
+  <div v-else>
+    <EmptyTable message="there is no post for now." />
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import EmptyTable from "../empty/EmptyTable.vue";
 export default {
   name: "PostsTable",
+  components: {
+    EmptyTable,
+  },
   data() {
     return {
       posts: [],
@@ -146,5 +153,16 @@ td, th {
   margin: auto;
   position: relative;
   overflow: auto;
+}
+.message {
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+  text-align: center;
+  margin-top: 10rem;
+  text-transform: capitalize;
 }
 </style>

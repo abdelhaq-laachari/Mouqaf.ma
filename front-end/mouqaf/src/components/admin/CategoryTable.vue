@@ -1,5 +1,5 @@
 <template>
-  <div class="client">
+  <div class="client" v-if="categories.length > 0">
     <div class="title__btn">
       <h3 class="title">All Categories</h3>
       <ButtonComponent
@@ -34,6 +34,9 @@
         </tbody>
       </table>
     </div>
+  </div>
+  <div v-else>
+    <EmptyTable message="there is no category for now." />
   </div>
   <!-- report modal -->
   <div class="popup__modal">
@@ -96,8 +99,13 @@
 import axios from "axios";
 import Swal from "sweetalert2";
 import ButtonComponent from "../button/ButtonComponent.vue";
+import EmptyTable from "../empty/EmptyTable.vue";
 export default {
   name: "UsersTable",
+  components: {
+    ButtonComponent,
+    EmptyTable,
+  },
   data() {
     return {
       categories: [],
@@ -208,7 +216,6 @@ export default {
   mounted() {
     this.GetCategory();
   },
-  components: { ButtonComponent },
 };
 </script>
 
@@ -243,5 +250,16 @@ td,
 th {
   overflow: hidden;
   white-space: nowrap;
+}
+.message {
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+  text-align: center;
+  margin-top: 10rem;
+  text-transform: capitalize;
 }
 </style>

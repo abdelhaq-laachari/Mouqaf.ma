@@ -1,5 +1,5 @@
 <template>
-  <div class="client">
+  <div class="client" v-if="workers.length > 0">
     <h3 class="title">All Workers</h3>
     <div class="table-responsive col-lg-12 table__width">
       <table class="table table-hover table-borderless">
@@ -39,13 +39,20 @@
       </table>
     </div>
   </div>
+  <div v-else>
+    <EmptyTable message="there is no worker's for now." />
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import EmptyTable from "../empty/EmptyTable.vue";
 export default {
   name: "WorkersTable",
+  components: {
+    EmptyTable,
+  },
   data() {
     return {
       clients: [],

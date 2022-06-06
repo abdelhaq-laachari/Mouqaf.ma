@@ -3,7 +3,7 @@
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <HeaderWorker title="Applied" />
-      <div class="client">
+      <div class="client" v-if="AppliedJob.length > 0">
         <h3 class="title">All Applied Jobs</h3>
         <div class="table-responsive table__width">
           <table class="table table-hover table-borderless">
@@ -35,6 +35,11 @@
           </table>
         </div>
       </div>
+      <div id="message" v-else>
+        <EmptyTable message="You haven't applied for any jobs." />
+        <h1 class="get__job" >Get your first job now</h1>
+        <ButtonComponent name="Get Your Work" to="/HomeWorker" />
+      </div>
     </div>
   </div>
   <div v-else>
@@ -45,6 +50,8 @@
 <script>
 import HeaderWorker from "@/components/worker/HeaderWorker.vue";
 import SideBar from "../../components/worker/SideBar.vue";
+import EmptyTable from "../../components/empty/EmptyTable.vue";
+import ButtonComponent from "../../components/button/ButtonComponent.vue";
 import {
   collapsed,
   toggleSidebar,
@@ -56,6 +63,8 @@ export default {
   components: {
     SideBar,
     HeaderWorker,
+    EmptyTable,
+    ButtonComponent,
   },
   data() {
     return {
@@ -113,8 +122,26 @@ export default {
 td {
   height: 50px;
 }
-td, th {
+td,
+th {
   overflow: hidden;
   white-space: nowrap;
+}
+#message {
+  margin-top: 8rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.get__job{
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+  text-align: center;
+  text-transform: capitalize;
 }
 </style>

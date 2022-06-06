@@ -1,5 +1,5 @@
 <template>
-  <div class="client">
+  <div class="client" v-if="clients.length > 0">
     <h3 class="title">All Clients</h3>
     <div class="table-responsive col-lg-12 table__width">
       <table class="table table-hover table-borderless">
@@ -24,10 +24,6 @@
             <td>{{ client.city }}</td>
             <td class="icons__table">
               <input type="hidden" v-model="client.id" />
-              <!-- <FIcons
-                :icon="['fas', 'circle-info']"
-                class="btn btn-outline-info"
-              /> -->
               <FIcons
                 :icon="['fas', 'trash']"
                 class="btn btn-outline-danger"
@@ -39,13 +35,20 @@
       </table>
     </div>
   </div>
+  <div v-else>
+    <EmptyTable message="there is no users for now." />
+  </div>
 </template>
 
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import EmptyTable from "../empty/EmptyTable.vue";
 export default {
   name: "UsersTable",
+  components: {
+    EmptyTable,
+  },
   data() {
     return {
       clients: [],
@@ -135,5 +138,16 @@ th {
   margin: auto;
   position: relative;
   overflow: auto;
+}
+.message {
+  font-size: 1.6rem;
+  color: #333333;
+  font-family: "Bitter", serif;
+  font-weight: normal;
+  line-height: 10px;
+  margin: 0 0 2rem;
+  text-align: center;
+  margin-top: 10rem;
+  text-transform: capitalize;
 }
 </style>

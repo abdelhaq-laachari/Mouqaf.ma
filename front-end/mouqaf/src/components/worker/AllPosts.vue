@@ -53,7 +53,15 @@
             </p>
           </div>
         </div>
-        <div class="post__button">
+        <div class="post__button" v-if=" poste.images">
+          <input type="hidden" v-model="poste.idPost" />
+          <ButtonComponent
+            @click="StoreIdPost(poste.idPost)"
+            name="Apply"
+            to=""
+          />
+        </div>
+        <div class="post__btn" v-if=" !poste.images">
           <input type="hidden" v-model="poste.idPost" />
           <ButtonComponent
             @click="StoreIdPost(poste.idPost)"
@@ -92,7 +100,15 @@
           </div>
         </div>
         <!-- <div class="image_description"></div> -->
-        <div class="post__button">
+        <div class="post__button" v-if=" SePoste.images">
+          <input type="hidden" v-model="SePoste.idPost" />
+          <ButtonComponent
+            @click="StoreIdPost(SePoste.idPost)"
+            name="Apply"
+            to=""
+          />
+        </div>
+        <div class="post__btn" v-if=" !SePoste.images">
           <input type="hidden" v-model="SePoste.idPost" />
           <ButtonComponent
             @click="StoreIdPost(SePoste.idPost)"

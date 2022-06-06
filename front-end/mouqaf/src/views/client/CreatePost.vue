@@ -108,6 +108,7 @@ export default {
       description: "",
       cate: [{ id: "", name: "" }],
       cates: [],
+      SuccessMessage: "",
       ExtensionError: "",
     };
   },
@@ -144,10 +145,10 @@ export default {
             .then((Response) => {
               console.log(Response.status);
               console.log(Response.data);
-              // this.message = Response.data.message;
+              this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
                 Swal.fire({
-                  title: "Your post has been created successfully",
+                  title: this.SuccessMessage,
                   icon: "success",
                   showCancelButton: false,
                   confirmButtonText: "Ok",

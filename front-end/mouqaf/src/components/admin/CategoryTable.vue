@@ -1,7 +1,15 @@
 <template>
   <div class="client">
-    <h3 class="title">All Categories</h3>
-    <div class="table-responsive col-lg-12">
+    <div class="title__btn">
+      <h3 class="title">All Categories</h3>
+      <ButtonComponent
+        name="Add Category"
+        to=""
+        class="btn"
+        @click="AddCategory"
+      />
+    </div>
+    <div class="table-responsive table__width">
       <table class="table table-hover table-borderless">
         <thead class="table__bar">
           <tr>
@@ -32,13 +40,14 @@
 <script>
 import axios from "axios";
 import Swal from "sweetalert2";
+import ButtonComponent from "../button/ButtonComponent.vue";
 export default {
   name: "UsersTable",
   data() {
     return {
       categories: [],
       workers: [],
-      SuccessMessage:"",
+      SuccessMessage: "",
     };
   },
   methods: {
@@ -54,9 +63,7 @@ export default {
           console.log(err);
         });
     },
-
     // delete client
-
     DeleteCategory(idCategory) {
       Swal.fire({
         title: "Are you sure?",
@@ -96,14 +103,20 @@ export default {
   mounted() {
     this.GetCategory();
   },
+  components: { ButtonComponent },
 };
 </script>
 
 <style scoped>
+.title__btn{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 3rem 0rem 1rem 0rem;
+}
 .title {
   font-size: 1.4rem;
   font-weight: 600;
-  margin: 3rem 0rem 1rem 0rem;
   font-family: "poppins";
 }
 .icons__table {
@@ -113,5 +126,9 @@ export default {
 .table__bar {
   background-color: #4e73df;
   color: #f5f5f5;
+}
+.table__width {
+  width: 100%;
+  margin: auto;
 }
 </style>

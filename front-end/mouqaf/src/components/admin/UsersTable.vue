@@ -84,9 +84,10 @@ export default {
               `http://localhost/youcode/mouqaf/admin/DeleteUser/${idUser}`
             )
             .then((Response) => {
+              this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
                 Swal.fire({
-                  title: "Your file has been deleted.",
+                  title: this.SuccessMessage,
                   icon: "success",
                   showCancelButton: false,
                   confirmButtonText: "Ok",

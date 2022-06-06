@@ -4,12 +4,12 @@
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <AdminHeader title="Dashboard" />
       <!-- cards start here -->
-      <DashboardCards/>
+      <DashboardCards />
       <!-- cards end here -->
       <!-- chart start here -->
       <div class="all__chart">
         <ChartView />
-        <CircleChart/>
+        <CircleChart />
       </div>
       <!-- chart end here -->
     </div>
@@ -55,7 +55,7 @@ export default {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }
-.all__chart{
+.all__chart {
   padding: 1rem 1rem;
   transition: 0.2s ease;
   display: flex;
@@ -65,7 +65,7 @@ export default {
 }
 
 @media (max-width: 750px) {
-  .all__chart{
+  .all__chart {
     flex-direction: column;
     gap: 1rem;
   }

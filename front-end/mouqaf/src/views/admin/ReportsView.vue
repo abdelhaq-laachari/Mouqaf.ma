@@ -2,15 +2,15 @@
   <div v-if="typeof this.id !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
-    <AdminHeader title="Reports" />
-    <ReportTable/>
+      <AdminHeader title="Reports" />
+      <ReportTable />
     </div>
   </div>
   <div v-else>
     {{ this.$router.push({ name: "home" }) }}
   </div>
 </template>
- 
+
 <script>
 import SideBar from "../../components/admin/SideBar.vue";
 import AdminHeader from "../../components/admin/AdminHeader.vue";
@@ -42,5 +42,6 @@ export default {
 .post__main {
   padding: 1rem 1rem;
   transition: 0.2s ease;
+  height: 100vh;
 }
 </style>

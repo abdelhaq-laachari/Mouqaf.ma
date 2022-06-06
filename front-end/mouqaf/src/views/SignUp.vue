@@ -35,6 +35,17 @@
             </div>
             <div class="form-group">
               <label class="form-label" for="exampleInputEmail1"
+                >Phone Number</label
+              >
+              <input
+                type="text"
+                class="form-control"
+                placeholder="Last Name"
+                v-model="phone"
+              />
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="exampleInputEmail1"
                 >Email address</label
               >
               <input
@@ -113,7 +124,7 @@
           </form>
           <span class="footer__link"
             >You already have an account?
-            <a href="signin">Sign In</a>
+            <a href="SignIn">Sign In</a>
           </span>
         </div>
       </div>
@@ -138,6 +149,7 @@ export default {
       lastName: "",
       email: "",
       city: "",
+      phone: "",
     };
   },
   computed: {
@@ -157,6 +169,7 @@ export default {
       formData.append("password", this.password);
       formData.append("role", this.role);
       formData.append("city", this.city);
+      formData.append("phone", this.phone);
       axios
         .post("http://localhost/youcode/mouqaf/client/signup", formData)
         .then((Response) => {
@@ -177,7 +190,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 135vh;
+  height: 145vh;
   display: flex;
   flex-direction: column;
   background: rgb(30, 25, 126);

@@ -4,8 +4,8 @@
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <AdminHeader title="Posts" />
       <div class="post__table">
-        <CategoryTable/>
-        <PostsTable/>
+        <CategoryTable />
+        <PostsTable />
       </div>
     </div>
   </div>
@@ -48,7 +48,7 @@ export default {
   padding: 1rem 1rem;
   transition: 0.2s ease;
 }
-.post__table{
+.post__table {
   width: 95%;
   margin: 2rem auto;
 }

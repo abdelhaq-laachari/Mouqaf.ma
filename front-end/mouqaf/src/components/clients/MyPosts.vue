@@ -6,7 +6,7 @@
       :key="poste.id"
     >
       <div class="post__text">
-        <div class="post__header"> 
+        <div class="post__header">
           <h3>{{ poste.post_title }}</h3>
           <div class="time">
             <span class="text-muted">{{ poste.created_at }}</span>
@@ -26,7 +26,8 @@
         <!-- <div class="image_description"></div> -->
         <div
           class="post__button"
-          v-if="idClient == poste.idClient && poste.images">
+          v-if="idClient == poste.idClient && poste.images"
+        >
           <input type="hidden" v-model="poste.idPost" />
           <ButtonComponent
             @click="StoreIdPost(poste.idPost)"
@@ -36,7 +37,8 @@
         </div>
         <div
           class="post__btn"
-          v-if="idClient == poste.idClient && !poste.images">
+          v-if="idClient == poste.idClient && !poste.images"
+        >
           <input type="hidden" v-model="poste.idPost" />
           <ButtonComponent
             @click="StoreIdPost(poste.idPost)"
@@ -54,17 +56,19 @@
       </div> -->
     </div>
   </div>
-  <div class="no__post" v-else>
-    <h3>You have no post for now</h3>
-  </div>
+  <EmptyTable message="there is no post for now." />
 </template>
 
 <script>
 import ButtonComponent from "../button/ButtonComponent.vue";
+import EmptyTable from "../empty/EmptyTable.vue";
 import axios from "axios";
 export default {
   name: "MyPosts",
-  components: { ButtonComponent },
+  components: {
+    ButtonComponent,
+    EmptyTable,
+  },
   data() {
     return {
       idClient: localStorage["id"],

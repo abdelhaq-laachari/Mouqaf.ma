@@ -137,14 +137,14 @@
             <form v-on:submit.prevent="Report()">
               <div class="modal-body">
                 <input
-                  type=""
+                  type="hidden"
                   name="id"
                   class="form-control"
                   v-model="test"
                   readonly
                 />
                 <input
-                  type=""
+                  type="hidden"
                   name="id"
                   class="form-control"
                   v-model="idClient"
@@ -160,7 +160,6 @@
                     v-model="topic"
                     required
                   />
-                  <span> {{ topic }} </span>
                 </div>
               </div>
               <div class="modal-footer">
@@ -218,6 +217,7 @@ export default {
       test: "",
       TotalComment: "",
       topic: "",
+      SuccessMessage: "",
       ErrorMessage: "",
     };
   },
@@ -287,9 +287,10 @@ export default {
               `http://localhost/youcode/mouqaf/client/DeleteMyPost/${this.idPost}`
             )
             .then((Response) => {
+              this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
                 Swal.fire({
-                  title: "Your file has been deleted.",
+                  title: this.SuccessMessage,
                   icon: "success",
                   showCancelButton: false,
                   confirmButtonText: "Ok",
@@ -344,10 +345,10 @@ export default {
             .then((Response) => {
               console.log(Response.status);
               console.log(Response.data);
-              // this.message = Response.data.message;
+              this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
                 Swal.fire({
-                  title: "Your post has been created successfully",
+                  title: this.SuccessMessage,
                   icon: "success",
                   showCancelButton: false,
                   confirmButtonText: "Ok",

@@ -4,6 +4,7 @@
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <AdminHeader title="Posts" />
       <div class="post__table">
+        <CategoryTable/>
         <PostsTable/>
       </div>
     </div>
@@ -17,6 +18,7 @@
 import SideBar from "../../components/admin/SideBar.vue";
 import AdminHeader from "../../components/admin/AdminHeader.vue";
 import PostsTable from "../../components/admin/PostsTable.vue";
+import CategoryTable from "../../components/admin/CategoryTable.vue";
 import {
   collapsed,
   toggleSidebar,
@@ -28,6 +30,7 @@ export default {
     SideBar,
     AdminHeader,
     PostsTable,
+    CategoryTable,
   },
   data() {
     return {

@@ -1,6 +1,6 @@
 <template>
   <div class="circle__chart">
-    <h3>new users</h3>
+    <h3>Post's Statistic</h3>
     <canvas id="mChart" width="400" height="400"></canvas>
   </div>
 </template>

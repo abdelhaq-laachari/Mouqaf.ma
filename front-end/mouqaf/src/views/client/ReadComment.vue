@@ -113,7 +113,7 @@
         </div>
       </div>
     </div>
-    <!-- i need to complete pop up and report comment -->
+    <!-- report modal -->
     <div class="popup__modal">
       <!-- Modal -->
       <div

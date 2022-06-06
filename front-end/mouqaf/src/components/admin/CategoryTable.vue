@@ -5,8 +5,8 @@
       <ButtonComponent
         name="Add Category"
         to=""
-        class="btn"
-        @click="AddCategory"
+        data-bs-toggle="modal"
+        data-bs-target="#exampleModal"
       />
     </div>
     <div class="table-responsive table__width">
@@ -35,6 +35,61 @@
       </table>
     </div>
   </div>
+  <!-- report modal -->
+  <div class="popup__modal">
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="exampleModal"
+      tabindex="-1"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add Category</h5>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <form v-on:submit.prevent="AddCategory()">
+            <div class="modal-body">
+              <div class="form-group">
+                <label class="mb-2">Category Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  v-model="CategoryName"
+                  required
+                />
+              </div>
+            </div>
+            <div class="modal-footer">
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                Close
+              </button>
+              <button
+                type="submit"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script>
@@ -48,6 +103,7 @@ export default {
       categories: [],
       workers: [],
       SuccessMessage: "",
+      CategoryName: "",
     };
   },
   methods: {
@@ -108,7 +164,7 @@ export default {
 </script>
 
 <style scoped>
-.title__btn{
+.title__btn {
   display: flex;
   justify-content: space-between;
   align-items: center;

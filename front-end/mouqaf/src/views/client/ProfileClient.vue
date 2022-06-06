@@ -142,7 +142,8 @@ export default {
         },
       ],
       disable: true,
-      error: "",
+      SuccessMessage: "",
+      ExtensionError: "",
     };
   },
 
@@ -200,10 +201,10 @@ export default {
             .then((Response) => {
               console.log(Response.status);
               console.log(Response.data);
-              // this.message = Response.data.message;
+              this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
                 Swal.fire({
-                  title: "Your post has been created successfully",
+                  title: this.SuccessMessage,
                   icon: "success",
                   showCancelButton: false,
                   confirmButtonText: "Ok",
@@ -221,7 +222,6 @@ export default {
               console.log(e.response);
               console.log(e.response.data.message);
               this.ExtensionError = e.response.data.message;
-              // console.log("error");
               Swal.fire(this.ExtensionError, "", "error");
             });
         }

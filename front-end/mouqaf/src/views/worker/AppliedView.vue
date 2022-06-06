@@ -1,8 +1,40 @@
 <template>
-  <div v-if = " typeof this.idWorker !== 'undefined' " >
+  <div v-if="typeof this.idWorker !== 'undefined'">
     <SideBar />
     <div class="post__main" :style="{ 'margin-left': sidebarWidth }">
       <HeaderWorker title="Applied" />
+      <div class="client">
+        <h3 class="title">All Applied Jobs</h3>
+        <div class="table-responsive table__width">
+          <table class="table table-hover table-borderless">
+            <thead class="table__bar">
+              <tr>
+                <th scope="col">Post Title</th>
+                <th scope="col">Description</th>
+                <th scope="col">City</th>
+                <th scope="col">Image</th>
+                <th scope="col">Your Proposal</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr v-for="Applied in AppliedJob" :key="Applied.id">
+                <td>{{ Applied.post_title }}</td>
+                <td>{{ Applied.description }}</td>
+                <td>{{ Applied.city }}</td>
+                <td>
+                  <img
+                    v-bind:src="'../uploads/PostImage/' + Applied.images"
+                    border="0.1"
+                    height="50"
+                    alt=""
+                  />
+                </td>
+                <td>{{ Applied.proposal }}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
     </div>
   </div>
   <div v-else>
@@ -18,6 +50,7 @@ import {
   toggleSidebar,
   sidebarWidth,
 } from "../../components/sidebar/state";
+import axios from "axios";
 export default {
   name: "PostView",
   components: {
@@ -27,7 +60,26 @@ export default {
   data() {
     return {
       idWorker: localStorage["idWorker"],
+      AppliedJob: [],
     };
+  },
+  methods: {
+    // select one comment to report
+    Applied() {
+      axios
+        .get(`http://localhost/youcode/mouqaf/worker/applied/${this.idWorker}`)
+        .then((res) => {
+          console.log(res.data);
+          this.AppliedJob = res.data;
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+  },
+  // get comment when the page is loaded
+  mounted() {
+    this.Applied();
   },
   setup() {
     return { collapsed, toggleSidebar, sidebarWidth };
@@ -40,5 +92,22 @@ export default {
   padding: 1rem 1rem;
   transition: 0.2s ease;
   /* height: 100vh; */
+}
+.title {
+  font-size: 1.4rem;
+  font-weight: 600;
+  margin: 3.5rem 0rem 1rem 0rem;
+  font-family: "poppins";
+}
+.table__width {
+  width: 90%;
+  margin: auto;
+}
+.table__bar {
+  background-color: #4e73df;
+  color: #f5f5f5;
+}
+td {
+  height: 50px;
 }
 </style>

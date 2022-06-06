@@ -234,6 +234,14 @@ export default {
 }
 .table__width {
   width: 100%;
+  height: 300px;
   margin: auto;
+  position: relative;
+  overflow: auto;
+}
+td,
+th {
+  overflow: hidden;
+  white-space: nowrap;
 }
 </style>

@@ -101,7 +101,10 @@ export default {
 }
 .table__width {
   width: 90%;
+  height: 300px;
   margin: auto;
+  position: relative;
+  overflow: auto;
 }
 .table__bar {
   background-color: #4e73df;
@@ -109,5 +112,9 @@ export default {
 }
 td {
   height: 50px;
+}
+td, th {
+  overflow: hidden;
+  white-space: nowrap;
 }
 </style>

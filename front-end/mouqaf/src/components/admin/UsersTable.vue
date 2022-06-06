@@ -1,7 +1,7 @@
 <template>
   <div class="client">
     <h3 class="title">All Clients</h3>
-    <div class="table-responsive col-lg-12">
+    <div class="table-responsive col-lg-12 table__width">
       <table class="table table-hover table-borderless">
         <thead class="table__bar">
           <tr>
@@ -80,9 +80,7 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post(
-              `http://localhost/youcode/mouqaf/admin/DeleteUser/${idUser}`
-            )
+            .post(`http://localhost/youcode/mouqaf/admin/DeleteUser/${idUser}`)
             .then((Response) => {
               this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
@@ -125,5 +123,17 @@ export default {
 .table__bar {
   background-color: #4e73df;
   color: #f5f5f5;
+}
+td,
+th {
+  overflow: hidden;
+  white-space: nowrap;
+}
+.table__width {
+  width: 100%;
+  height: 300px;
+  margin: auto;
+  position: relative;
+  overflow: auto;
 }
 </style>

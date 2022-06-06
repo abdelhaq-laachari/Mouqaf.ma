@@ -29,13 +29,21 @@ export default {
       (comments) => comments.NumberOfComments
     );
     // console.log(this.comments);
+    // get Get Total Reports
+    const GetTotalReports = await axios.get(
+      `http://localhost/youcode/mouqaf/admin/GetTotalReports`
+    );
+    this.reports = GetTotalReports.data.map(
+      (reports) => reports.NumberOfReports
+    );
+    console.log(this.reports);
 
     const ctx = document.getElementById("mChart");
     const data = {
       labels: [ "Posts", "Comments", "Reports"],
       datasets: [
         {
-          data: this.posts + this.comments + this.comments,
+          data: this.posts + this.comments + this.reports,
           backgroundColor: [
             "rgb(255, 99, 132)",
             "rgb(54, 162, 235)",

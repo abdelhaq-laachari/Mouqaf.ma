@@ -9,7 +9,7 @@
         <div class="post__header"> 
           <h3>{{ poste.post_title }}</h3>
           <div class="time">
-            <span class="text-muted">6 weeks ago</span>
+            <span class="text-muted">{{ poste.created_at }}</span>
             <span class="text-muted">
               <FIcons
                 :icon="['fas', 'map-marker-alt']"

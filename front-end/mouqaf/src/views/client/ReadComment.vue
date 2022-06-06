@@ -13,7 +13,7 @@
             <div class="post__header">
               <h3>{{ poste.post_title }}</h3>
               <div class="time">
-                <span class="text-muted">6 weeks ago</span>
+                <span class="text-muted">{{ poste.created_at }}</span>
                 <span class="text-muted">
                   <FIcons
                     :icon="['fas', 'map-marker-alt']"
@@ -86,7 +86,7 @@
                       :icon="['fas', 'clock']"
                       class="b-icon text-muted"
                     />&nbsp;
-                    <span class="text-muted">6 Week ago</span>
+                    <span class="text-muted">{{ comment.created }}</span>
                   </div>
                 </div>
               </div>
@@ -114,7 +114,76 @@
       </div>
     </div>
     <!-- i need to complete pop up and report comment -->
-    <!-- <ReportModal /> -->
+    <div class="popup__modal">
+      <!-- Modal -->
+      <div
+        class="modal fade"
+        id="exampleModal"
+        tabindex="-1"
+        aria-labelledby="exampleModalLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Report</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <form v-on:submit.prevent="Report()">
+              <div class="modal-body">
+                <input
+                  type=""
+                  name="id"
+                  class="form-control"
+                  v-model="test"
+                  readonly
+                />
+                <input
+                  type=""
+                  name="id"
+                  class="form-control"
+                  v-model="idClient"
+                  readonly
+                />
+                <div class="form-group">
+                  <label class="mb-2">Report's Subject</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="exampleInputPassword1"
+                    placeholder="Spam ..."
+                    v-model="topic"
+                    required
+                  />
+                  <span> {{ topic }} </span>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Close
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                >
+                  Submit
+                </button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
   <div v-else>
     {{ this.$router.push({ name: "SignInClient" }) }}
@@ -130,7 +199,6 @@ import {
   sidebarWidth,
 } from "../../components/sidebar/state";
 import ClientHeader from "@/components/clients/ClientHeader.vue";
-// import ReportModal from "@/components/clients/ReportModal.vue";
 import DangerButton from "@/components/button/DangerButton.vue";
 import axios from "axios";
 export default {
@@ -139,7 +207,6 @@ export default {
     SideBar,
     ClientHeader,
     DangerButton,
-    // ReportModal,
   },
 
   data() {
@@ -148,8 +215,10 @@ export default {
       idPost: localStorage["idPost"],
       posts: [],
       comments: [],
-      oneComment: [],
+      test: "",
       TotalComment: "",
+      topic: "",
+      ErrorMessage: "",
     };
   },
   methods: {
@@ -239,15 +308,71 @@ export default {
     SelectOne(idComment) {
       axios
         .get(
-          `http://localhost/youcode/mouqaf/client/TotalComments/${idComment}`
+          `http://localhost/youcode/mouqaf/client/GetOneComment/${idComment}`
         )
         .then((res) => {
-          console.log(res.data);
-          this.oneComment = res.data;
+          console.log(res.data[0].idComment);
+          this.test = res.data[0].idComment;
         })
         .catch((err) => {
           console.log(err);
         });
+    },
+
+    // send report
+    // Create post
+    Report() {
+      const formData = new FormData();
+      formData.append("idUser", this.idClient);
+      formData.append("idComment", this.test);
+      formData.append("topic", this.topic);
+      // show alert message with three button save, don't save and cancel
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        // if click on save button then save the changes
+        if (result.isConfirmed) {
+          axios
+            .post(
+              "http://localhost/youcode/mouqaf/client/ReportComment",
+              formData
+            )
+            .then((Response) => {
+              console.log(Response.status);
+              console.log(Response.data);
+              // this.message = Response.data.message;
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: "Your post has been created successfully",
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    Swal.close();
+                    this.$router.push({ name: "post" });
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e.response.status);
+              console.log(e.response);
+              console.log(e.response.data.message);
+              this.ErrorMessage = e.response.data.message;
+              // console.log("error");
+              Swal.fire(this.ErrorMessage, "", "error");
+            });
+        }
+        // if click on don't save button then don't save the changes
+        else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
     },
   },
   setup() {

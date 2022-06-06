@@ -154,6 +154,55 @@ export default {
         }
       });
     },
+    // Create post
+    AddCategory() {
+      const formData = new FormData();
+      formData.append("name", this.CategoryName);
+      // show alert message with three button save, don't save and cancel
+      Swal.fire({
+        title: "Do you want to save the changes?",
+        showDenyButton: true,
+        showCancelButton: true,
+        confirmButtonText: "Save",
+        denyButtonText: `Don't save`,
+      }).then((result) => {
+        // if click on save button then save the changes
+        if (result.isConfirmed) {
+          axios
+            .post("http://localhost/youcode/mouqaf/admin/AddCategory", formData)
+            .then((Response) => {
+              console.log(Response.status);
+              console.log(Response.data);
+              this.SuccessMessage = Response.data.message;
+              if (Response.status === 200) {
+                Swal.fire({
+                  title: this.SuccessMessage,
+                  icon: "success",
+                  showCancelButton: false,
+                  confirmButtonText: "Ok",
+                }).then((result) => {
+                  if (result.isConfirmed) {
+                    // reload page
+                    window.location.reload();
+                  }
+                });
+              }
+            })
+            .catch((e) => {
+              console.log(e.response.status);
+              console.log(e.response);
+              console.log(e.response.data.message);
+              this.ExtensionError = e.response.data.message;
+              // console.log("error");
+              Swal.fire(this.ExtensionError, "", "error");
+            });
+        }
+        // if click on don't save button then don't save the changes
+        else if (result.isDenied) {
+          Swal.fire("Changes are not saved", "", "info");
+        }
+      });
+    },
   },
   // get category when the page is loaded
   mounted() {

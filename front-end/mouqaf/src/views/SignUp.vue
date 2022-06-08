@@ -38,9 +38,9 @@
                 >Phone Number</label
               >
               <input
-                type="text"
+                type="number"
                 class="form-control"
-                placeholder="Last Name"
+                placeholder="Phone Number"
                 v-model="phone"
               />
             </div>
@@ -97,9 +97,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1"
-                >City</label
-              >
+              <label class="form-label" for="exampleInputEmail1">City</label>
               <input
                 type="text"
                 class="form-control"
@@ -262,6 +260,9 @@ export default {
   border-radius: 5px;
   width: 7%;
   cursor: pointer;
+}
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 .control {
   width: 93%;

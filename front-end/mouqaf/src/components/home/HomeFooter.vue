@@ -11,7 +11,7 @@
         <a href="/">Home</a>
         <a href="/about">About</a>
         <a href="/service">Service</a>
-        <a href="/signin">Sign In</a>
+        <a href="/signup">Sign Up</a>
       </div>
       <div class="social">
         <a href="">

@@ -50,13 +50,11 @@
       <div class="post_img" v-if="poste.images">
         <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
       </div>
-      <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
-      <div v-if="seen" id="hide">
-        <span>test</span>
-      </div> -->
     </div>
   </div>
-  <EmptyTable message="there is no post for now." />
+  <div v-else>
+    <EmptyTable message="there is no post for now." />
+  </div>
 </template>
 
 <script>

@@ -16,8 +16,8 @@
     </div>
     <div class="first">
       <div class="left">
-        <!-- <img src="../assets/svg/hello.svg" alt="" /> -->
-        <lottie-animation path="path/to/your/lottie-animation.json" />
+        <img src="../assets/svg/hello.svg" alt="" />
+        <!-- <lottie-animation path="path/to/your/lottie-animation.json" /> -->
       </div>
       <div class="right">
         <div class="right__title">
@@ -40,13 +40,13 @@
 <script>
 import HomeHeader from "@/components/HomeHeader.vue";
 import HomeFooter from "../components/home/HomeFooter.vue";
-import LottieAnimation from "lottie-vuejs/src/LottieAnimation.vue";
+// import LottieAnimation from "lottie-vuejs/src/LottieAnimation.vue";
 export default {
   name: "AboutView",
   components: {
     HomeHeader,
     HomeFooter,
-    LottieAnimation,
+    // LottieAnimation,
   },
 };
 </script>

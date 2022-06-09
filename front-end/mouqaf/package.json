@@ -22,6 +22,7 @@
     "chart.js": "^3.8.0",
     "core-js": "^3.8.3",
     "jquery": "^3.6.0",
+    "lottie-vuejs": "^0.4.0",
     "popper.js": "^1.16.1",
     "postcss": "^8",
     "sweetalert2": "^11.4.14",

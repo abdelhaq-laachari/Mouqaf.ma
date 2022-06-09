@@ -16,7 +16,8 @@
     </div>
     <div class="first">
       <div class="left">
-        <img src="../assets/svg/hello.svg" alt="" />
+        <!-- <img src="../assets/svg/hello.svg" alt="" /> -->
+        <lottie-animation path="path/to/your/lottie-animation.json" />
       </div>
       <div class="right">
         <div class="right__title">
@@ -39,11 +40,13 @@
 <script>
 import HomeHeader from "@/components/HomeHeader.vue";
 import HomeFooter from "../components/home/HomeFooter.vue";
+import LottieAnimation from "lottie-vuejs/src/LottieAnimation.vue";
 export default {
   name: "AboutView",
   components: {
     HomeHeader,
     HomeFooter,
+    LottieAnimation,
   },
 };
 </script>
@@ -60,7 +63,6 @@ export default {
   margin: 0 auto;
   display: flex;
   align-items: center;
-
 }
 .left {
   width: 50%;
@@ -105,54 +107,54 @@ export default {
 .custom-shape-divider-bottom-1651707686 .shape-fill {
   fill: #ffffff;
 }
-@media (min-width: 1400px) and (max-width: 2500px){
+@media (min-width: 1400px) and (max-width: 2500px) {
   .right__title {
-  font-size: 3rem;
-  font-weight: 600;
-}
-.right__par {
-  font-size: 1.4rem;
-}
+    font-size: 3rem;
+    font-weight: 600;
+  }
+  .right__par {
+    font-size: 1.4rem;
+  }
 }
 
-@media (max-width: 800px){
-.first{
-  flex-direction: column;
-  justify-content: space-around;
+@media (max-width: 800px) {
+  .first {
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .left {
+    width: 600px;
+  }
+  .right {
+    width: 100%;
+    order: 1;
+  }
 }
-.left{
-  width: 600px;
+@media (max-width: 700px) {
+  .left {
+    width: 500px;
+  }
 }
-.right{
-  width: 100%;
-  order: 1;
+@media (max-width: 600px) {
+  .left {
+    width: 400px;
+  }
 }
+@media (max-width: 500px) {
+  .left {
+    width: 350px;
+  }
 }
-@media (max-width: 700px){
-.left{
-  width: 500px;
-}
-}
-@media (max-width: 600px){
-.left{
-  width: 400px;
-}
-}
-@media (max-width: 500px){
-.left{
-  width: 350px;
-}
-}
-@media (max-width: 400px){
-.left{
-  width: 300px;
-}
+@media (max-width: 400px) {
+  .left {
+    width: 300px;
+  }
   .right__title {
-  font-size: 1.5rem;
-  font-weight: 600;
-}
-.right__par {
-  font-size: 0.9rem;
-}
+    font-size: 1.5rem;
+    font-weight: 600;
+  }
+  .right__par {
+    font-size: 0.9rem;
+  }
 }
 </style>

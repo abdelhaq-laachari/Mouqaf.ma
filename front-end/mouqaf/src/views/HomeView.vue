@@ -47,8 +47,8 @@ export default {
     MenHome,
     MouqafApp,
     HomeFooter,
-    ButtonComponent
-},
+    ButtonComponent,
+  },
 };
 </script>
 

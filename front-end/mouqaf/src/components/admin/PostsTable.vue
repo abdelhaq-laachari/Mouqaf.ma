@@ -17,7 +17,7 @@
           <tr v-for="poste in posts" :key="poste.id">
             <th scope="row">{{ poste.idPost }}</th>
             <td>{{ poste.post_title }}</td>
-            <td>{{ poste.description }}</td>
+            <td id="desc">{{ poste.description }}</td>
             <td>{{ poste.city }}</td>
             <td>
               <img
@@ -65,7 +65,7 @@ export default {
       posts: [],
     };
   },
-  methods: { 
+  methods: {
     // Get Workers from database
     GetAllPosts() {
       axios
@@ -93,7 +93,9 @@ export default {
       }).then((result) => {
         if (result.isConfirmed) {
           axios
-            .post(`http://localhost/youcode/mouqaf/admin/DeleteUserPost/${idPost}`)
+            .post(
+              `http://localhost/youcode/mouqaf/admin/DeleteUserPost/${idPost}`
+            )
             .then((Response) => {
               this.SuccessMessage = Response.data.message;
               if (Response.status === 200) {
@@ -143,10 +145,7 @@ td {
   background-color: #4e73df;
   color: #f5f5f5;
 }
-td, th {
-  overflow: hidden;
-  white-space: nowrap;
-}
+
 .table__width {
   width: 100%;
   height: 300px;
@@ -164,5 +163,12 @@ td, th {
   text-align: center;
   margin-top: 10rem;
   text-transform: capitalize;
+}
+@media (max-width: 1000px) {
+  td,
+  th {
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 </style>

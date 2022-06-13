@@ -66,7 +66,7 @@ export default {
     };
   },
   methods: {
-    // Get Workers from database
+    // Get Workers from database 
     GetAllPosts() {
       axios
         .get(`http://localhost/youcode/mouqaf/admin/GetAllPosts`)

@@ -122,7 +122,7 @@
           </form>
           <span class="footer__link"
             >You already have an account?
-            <a href="SignIn">Sign In</a>
+            <a href="SignInClient">Sign In</a>
           </span>
         </div>
       </div>

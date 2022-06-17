@@ -12,7 +12,7 @@
         <div class="right__form">
           <form v-on:submit.prevent="SignUp()">
             <div class="form-group">
-              <label class="form-label">First Name</label>
+              <!-- <label class="form-label">First Name</label> -->
               <input
                 type="text"
                 class="form-control"
@@ -21,7 +21,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label">Last Name</label>
+              <!-- <label class="form-label">Last Name</label> -->
               <input
                 type="text"
                 class="form-control"
@@ -30,7 +30,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label">Phone Number</label>
+              <!-- <label class="form-label">Phone Number</label> -->
               <input
                 type="number"
                 class="form-control"
@@ -39,10 +39,10 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1"
-                >Email address</label
-              >
-              <br>
+              <!-- <label class="form-label" for="exampleInputEmail1" -->
+              <!-- >Email address</label -->
+              <!-- > -->
+              <!-- <br> -->
               <span v-if="this.emailError" class="error__msg">{{
                 emailError
               }}</span>
@@ -56,9 +56,9 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputPassword1"
-                >Password</label
-              >
+              <!-- <label class="form-label" for="exampleInputPassword1" -->
+              <!-- >Password</label -->
+              <!-- > -->
               <div class="field has-addons">
                 <div class="control is-expanded">
                   <input
@@ -95,7 +95,7 @@
               </div>
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1">City</label>
+              <!-- <label class="form-label" for="exampleInputEmail1">City</label> -->
               <input
                 type="text"
                 class="form-control"
@@ -104,7 +104,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="">Choose your account type.</label>
+              <!-- <label class="form-label" for="">Choose your account type.</label> -->
               <select
                 class="form-select"
                 aria-label="Default select example"
@@ -194,7 +194,7 @@ export default {
 <style scoped>
 .home {
   width: 100%;
-  height: 145vh;
+  height: 110vh;
   display: flex;
   flex-direction: column;
   background: rgb(30, 25, 126);
@@ -219,8 +219,10 @@ export default {
 }
 .home__frame {
   width: 80%;
-  height: 80%;
-  margin: 0 auto;
+  /* height: 80%; */
+  padding: 3rem 1rem;
+  margin:  auto;
+  /* margin-top: 2rem; */
   display: flex;
   align-items: center;
   background-color: #fff;
@@ -296,10 +298,7 @@ input[type="number"]::-webkit-inner-spin-button {
 .footer__link {
   font-size: 1rem;
 }
-@media (max-width: 800px) {
-  .logo {
-    width: 90px;
-  }
+@media (max-width: 1000px) {
   .left {
     display: none;
   }
@@ -307,6 +306,17 @@ input[type="number"]::-webkit-inner-spin-button {
     width: 90%;
     margin: auto;
   }
+}
+@media (max-width: 800px) {
+  .logo {
+    width: 90px;
+  }
+  .home {
+    height: 100vh;
+  }
+  /* .home__frame{
+    margin: auto;
+  } */
 }
 @media (max-width: 400px) {
   .logo {

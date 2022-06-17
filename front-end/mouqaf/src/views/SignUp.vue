@@ -12,9 +12,7 @@
         <div class="right__form">
           <form v-on:submit.prevent="SignUp()">
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1"
-                >First Name</label
-              >
+              <label class="form-label">First Name</label>
               <input
                 type="text"
                 class="form-control"
@@ -23,9 +21,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1"
-                >Last Name</label
-              >
+              <label class="form-label">Last Name</label>
               <input
                 type="text"
                 class="form-control"
@@ -34,9 +30,7 @@
               />
             </div>
             <div class="form-group">
-              <label class="form-label" for="exampleInputEmail1"
-                >Phone Number</label
-              >
+              <label class="form-label">Phone Number</label>
               <input
                 type="number"
                 class="form-control"
@@ -48,6 +42,10 @@
               <label class="form-label" for="exampleInputEmail1"
                 >Email address</label
               >
+              <br>
+              <span v-if="this.emailError" class="error__msg">{{
+                emailError
+              }}</span>
               <input
                 type="email"
                 class="form-control"
@@ -148,6 +146,7 @@ export default {
       email: "",
       city: "",
       phone: "",
+      emailError: "",
     };
   },
   computed: {
@@ -178,6 +177,13 @@ export default {
             this.$router.push({ name: "SignInClient" });
           } else if (this.role == "worker") {
             this.$router.push({ name: "SignInWorker" });
+          }
+        })
+        .catch((e) => {
+          console.log(e.response.status);
+          console.log(e.response);
+          if (e.response.status === 400) {
+            this.emailError = e.response.data.message;
           }
         });
     },
@@ -232,6 +238,11 @@ export default {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+.error__msg {
+  color: red;
+  font-size: 0.8rem;
+  font-weight: 600;
 }
 .right__title h3 {
   display: flex;

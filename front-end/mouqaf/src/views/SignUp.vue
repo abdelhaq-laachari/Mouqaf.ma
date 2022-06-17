@@ -18,6 +18,7 @@
                 class="form-control"
                 placeholder="First Name"
                 v-model="firstName"
+                required
               />
             </div>
             <div class="form-group">
@@ -27,6 +28,7 @@
                 class="form-control"
                 placeholder="Last Name"
                 v-model="lastName"
+                required
               />
             </div>
             <div class="form-group">
@@ -36,6 +38,7 @@
                 class="form-control"
                 placeholder="Phone Number"
                 v-model="phone"
+                required
               />
             </div>
             <div class="form-group">
@@ -53,6 +56,7 @@
                 aria-describedby="emailHelp"
                 placeholder="Enter email"
                 v-model="email"
+                required
               />
             </div>
             <div class="form-group">
@@ -67,6 +71,7 @@
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
+                    required
                   />
                   <input
                     v-else
@@ -74,6 +79,7 @@
                     class="form-control"
                     placeholder="Password"
                     v-model="password"
+                    required
                   />
                 </div>
                 <div class="pass__icon">
@@ -101,6 +107,7 @@
                 class="form-control"
                 placeholder="City"
                 v-model="city"
+                required
               />
             </div>
             <div class="form-group">
@@ -109,7 +116,9 @@
                 class="form-select"
                 aria-label="Default select example"
                 v-model="role"
+                required
               >
+                <option value="" class="text-muted" disabled selected >Choose your account type</option>
                 <option value="client">Client</option>
                 <option value="worker">Worker</option>
               </select>

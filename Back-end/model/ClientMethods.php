@@ -7,7 +7,7 @@ class ClientMethods extends Connection
 
 
     // function for get client information
-    
+
     public function GetOneClient($idClient)
     {
         $query = "SELECT * FROM `users` WHERE  id='$idClient'";
@@ -18,8 +18,7 @@ class ClientMethods extends Connection
     }
 
     // update client information
-    // complete variable and update method
-    public function UpdateClient($idClient,$Fname,$Lname,$new_name,$phone,$email)
+    public function UpdateClient($idClient, $Fname, $Lname, $new_name, $phone, $email)
     {
         $query = "UPDATE `users` SET `first_name` = '$Fname',`last_name` = '$Lname', `avatar` = '$new_name', `phone` = '$phone',`email` = '$email' WHERE id = '$idClient' ";
         $log = $this->connect()->prepare($query);
@@ -42,18 +41,31 @@ class ClientMethods extends Connection
 
     // function for sign up
 
-    public function SignUp($Fname, $Lname, $email, $hashed_password, $role,$city,$signed_at)
+    // public function SignUp($Fname, $Lname, $phone, $email, $hashed_password, $role,$city,$signed_at)
+    // {
+
+    //     if ($this->check($email) == null) {
+    //         $query = "INSERT INTO users (first_name, last_name, avatar, phone, email, password , role, city, signed_at ) VALUES ( '$Fname', '$Lname', 'default.png', '$phone', '$email', '$hashed_password' , '$role', '$city','$signed_at' )";
+    //         $log = $this->connect()->prepare($query);
+    //         $log->execute();
+    //         if ($log) {
+    //             return true;
+    //         } else {
+    //             return false;
+    //         }
+    //     }
+    // }
+
+    public function SignUp($Fname, $Lname, $phone, $email, $hashed_password, $role, $city, $signed_at)
     {
 
-        if ($this->check($email) == null) {
-            $query = "INSERT INTO users (first_name, last_name, email, password , role, city, signed_at ) VALUES ( '$Fname', '$Lname',  '$email', '$hashed_password' , '$role', '$city','$signed_at' )";
-            $log = $this->connect()->prepare($query);
-            $log->execute();
-            if ($log) {
-                return true;
-            } else {
-                return false;
-            }
+        $query = "INSERT INTO users (first_name, last_name, avatar, phone, email, password , role, city, signed_at ) VALUES ( '$Fname', '$Lname', 'default.png', '$phone', '$email', '$hashed_password' , '$role', '$city','$signed_at' )";
+        $log = $this->connect()->prepare($query);
+        $log->execute();
+        if ($log) {
+            return true;
+        } else {
+            return false;
         }
     }
 
@@ -108,7 +120,7 @@ class ClientMethods extends Connection
 
     // function to search for posts by city and category
 
-    public function SearchPosts($idCategory,$city)
+    public function SearchPosts($idCategory, $city)
     {
         $query = "SELECT * FROM `posts` P,`categories` C WHERE P.idCategory = '$idCategory' AND `city` = '$city' AND P.idCategory = C.id";
         $log = $this->connect()->prepare($query);
@@ -121,7 +133,7 @@ class ClientMethods extends Connection
 
     public function SearchPostsByCity($city)
     {
-        $query = "SELECT * FROM `posts` WHERE `city` = '$city'" ;
+        $query = "SELECT * FROM `posts` WHERE `city` = '$city'";
         $log = $this->connect()->prepare($query);
         $log->execute();
         $res = $log->fetchAll(PDO::FETCH_ASSOC);
@@ -132,7 +144,7 @@ class ClientMethods extends Connection
 
     public function SearchPostsByCategory($idCategory)
     {
-        $query = "SELECT * FROM `posts` P,`categories` C WHERE P.idCategory = '$idCategory' AND P.idCategory = C.id " ;
+        $query = "SELECT * FROM `posts` P,`categories` C WHERE P.idCategory = '$idCategory' AND P.idCategory = C.id ";
         $log = $this->connect()->prepare($query);
         $log->execute();
         $res = $log->fetchAll(PDO::FETCH_ASSOC);
@@ -167,7 +179,7 @@ class ClientMethods extends Connection
         $query = "SELECT * FROM `posts` WHERE idPost = '$idPost' ";
         $log = $this->connect()->prepare($query);
         $log->execute();
-        $res = $log->fetch(PDO::FETCH_ASSOC);
+        $res = $log->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
 
@@ -180,7 +192,7 @@ class ClientMethods extends Connection
         $log->execute();
         if ($log->execute()) {
             return true;
-        }else {
+        } else {
             return false;
         }
     }
@@ -190,7 +202,7 @@ class ClientMethods extends Connection
 
     public function GetComments($idPost)
     {
-        $query = "SELECT * FROM `comments` C,`posts` P, `users` U WHERE C.idPost = '$idPost' and C.idPost = P.idPost and C.idWorker = U.id;";
+        $query = "SELECT * FROM `comments` C,`posts` P, `users` U WHERE C.idPost = '$idPost' and C.idPost = P.idPost and C.idWorker = U.id";
         $log = $this->connect()->prepare($query);
         $log->execute();
         $res = $log->fetchAll(PDO::FETCH_ASSOC);
@@ -198,12 +210,39 @@ class ClientMethods extends Connection
     }
 
     // get total of comments
-    public function TotalComments($idPost) 
+    public function TotalComments($idPost)
     {
         $query = "SELECT * FROM `comments` WHERE idPost = '$idPost' ";
         $log = $this->connect()->prepare($query);
         $log->execute();
         $total = $log->rowCount();
         return $total;
+    }
+
+
+    // function for get one comment
+
+    public function GetOneComment($idComment)
+    {
+        $query = "SELECT * FROM `comments` WHERE  idComment ='$idComment' ";
+        $log = $this->connect()->prepare($query);
+        $log->execute();
+        $res = $log->fetch(PDO::FETCH_ASSOC);
+        return $res;
+    }
+
+
+    // Function for report comment
+
+    public function ReportComment($idUser, $idComment, $topic)
+    {
+        $query = "INSERT INTO `reports` (`idUser`, `idComment`, `topic`) VALUES ('$idUser','$idComment','$topic')";
+        $log = $this->connect()->prepare($query);
+        $log->execute();
+        if ($log) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

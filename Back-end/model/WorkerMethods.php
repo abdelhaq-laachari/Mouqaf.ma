@@ -25,7 +25,7 @@ class WorkerMethods extends Connection
         $query = "SELECT * FROM `posts` P ,`users` U WHERE idPost = '$idPost' AND P.idClient = U.id ";
         $log = $this->connect()->prepare($query);
         $log->execute();
-        $res = $log->fetch(PDO::FETCH_ASSOC);
+        $res = $log->fetchAll(PDO::FETCH_ASSOC);
         return $res;
     }
 
@@ -42,5 +42,28 @@ class WorkerMethods extends Connection
         } else {
             return false;
         }
+    }
+
+    
+    // get job that i already applied for
+
+    public function Applied($idWorker)
+    {
+        $query = "SELECT * FROM `comments` C,`posts` P WHERE C.idWorker = '$idWorker' and C.idPost = P.idPost;";
+        $log = $this->connect()->prepare($query);
+        $log->execute();
+        $res = $log->fetchAll(PDO::FETCH_ASSOC);
+        return $res;
+    }
+
+    
+    // get time ago function
+    public function get_time_ago()
+    {
+        $query = "SELECT created_at FROM `posts` ";
+        $log = $this->connect()->prepare($query);
+        $log->execute();
+        $res = $log->fetch(PDO::FETCH_ASSOC);
+        return $res;
     }
 }

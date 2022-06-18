@@ -1,35 +1,7 @@
 <template>
   <div class="search__form shadow p-3 mb-5 bg-white rounded">
-    <form v-on:submit.prevent="SearchPosts()" class="search__bar">
-      <select
-        class="form-select form-select-m"
-        aria-label=".form-select-sm example"
-        v-model="idCategory"
-      >
-        <option value="" disabled selected>Select category</option>
-        <option
-          v-for="category in cates"
-          :key="category.id"
-          :value="category.id"
-        >
-          {{ category.name }}
-        </option>
-      </select>
-      <div class="form-group">
-        <input
-          type="text"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="All morocco"
-          v-model="city"
-        />
-      </div>
-      <button type="submit" name="submit" class="btn btn-primary">
-        <FIcons :icon="['fas', 'search']" class="b-icon face" />
-      </button>
-    </form>
   </div>
-  <div v-if="SePosts.length == 0" class="all__posts">
+  <div class="all__posts">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"
@@ -80,99 +52,28 @@
       <div class="post_img" v-if="poste.images">
         <img v-bind:src="'../uploads/PostImage/' + poste.images" alt="" />
       </div>
-      <!-- <ButtonComponent v-on:click="seen = !seen" name="Read Comment" to="" />
-      <div v-if="seen" id="hide">
-        <span>test</span>
-      </div> -->
-    </div>
-  </div>
-  <div v-if="SePosts.length !== 0" class="all__posts">
-    <div
-      class="post shadow p-3 mb-5 bg-white rounded"
-      v-for="SePoste in SePosts"
-      :key="SePoste.id"
-    >
-      <div class="post__text">
-        <div class="post__header">
-          <h3>{{ SePoste.post_title }}</h3>
-          <div class="time">
-            <span class="text-muted">{{ SePoste.created_at }}</span>
-            <span class="text-muted">
-              <FIcons
-                :icon="['fas', 'map-marker-alt']"
-                class="b-icon face"
-              />&nbsp; {{ SePoste.city }}
-            </span>
-          </div>
-          <div class="post__topic">
-            <p>
-              {{ SePoste.description }}
-            </p>
-          </div>
-        </div>
-        <!-- <div class="image_description"></div> -->
-        <div
-          class="post__button"
-          v-if="idClient == SePoste.idClient && SePoste.images"
-        >
-          <input type="hidden" v-model="SePoste.idPost" />
-          <ButtonComponent
-            @click="StoreIdPost(SePoste.idPost)"
-            name="Read Comment"
-            to=""
-          />
-        </div>
-        <div
-          class="post__btn"
-          v-if="idClient == SePoste.idClient && !SePoste.images"
-        >
-          <input type="hidden" v-model="SePoste.idPost" />
-          <ButtonComponent
-            @click="StoreIdPost(SePoste.idPost)"
-            name="Read Comment"
-            to=""
-          />
-        </div>
-      </div>
-      <div class="post_img" v-if="SePoste.images">
-        <img v-bind:src="'../uploads/PostImage/' + SePoste.images" alt="" />
-      </div>
     </div>
   </div>
 </template>
 
 <script>
 import ButtonComponent from "../button/ButtonComponent.vue";
-import Swal from "sweetalert2";
 import axios from "axios";
 export default {
   name: "AllPosts",
   components: { ButtonComponent },
   data() {
     return {
-      // seen: false,
       idCategory: "",
       city: "",
       ErrorMessage: "",
       no: null,
       idClient: localStorage["id"],
       posts: [],
-      SePosts: [],
       cates: [],
     };
   },
   methods: {
-    // Get category from database
-    GetCategory() {
-      axios
-        .get(`http://localhost/youcode/mouqaf/client/getcategory`)
-        .then((res) => {
-          this.cates = res.data;
-        })
-        .catch((err) => {
-          console.log(err);
-        });
-    },
     // Get posts from database
     GetAllPosts() {
       axios
@@ -194,58 +95,9 @@ export default {
         name: "comment",
       });
     },
-    // Get posts from database by searching
-    SearchPosts() {
-      const formData = new FormData();
-      if (this.idCategory !== "" && this.city !== "") {
-        formData.append("idCategory", this.idCategory);
-        formData.append("city", this.city);
-        axios
-          .post(`http://localhost/youcode/mouqaf/client/SearchPosts`, formData)
-          .then((res) => {
-            this.SePosts = res.data;
-          })
-          .catch((e) => {
-            console.log(e.response.data.message);
-            this.ErrorMessage = e.response.data.message;
-            Swal.fire(this.ErrorMessage, "", "error");
-          });
-      } else if (this.idCategory === "" && this.city !== "") {
-        formData.append("city", this.city);
-        axios
-          .post(
-            `http://localhost/youcode/mouqaf/client/SearchPostsByCity`,
-            formData
-          )
-          .then((res) => {
-            this.SePosts = res.data;
-          })
-          .catch((e) => {
-            console.log(e.response.data.message);
-            this.ErrorMessage = e.response.data.message;
-            Swal.fire(this.ErrorMessage, "", "error");
-          });
-      } else if (this.idCategory !== "" && this.city === "") {
-        formData.append("idCategory", this.idCategory);
-        axios
-          .post(
-            `http://localhost/youcode/mouqaf/client/SearchPostsByCategory`,
-            formData
-          )
-          .then((res) => {
-            this.SePosts = res.data;
-          })
-          .catch((e) => {
-            console.log(e.response.data.message);
-            this.ErrorMessage = e.response.data.message;
-            Swal.fire(this.ErrorMessage, "", "error");
-          });
-      }
-    },
   },
   // get posts when the page is loaded
   mounted() {
-    this.GetCategory();
     this.GetAllPosts();
   },
 };

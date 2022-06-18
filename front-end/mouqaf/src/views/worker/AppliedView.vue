@@ -13,7 +13,7 @@
                 <th scope="col">Description</th>
                 <th scope="col">City</th>
                 <th scope="col">Image</th>
-                <th scope="col">Your Proposal</th>
+                <th scope="col">Proposal</th>
               </tr>
             </thead>
             <tbody>
@@ -122,11 +122,7 @@ export default {
 td {
   height: 50px;
 }
-td,
-th {
-  overflow: hidden;
-  white-space: nowrap;
-}
+
 #message {
   margin-top: 8rem;
   display: flex;
@@ -143,5 +139,12 @@ th {
   margin: 0 0 2rem;
   text-align: center;
   text-transform: capitalize;
+}
+@media (max-width: 1000px) {
+  td,
+  th {
+    overflow: hidden;
+    white-space: nowrap;
+  }
 }
 </style>

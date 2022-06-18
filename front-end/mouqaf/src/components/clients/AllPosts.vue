@@ -1,7 +1,7 @@
 <template>
-  <div class="search__form shadow p-3 mb-5 bg-white rounded">
-  </div>
-  <div class="all__posts">
+  <!-- <div class="search__form shadow p-3 mb-5 bg-white rounded">
+  </div> -->
+  <div class="all__posts mt-5">
     <div
       class="post shadow p-3 mb-5 bg-white rounded"
       v-for="poste in posts"

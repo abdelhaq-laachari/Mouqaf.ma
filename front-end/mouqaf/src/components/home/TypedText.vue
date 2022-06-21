@@ -1,8 +1,9 @@
 <template>
   <p>
     Hire the best
-    <span class="typed-text text-info"> {{ typeValue }} </span>
-    <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span>
+    <span class="typed-text text-info">Handyman</span>
+    <!-- <span class="typed-text text-info"> {{ typeValue }} </span>
+    <span class="cursor" :class="{ typing: typeStatus }">&nbsp;</span> -->
     <br />
     for any job, <br />
     online.

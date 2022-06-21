@@ -33,7 +33,6 @@ export default {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  /* background: #fff; */
   background: #0464f1;
 }
 .left {
@@ -47,9 +46,7 @@ export default {
 }
 .title h3 {
   color: #fff;
-  /* color: #000; */
   font-size: 2rem;
-  /* font-weight: bold; */
   font-family: "poppins";
 }
 .par {
@@ -57,7 +54,6 @@ export default {
 }
 .par p {
   color: #fff;
-  /* color: #000; */
   font-size: 1.2rem;
   font-family: "Serif";
 }

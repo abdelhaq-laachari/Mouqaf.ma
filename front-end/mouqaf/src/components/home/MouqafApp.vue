@@ -37,8 +37,6 @@ export default {
   align-items: center;
   width: 100%;
   padding: 6rem 2rem 6rem 2rem;
-  /* height: 100vh; */
-  /* background: #0464F1; */
   background-color: #fff;
 }
 .left {
@@ -65,7 +63,6 @@ export default {
   width: 100%;
 }
 .title h3 {
-  /* color: #fff; */
   color: #000;
   font-size: 2rem;
   font-weight: bold;
@@ -75,7 +72,6 @@ export default {
   width: 80%;
 }
 .par p {
-  /* color: #fff; */
   color: #000;
   font-size: 1.1rem;
   font-family: "poppins";
